@@ -1,2 +1,5 @@
-.idea/
-.vscode/
+.idea
+.gitignore
+Webapp/ThatAquariumWebapp/.vscode
+.vscode
+Webapp/ThatAquariumWebapp/ThatAquariumWebapp/__pycache__
