@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import *
 def home(request):
-    context = {}
+    products = Product.objects.all()
+    context = {"products": products}
     return render(request,'home_page/front_page.html',context)
 # Create your views here.
 def cart(request):

@@ -1,40 +1,87 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
 
-class Products(models.Model):
+class Customer(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE, null=True, blank=True)
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=250,null=True)
+
+    def __str__(self):
+        if self.first_name == None:
+            return "name"
+        return self.first_name
+
+
+class Product(models.Model):
     product_name = models.CharField(max_length=150,default="product")
-    product_type = models.CharField(max_length=50,default="accessory")
-    product_class = models.CharField(max_length=50,default="class")
-    product_cat = models.CharField(max_length=50,default="parts")
+    product_type = models.CharField(max_length=100,default="accessory")
+    product_class = models.CharField(max_length=100,default="class")
+    product_category = models.CharField(max_length=100,default="parts")
     price = models.FloatField()
-    pictures = models.ImageField()
-    stock = models.IntegerField()
+    pictures = models.ImageField(null=True,blank=True)
+    stock = models.IntegerField(default=0)
     def __str__(self):
         return self.product_name
 
-class Cart(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    @property
+    def imageURL(self):
+            try:
+                url = self.image.url
+            except:
+                url = ''
+            return url
 
-class cart_item(models.Model):
-    cart = models.ForeignKey(Cart,on_delete=models.CASCADE)
-    product = models.ForeignKey(Products,on_delete=models.CASCADE)
-    qty = models.IntegerField()
 
 class order(models.Model):
-    payments = [
-        ("p","paynow"),
-        ("c","credit/debit"),
-        ("h","cash")
-    ]
-    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    address = models.TextField() #gonna need it even if its a collection point because the collection
-    postal_code = models.IntegerField()# point also has an address
-    paid = models.BooleanField()
-    order_time = models.DateTimeField(default=timezone.now)
-    payment_method = models.CharField(max_length=1,choices=payments)
+    customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True)
+    date_ordered = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
+    transaction_id = models.CharField(max_length=200,null=True)
 
-class order_item(models.Model):
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
-    qty = models.IntegerField()
-    order_tx = models.ForeignKey(order,on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.id)
+
+class orderitem(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(order,on_delete=models.SET_NULL,null=True,blank=True)
+    qty = models.IntegerField(default=0)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+class shipping(models.Model):
+    customer =  models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(order, on_delete=models.SET_NULL,null=True,blank=True)
+    address = models.TextField(blank=True)
+    postcode = models.IntegerField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address
+
+
+
+# class Cart(models.Model):
+#     user = models.ForeignKey(User,on_delete=models.CASCADE)
+#
+# class cart_item(models.Model):
+#     cart = models.ForeignKey(Cart,on_delete=models.CASCADE)
+#     product = models.ForeignKey(Products,on_delete=models.CASCADE)
+#     qty = models.IntegerField()
+#
+# class order(models.Model):
+#     payments = [
+#         ("p","paynow"),
+#         ("c","credit/debit"),
+#         ("h","cash")
+#     ]
+#     user = models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True)
+#     address = models.TextField() #gonna need it even if its a collection point because the collection
+#     postal_code = models.IntegerField()# point also has an address
+#     paid = models.BooleanField(default=False)
+#     order_time = models.DateTimeField(default=timezone.now)
+#     payment_method = models.CharField(max_length=1,choices=payments)
+#
+# class order_item(models.Model):
+#     product = models.ForeignKey(Products, on_delete=models.CASCADE)
+#     qty = models.IntegerField()
+#     order_tx = models.ForeignKey(order,on_delete=models.CASCADE)
