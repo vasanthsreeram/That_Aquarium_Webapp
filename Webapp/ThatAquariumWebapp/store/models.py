@@ -2,11 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Customer(models.Model):
+
+    memberships = [
+        ("m","member"),
+        ("g","gold")
+    ]
     user = models.OneToOneField(User,on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=100, null=True)
     last_name = models.CharField(max_length=100, null=True)
     email = models.CharField(max_length=250,null=True)
-
+    membership = models.CharField(max_length=1,choices=memberships,null=True)
     def __str__(self):
         if self.first_name == None:
             return "name"
@@ -42,11 +47,29 @@ class order(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_cart_total(self):
+        orderitem = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitem])
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitem = self.orderitem_set.all()
+        total = sum([item.quantity for item in orderitem])
+        return total
+
+
 class orderitem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
     order = models.ForeignKey(order,on_delete=models.SET_NULL,null=True,blank=True)
-    qty = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
 
 class shipping(models.Model):
     customer =  models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)

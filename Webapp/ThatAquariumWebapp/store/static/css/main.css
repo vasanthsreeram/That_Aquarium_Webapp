@@ -1,3 +1,8 @@
+/*
+main css is like general format for all pages this is used so that you don't have to
+repeat the code for things like nav bar and stuff
+
+*/
 body{
     background-color: deepskyblue;
 }

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
+
 from .models import *
 def home(request):
     products = Product.objects.all()
@@ -13,3 +15,7 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request,'home_page/checkout.html',context)
+
+def account(request):
+    context ={}
+    return render(request,'home_page/account.html')
