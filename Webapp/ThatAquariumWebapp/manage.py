@@ -20,3 +20,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# To run this file, use "python manage.py runserver"

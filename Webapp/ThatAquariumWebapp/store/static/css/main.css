@@ -6,3 +6,7 @@ repeat the code for things like nav bar and stuff
 body{
     background-color: deepskyblue;
 }
+
+.navbar-background {
+    background: linear-gradient(#ff7054, #ff9b58) !important;
+}
