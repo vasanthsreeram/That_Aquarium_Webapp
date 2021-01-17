@@ -17,75 +17,95 @@
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-background">
-            <a class="navbar-brand" href="{% url 'front_page' %}">
+            <a class="navbar-brand logo-a" href="{% url 'front_page' %}">
                 <img id = "logo" src="{% static 'images/Shared/Logo.svg' %}">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-collapsed-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse right-nav-items" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link navbar-important-item" id = "hot-deals" href="{% url 'hot'%}">Hot Deals
+                        <a class="nav-link navbar-important-item" id = "hot-deals" href="{% url 'hot'%}">
+                            Hot Deals
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" href="{% url 'featured'%}">Featured
+                        <a class="nav-link navbar-unimportant-item" id = "featured" href="{% url 'featured'%}">
+                            Featured
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" href="{% url 'new'%}">New Arrivals
+                        <a class="nav-link navbar-unimportant-item" id = "new-arrivals" href="{% url 'new'%}">
+                            New Arrivals
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" href="{% url 'new'%}">Categories
+                    <!-- <li class="nav-item">
+                        <a class="nav-link navbar-unimportant-item" id = "categories" href="{% url 'new'%}">
+                            Categories
                             <div class = "hover-underline"></div>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" href="{% url 'terms'%}">T&C
+                            <a class="nav-link navbar-unimportant-item" id = "t-and-c" href="{% url 'terms'%}">
+                                T&C
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" href="{% url 'FAQ'%}">FAQ
+                            <a class="nav-link navbar-unimportant-item" id = "faq" href="{% url 'FAQ'%}">
+                                FAQ
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" href="{% url 'about'%}">About Us
+                            <a class="nav-link navbar-unimportant-item" id = "about-us" href="{% url 'about'%}">
+                                About Us
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                     </ul>
-                    <div>
-                        <input class="search-bar" type="search" placeholder="Search" aria-label="Search">
-                        <button class="submit-button" type="submit">
-                            <img src = "{% static 'images/Shared/search-24px.svg' %}">
-                        </button>
-                    </div>
-                    <a href="{% url 'cart' %}" class = "right-of-search-bar cart">
-                        <img src="{% static 'images/Home Page/cart.svg' %}" class = "nav-images cart-image">
-                    </a>
                 </form>
             </div>
+            <div class = "search-and-cart">
+                <div>
+                    <input class="search-bar" placeholder="Search" aria-label="Search">
+                    <button class="submit-button" type="submit">
+                        <img src = "{% static 'images/Shared/search-24px.svg' %}">
+                    </button>
+                </div>
+                <a href="{% url 'cart' %}" class = "right-of-search-bar cart">
+                    <img src="{% static 'images/Home Page/cart.svg' %}" class = "nav-images cart-image">
+                </a>
+            </div>
             <div class = "account-back">
-                <div>
-                    <a href="{% url 'account' %}" class = "account">
-                        <img src="{% static 'images/Home Page/account_circle-24px.svg' %}" class = "nav-images right-of-search-bar account-image">
-                    </a>
+                <div class = "account-top">
+                    <div>
+                        <a href="{% url 'account' %}" class = "account">
+                            <img src="{% static 'images/Home Page/account_circle-24px.svg' %}" class = "nav-images right-of-search-bar account-image">
+                        </a>
+                    </div>
+                    <div>
+                        <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
+                        <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
+                    </div>
+                    <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
                 </div>
-                <div>
-                    <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
-                    <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
+                <div class = "account-options">
+                    <a class = "account-options-text">Orders</a>
+                    <a class = "account-options-text">Wishlist</a>
+                    <a class = "account-options-text">Membership</a>
+                    <a class = "account-options-text">Addresses</a>
+                    <a class = "account-options-text">Payment Methods</a>
+                    <a class = "account-options-text">Settings</a>
+                    <a class = "account-options-text account-options-text-last">Sign In</a>
                 </div>
-                <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
             </div>
         </nav>
         {% block content %}
