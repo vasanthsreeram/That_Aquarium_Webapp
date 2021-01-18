@@ -5,9 +5,10 @@
     <head>
         <meta charset="UTF-8">
         <title>That Aquarium</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static 'scripts/main.js' %}"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/main.css' %}" type = "text/css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,9 +17,10 @@
     </head>
     
     <body>
+        <div class = "back-shadow"></div>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-background">
             <a class="navbar-brand logo-a" href="{% url 'front_page' %}">
-                <img id = "logo" src="{% static 'images/Shared/Logo.svg' %}">
+                <img id = "logo" src="{% static 'images/Shared/Logo-final.png' %}"> <!-- Until I can figure out how to make the logo svg render properly, it will be a png for now -->
             </a>
             <button class="navbar-toggler navbar-collapsed-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,8 +51,9 @@
                             <div class = "hover-underline"></div>
                         </a>
                     </li> -->
+                    <!-- Thats for Categories which is kinda not useful as it leads to search but I guess can be uncommented to be used -->
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <div class="ml-auto">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link navbar-unimportant-item" id = "t-and-c" href="{% url 'terms'%}">
@@ -70,8 +73,14 @@
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
+                        <li class = "nav-item">
+                            <a class = "nav-link search-text navbar-unimportant-item" id = "search-text" href = "{% url 'search' %}">
+                                Search
+                                <div class = "hover-underline"></div>
+                            </a>
+                        </li>
                     </ul>
-                </form>
+                </div>
             </div>
             <div class = "search-and-cart">
                 <div>
@@ -98,13 +107,13 @@
                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
                 </div>
                 <div class = "account-options">
-                    <a class = "account-options-text">Orders</a>
-                    <a class = "account-options-text">Wishlist</a>
-                    <a class = "account-options-text">Membership</a>
-                    <a class = "account-options-text">Addresses</a>
-                    <a class = "account-options-text">Payment Methods</a>
-                    <a class = "account-options-text">Settings</a>
-                    <a class = "account-options-text account-options-text-last">Sign In</a>
+                    <a class = "account-options-text" href="{% url 'orders'%}">Orders</a>
+                    <a class = "account-options-text" href="{% url 'wishlist'%}">Wishlist</a>
+                    <a class = "account-options-text" href="{% url 'membership'%}">Membership</a>
+                    <a class = "account-options-text" href="{% url 'address'%}">Addresses</a>
+                    <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
+                    <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
+                    <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
                 </div>
             </div>
         </nav>

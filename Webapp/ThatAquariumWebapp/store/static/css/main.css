@@ -22,11 +22,7 @@ body {
     text-align: center;
 }
 
-@media (max-width: 465px) {
-
-    .navbar-background {
-        height: 175px!important;
-    }
+@media (max-width: 552px) {
 
     .navbar-collapsed-button {
         margin-right: 400px!important;
@@ -35,7 +31,7 @@ body {
 
     .logo-a {
         margin-left: calc(-47px + 50vw - 93.75px)!important;
-        margin-top: -60px!important;
+        /* margin-top: -60px!important; */
         transform: scale(1)!important;
     }
 
@@ -47,25 +43,24 @@ body {
         margin-top: 290px!important;
     }
 
-}
-
-@media (max-width: 633px) {
-
-    .navbar-background {
-        height: 100px;
-    }
-
     .navbar-collapsed-button {
-        margin-right: 400px!important;
+        margin-top: 20px!important;
     }
 
-    .logo-a {
-        position: absolute;
-        margin-left: 25px;
-        transform: scale(0.75);
+    .account-back:hover {
+        margin-top: 75px!important;
     }
 
 }
+
+@media (min-width: 553px) and (max-width: 991px) {
+    
+    .account-back:hover {
+        margin-top: 0px!important;
+    }
+    
+}
+
 
 @media (max-width: 991px) {
 
@@ -77,9 +72,30 @@ body {
         display: none!important;
     }
 
+    #hot-deals, #featured, #new-arrivals {
+        text-align: center;
+        margin: 0px!important;
+    }
+
+    .account-back {
+        top: 15px;
+    }
+
+    .navbar-important-item, .navbar-unimportant-item {
+        display: inline-block;
+    }
+
 }
 
-@media (max-width: 1120px) {
+@media (min-width: 992px) {
+
+    .search-text {
+        display: none;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1120px) {
 
     #new-arrivals {
         display: none;
@@ -221,6 +237,7 @@ body {
     transition: 0.3s ease;
     position: absolute;
     margin-left: calc(100vw - 230px);
+    z-index: 3;
 }
 
 .account-top {
@@ -265,17 +282,26 @@ body {
     filter: invert(0);
 }
 
+.account-back:hover > .account-options {
+    margin-top: 0px;
+    opacity: 1;
+    height: 210px;
+}
+
+.account-back:hover ~ .back-shadow {
+    width: 100%;
+    height: 100%;
+    margin-left: -16px;
+}
+
 .account-back:hover > div > a {
     height: 40px;
+    padding-top: 7px;
+    margin-left: 0px;
 }
 
 .account-back:hover > div > .account-options-text-last {
     height: 50px !important;
-}
-
-.account-back:hover > .account-options {
-    margin-top: 0px;
-    opacity: 1;
 }
 
 .right-nav-items {
@@ -283,25 +309,29 @@ body {
 }
 
 .account-options {
-    height: 210px;
+    height: 0px;
     display: flex;
     flex-direction: column;
     margin-top: -40px;
     opacity: 0;
     transition: 0.2s ease;
+    overflow: hidden;
 }
 
 .account-options-text {
     height: 0px;
     padding-left: 25px;
     font-size: 0.75rem;
-    transition: 0.2s ease;
     background-color: rgba(0, 0, 0, 0);
-    padding-top: 7px;
+    padding-top: 0px;
+    color: black;
+    margin-left: 500px;
 }
 
 .account-options-text:hover, .account-top:hover {
     background-color: rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #ff854f;
 }
 
 .account-options-text-last {
@@ -314,4 +344,17 @@ body {
     display: flex;
     flex-direction: row;
     margin-right: 200px;
+}
+
+.back-shadow {
+    position: absolute;
+    width: 0vw;
+    height: 0vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    overflow: hidden;
+}
+
+.nav-item {
+    text-align: center!important;
 }
