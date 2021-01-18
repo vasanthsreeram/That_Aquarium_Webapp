@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
-
-
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
+from .forms import CreateUserForm
+
+
 def home(request):
     products = Product.objects.all()
     context = {"products": products}
     return render(request,'home_page/front_page.html',context)
-# Create your views here.
 def cart(request):
     context = {}
     return render(request,'home_page/cart.html',context)
@@ -85,3 +86,14 @@ def settings(request):
 def login(request):
     context = {}
     return render(request,'home_page/login.html')
+
+def register(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+
+    context = {'form':form}
+    return render(request,'home_page/register.html',context)

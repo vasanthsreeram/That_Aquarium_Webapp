@@ -1,0 +1,33 @@
+{% extends 'home_page/main.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css">
+    <div class = "main-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="details">
+                <p>Register</p>
+                <p class="email">
+                    full name
+                    {{ form.first_name }}
+                </p>
+                <p class="email">
+                    Email
+                    {{ form.email }}
+                </p>
+                <p class="password">
+                    password
+                    {{ form.password1 }}
+                </p>
+                <p class="password">
+                    password
+                    {{ form.password2 }}
+                </p>
+            </div>
+            {{ form.errors }}
+
+            <input type="submit" name="Create User" >
+        </form>
+    </div>
+{% endblock content %}
