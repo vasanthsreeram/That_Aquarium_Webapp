@@ -2,5 +2,19 @@
 {% load static %}
 
 {% block content %}
-    <h1>Terms and conditions will be coded here</h1>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css">
+    <div class = "main-body">
+        <form>
+            <div class="details">
+                <p>Login</p>
+                <input name = "email" placeholder="Email" class = "email">
+                <input name = "password" type="password" placeholder="Password" class = "password">
+                <a><p>Forgot your password?</p></a>
+            </div>
+            <div class="submit-buttons">
+                <a class = "signup">Signup</a>
+                <button class = "login">Login</button>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

@@ -1,0 +1,26 @@
+.details, .submit-buttons {
+    text-align: center;
+}
+
+.details {
+    height: 300px;
+}
+
+.submit-buttons {
+    height: 50px;
+    width: calc(0.15vw - 20px);
+}
+
+.main-body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30vw;
+}
+
+.email, .password {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 75%;
+    padding-left: 50px;
+}
