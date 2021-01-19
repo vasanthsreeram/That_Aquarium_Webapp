@@ -10,7 +10,7 @@
                 <p>Register</p>
                 <p class="email">
                     full name
-                    {{ form.first_name }}
+                    {{ form.username }}
                 </p>
                 <p class="email">
                     Email
@@ -28,6 +28,7 @@
             {{ form.errors }}
 
             <input type="submit" name="Create User" >
+            Already have an account?  <a href="{% url 'login' %}" class = "signup">sign in</a>
         </form>
     </div>
 {% endblock content %}

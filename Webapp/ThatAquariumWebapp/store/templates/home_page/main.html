@@ -101,7 +101,7 @@
                         </a>
                     </div>
                     <div>
-                        <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
+                        <p class = "account-line-1 account-line"><i>Hi, {{ request.user }}!</i></p>
                         <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
                     </div>
                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
@@ -114,6 +114,7 @@
                     <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
                     <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
                     <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
+                    <a class = "account-options-text account-options-text-last" href="{% url 'logout'%}">Log out</a>
                 </div>
             </div>
         </nav>

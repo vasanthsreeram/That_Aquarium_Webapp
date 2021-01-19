@@ -8,14 +8,13 @@ class Customer(models.Model):
     #     ("g","gold")
     # ]
     user = models.OneToOneField(User,on_delete=models.CASCADE, null=True, blank=True)
-    first_name = models.CharField(max_length=100, null=True)
-    last_name = models.CharField(max_length=100, null=True)
+    full_name = models.CharField(max_length=100, null=True)
     email = models.CharField(max_length=250,null=True)
     # membership = models.CharField(max_length=1,choices=memberships,null=True)
     def __str__(self):
-        if self.first_name == None:
+        if self.full_name == None:
             return "name"
-        return self.first_name
+        return self.full_name
 
 
 class Product(models.Model):

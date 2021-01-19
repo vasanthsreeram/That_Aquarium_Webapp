@@ -4,13 +4,17 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css">
     <div class = "main-body">
-        <form>
+        <form method="POST" action="">
+            {% csrf_token %}
             <div class="details">
                 <p>Login</p>
-                <input name = "email" placeholder="Email" class = "email">
+                <input name = "username" placeholder="Email" class = "email">
                 <input name = "password" type="password" placeholder="Password" class = "password">
                 <a><p>Forgot your password?</p></a>
             </div>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
             <div class="submit-buttons">
                 <a href="{% url 'register' %}" class = "signup">Signup</a>
                 <button class = "login">Login</button>
