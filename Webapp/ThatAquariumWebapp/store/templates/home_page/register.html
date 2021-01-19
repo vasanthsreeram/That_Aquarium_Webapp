@@ -3,32 +3,49 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}" type = "text/css">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" type = "text/css">
+    <script src = "{% static 'scripts/signup.js' %}"></script>
     <div class = "main-body">
         <form method="POST" action="">
             {% csrf_token %}
             <div class="details">
-                <p>Register</p>
-                <p class="email">
-                    full name
-                    {{ form.username }}
-                </p>
-                <p class="email">
-                    Email
-                    {{ form.email }}
-                </p>
-                <p class="password">
-                    password
-                    {{ form.password1 }}
-                </p>
-                <p class="password">
-                    password
-                    {{ form.password2 }}
-                </p>
+                <p class = "login-text">Welcome!</p>
+                <input type = "text" class="email" placeholder = "Full Name">
+                <input type = "text" class="email" placeholder = "Email">
+                <input type = "password" class="password" placeholder = "Password">
+                <input type = "password" class="password" placeholder = "Confirm Password">
+                <p class = "password-footnote">Password Requirements - 8 characters long, 1 uppercase, 1 lowercase and 1 number</p>
             </div>
-            {{ form.errors }}
-
-            <input type="submit" name="Create User" >
-            Already have an account?  <a href="{% url 'login' %}" class = "signup">sign in</a>
+            {% if form.errors.fullname != "" %}
+                <div class = "hidden-errors error-1">
+                    Invalid Name
+                </div>
+            {% endif %}
+            {% if form.errors.email != "" %}
+                <div class = "hidden-errors error-2">
+                    Invalid Email
+                </div>
+            {% endif %}
+            {% if form.errors.password1 != "" %}
+                <div class = "hidden-errors error-3">
+                    Invalid Password
+                </div>
+            {% endif %}
+            {% if form.errors.password2 != "" %}
+                <div class = "hidden-errors error-4">
+                    Invalid Password
+                </div>
+            {% endif %}
+            <div class = "hidden-errors error-5">
+                {{ form.errors }}
+            </div>
+            <div class="submit-buttons">
+                <a href="{% url 'login' %}" class = "signup">
+                    Return to Login
+                    <img src = "{% static 'images/Signup/keyboard_backspace-24px.svg' %}" class = "back-arrow">
+                </a>
+                <button name="Create User" class = login>Sign Up!</button>
+            </div>
         </form>
     </div>
 {% endblock content %}

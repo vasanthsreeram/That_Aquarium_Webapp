@@ -100,14 +100,13 @@ def loginpage(request):
             login(request,user)
             return redirect("front_page")
         else:
-            messages.info(request,"incorrect pass or username")
+            messages.info(request,"Invalid Email or Password")
     context = {}
     return render(request,'home_page/login.html')
 
 def logoutUser(request):
     logout(request)
     return redirect("login")
-
 
 def registerpage(request):
 
@@ -125,3 +124,9 @@ def registerpage(request):
 
     context = {'form':form}
     return render(request,'home_page/register.html',context)
+
+def privacy(request):
+    return render(request, 'home_page/privacy_policy.html')
+
+def forget(request):
+    return render(request, 'home_page/forget_password.html')

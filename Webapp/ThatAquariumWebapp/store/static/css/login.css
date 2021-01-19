@@ -4,11 +4,18 @@
 
 .details {
     height: 300px;
+    margin-top: calc(50vh - 100px - 150px);
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
 }
 
 .submit-buttons {
     height: 50px;
-    width: calc(0.15vw - 20px);
+    width: calc(14vw - 20px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .main-body {
@@ -20,7 +27,143 @@
 .email, .password {
     border: none;
     outline: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgrey;
     width: 75%;
     padding-left: 50px;
+    margin-bottom: 20px;
+    padding-bottom: 7.5px;
+    font-size: 0.9rem;
+    transition: 0.2s ease;
+}
+
+.email:hover, .password:hover, .email:focus, .password:focus {
+    border-bottom: 1px solid black;
+}
+
+.login-text {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+.forget-password, .forget-password:hover, .forget-password:focus {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: black;
+    transition: 0.1s ease;
+}
+
+.forget-password:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.signup, .login, .login:focus {
+    width: 14vw;
+    margin-top: 30px;
+    border-radius: 20px;
+    vertical-align: middle;
+    height: 50px;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+}
+
+.signup, .signup:focus, .signup:hover {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+}
+
+.login {
+    background-color: #ff854f;
+    color: white;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+.login-icons {
+    position: absolute;
+    margin-left: -22vw;
+    margin-top: 0px;
+    transform: scale(1.15);
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+    opacity: 0.6;
+}
+:-moz-placeholder {
+    font-style: italic;  
+    opacity: 0.6;
+}
+::-moz-placeholder {
+    font-style: italic;  
+    opacity: 0.6;
+}
+:-ms-input-placeholder {  
+    font-style: italic; 
+    opacity: 0.6;
+}
+
+@media (max-width: 1200px) {
+    .main-body {
+        width: 50%;
+    }
+
+    .login-icons {
+        margin-left: -36vw;
+    }
+
+    .signup, .login, .login:focus {
+        width: 24vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .main-body {
+        width: 60%;
+    }
+
+    .login-icons {
+        margin-left: -43vw;
+    }
+
+    .signup, .login, .login:focus {
+        width: 29vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-body {
+        width: 70%;
+    }
+
+    .details {
+        margin-top: calc(50vh - 200px - 175px)!important;
+    }
+
+    .login-icons {
+        margin-left: -50vw;
+    }
+
+    .signup, .login, .login:focus {
+        width: 70vw;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-top: 20px;
+    }
+
+    .submit-buttons {
+        flex-direction: column-reverse;
+        margin-top: 90px;
+    }
 }

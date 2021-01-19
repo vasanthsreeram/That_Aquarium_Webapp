@@ -11,7 +11,7 @@ body {
     background: linear-gradient(#ff7054, #ff9b58) !important;
 }
 
-.navbar-unimportant-item, .navbar-important-item, .navbar-unimportant-item:focus, .navbar-important-item:focus {
+.navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
     font-weight: 600;
     transition: 0.2s ease;
     margin: 0vw 40px 0vw 0vw;
@@ -81,7 +81,7 @@ body {
         top: 15px;
     }
 
-    .navbar-important-item, .navbar-unimportant-item {
+    .navbar-text-item-current, .navbar-text-item-normal {
         display: inline-block;
     }
 
@@ -125,7 +125,7 @@ body {
         margin: 0vw 0px 0vw 20px!important;
     }
 
-    .navbar-unimportant-item, .navbar-important-item, .navbar-unimportant-item:focus, .navbar-important-item:focus {
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
         margin: 0vw 0px 0vw 0vw;
     }
 
@@ -133,7 +133,7 @@ body {
 
 @media (max-width: 1475px) {
 
-    .navbar-unimportant-item, .navbar-important-item, .navbar-unimportant-item:focus, .navbar-important-item:focus {
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
         margin: 0vw 10px 0vw 0vw;
     }
 
@@ -141,7 +141,7 @@ body {
 
 @media (min-width: 1475px) and (max-width: 1625px) {
 
-    .navbar-unimportant-item, .navbar-important-item, .navbar-unimportant-item:focus, .navbar-important-item:focus {
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
         margin: 0vw 20px 0vw 0vw;
     }
 
@@ -156,16 +156,34 @@ body {
     outline: none;
 }
 
-.navbar-unimportant-item {
+.navbar-text-item-normal {
     color: black !important;
 }
 
-.navbar-unimportant-item:hover {
+.navbar-text-item-normal:hover {
     color: white !important;
 }
 
-.navbar-important-item {
+.navbar-text-item-current {
     color: white !important;
+}
+
+.navbar-text-item-normal-orange {
+    color: black !important;
+}
+
+.navbar-text-item-normal-orange:hover {
+    color: #ff854f !important;
+}
+
+.navbar-text-item-current-orange {
+    color: #ff854f !important;
+}
+
+/* forces underline to not animate */
+.navbar-text-item-current-orange > div { 
+    width: 100%!important;
+    margin-left: 0%!important;
 }
 
 #hot-deals {
@@ -181,7 +199,11 @@ body {
     transition: 0.2s ease;
 }
 
-.navbar-unimportant-item:hover > div, .navbar-important-item:hover > div {
+.hover-underline-orange {
+    background-color: #ff854f!important;
+}
+
+.navbar-text-item-current:hover > div, .navbar-text-item-normal:hover > div {
     width: 100%;
     margin-left: 0%;
 }
@@ -357,4 +379,13 @@ body {
 
 .nav-item {
     text-align: center!important;
+}
+
+.account-line-1 {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.account-text {
+    width: 110px;
 }

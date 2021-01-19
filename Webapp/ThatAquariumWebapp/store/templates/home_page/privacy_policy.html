@@ -1,0 +1,90 @@
+{% extends 'home_page/main.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/terms.css' %}" type = "text/css">
+    <div class = "subheader mx-auto">
+        <a href = "{% url 'terms' %}" class = "terms-and-conditions navbar-text-item-normal navbar-text-item-normal-orange">
+            Terms and Conditions
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+        <a href = "{% url 'privacy_policy' %}" class = "privacy-policy navbar-text-item-current navbar-text-item-current-orange">
+            Privacy Policy
+            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+    <div class = "terms-background mx-auto">
+        <strong>
+            <p class = "terms-wall-of-text terms-wall-of-text-start terms-wall-of-text-end mx-custom-terms">
+                We, at That Aquarium, value your privacy and believe that it is our responsibility to protect your personal information by properly managing it. The privacy practices of this policy are in compliance with the Personal Data Protection Act 2012 (PDPA) in Singapore.
+                <br><br>
+                This Privacy Policy explains how we manage your personal information. It includes details of how we collect, record, use, store, hold, transfer and disclose your personal information.
+                <br><br>
+                By visiting our website or by providing us with your personal data whether through website, enquiry, membership forms or by any other means whatsoever, you accept and consent to the terms of this Privacy Policy.
+            </p>
+        </strong>
+    </div>
+    <div class = "terms-background mx-auto">
+        <p class = "terms-wall-of-text terms-wall-of-text-start mx-custom-terms">
+            <strong class = "terms-text-section-header"><u>CONSENT & DATA COLLECTION</u></strong>
+            <br><br>
+            The terms “Personal Data” and “Personal Information” include any form of information we collect that identifies you, or from which you are reasonably identifiable. Personal data is collected either through the stores, enquiry, membership forms, online, media, including this website or when you make any purchase transaction with us. Information collected can include but is not limited to name, contact details, demographic information, preferences and payment details if a transaction is carried out.
+            <br><br>
+            The provision of personal data by you to us such as your name, email address, contact details, credit card and such other information may be indicated by That Aquarium as compulsory or obligatory in order for That Aquarium to perform relevant Purposes, as stated in the following section. We may not be able to perform such Purposes if you fail to supply your personal information.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>PURPOSE(S)</u></strong>
+            <br><br>
+            Such personal data will be collected, used, and/or processed by That Aquarium for any purpose(s) of:
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>Membership registration, verification and entitlement to membership privileges</li>
+                <br>
+                <li>Customer account registration and access to That Aquarium website</li>
+                <br>
+                <li>Personalisation of content on That Aquarium website</li>
+                <br>
+                <li>Upgrading of website offerings</li>
+                <br>
+                <li>Product reservations</li>
+                <br>
+                <li>Product service & repair</li>
+                <br>
+                <li>Customer enquiries and requests</li>
+                <br>
+                <li>Customer service purposes</li>
+                <br>
+                <li>Notifications on new shop outlets, events, offers, products and services</li>
+                <br>
+                <li>Participation in events, contests and lucky draws</li>
+                <br>
+            </ul>
+        </p>
+        <p class = "terms-wall-of-text terms-wall-of-text-end mx-custom-terms">        
+            <strong class = "terms-text-section-header"><u>COOKIES</u></strong>
+            <br><br>
+            We use cookies to understand and save your preferences for future visits and compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>DISCLOSURE OF INFORMATION</u></strong>
+            <br><br>
+            We do not rent or sell your personal information to third parties for their marketing purposes without your explicit consent.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>ACCESSING, CORRECTING, AND AMENDING YOUR PERSONAL DATA</u></strong>
+            <br><br>
+            Where applicable, reasonable steps are taken by us to verify the accuracy of your personal information received at the point of collection. However, please note that you are primarily responsible and liable for the accuracy and completion of all personal information submitted by you.
+            <br>
+            You may access, review, correct, and amend your personal data by updating your profile with us. If you have provided your personal data through our website, stores, enquiry or membership forms, you may request the correction or amendment of your personal data by contacting our customer service department. That Aquarium may comply with your request to access, amend or delete your personal data, to the extent required by law.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>RETENTION OF INFORMATION</u></strong>
+            <br><br>
+            Your personal data will be retained for as long as it is necessary to fulfil the purposes for which it is collected or for business or legal purposes, or in accordance with applicable laws.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>CONFIDENTIALITY AND SECURITY</u></strong>
+            <br><br>
+            Whenever we obtain your personal information, we take reasonable precautions to protect it from unauthorised access or disclosure, but That Aquarium cannot act as insurers of the security of your personal information transmitted over the internet. Accordingly, we assume no liability for any disclosure of data due to errors in transmission, unauthorised third party access or other acts of third parties, or acts beyond our reasonable control.
+            <br><br><br>
+            <strong class = "terms-text-section-header"><u>POLICY ON TELEPHONE NUMBERS REGISTERED WITH THE DNC REGISTRY</u></strong>
+            <br><br>
+            Unsolicited telemarketing messages will not be sent to your telephone numbers if they are registered under the Do-Not-Call Registry (“DNC Registry”), unless we have your clear and unambiguous consent to do so. However, we may continue to contact you at the telephone numbers provided to us in the limited circumstances allowed under the DNC Registry even though you have registered these telephone numbers with the DNC Registry. If you do not wish to continue receiving such messages, please contact us here.
+        </p>
+    </div>
+{% endblock content %}

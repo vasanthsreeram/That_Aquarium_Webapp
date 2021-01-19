@@ -2,5 +2,197 @@
 {% load static %}
 
 {% block content %}
-    <h1>Terms and conditions will be coded here</h1>
+    <link rel="stylesheet" href="{% static 'css/terms.css' %}" type = "text/css">
+    <div class = "subheader mx-auto">
+        <a href = "{% url 'terms' %}" class = "terms-and-conditions navbar-text-item-current navbar-text-item-current-orange">
+            Terms and Conditions
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+        <a href = "{% url 'privacy_policy' %}" class = "privacy-policy navbar-text-item-normal navbar-text-item-normal-orange">
+            Privacy Policy
+            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+    <div class = "terms-background mx-auto">
+        <p class = "terms-wall-of-text terms-wall-of-text-start mx-custom-terms">
+            <strong class = "terms-text-section-header"><u>TERMS OF USE</u></strong>
+            <br><br>
+            These Terms of Use, and any documents referred to herein, set out the terms and conditions on which you are permitted to use www.thataquarium.com, this website (“Site”). By accessing or using the Site, you are acknowledging that you have read, understand, and agree to be bound by these Terms of Use.
+            <br><br>
+            These Terms of Use are effective from 20 April 2020, and apply to all visitors and users of www.thataquarium.com. In the event of a violation of these rules and regulations, www.thataquarium.com (“That Aquarium”) reserves the right to seek all remedies available by law and in equity.
+            <br><br>
+            <strong>I confirm that by accessing, browsing & otherwise using the site, I accept all the Terms of Use (without modification) stated in this agreement.</strong>
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>YOUR ACCOUNT</u></strong>
+            <br><br>
+            When using our Site, you agree to provide true, accurate, current and complete information about yourself as prompted by any registration and/or membership forms. If you provide any information that is untrue, inaccurate, not current or incomplete, or That Aquarium has grounds to suspect that such information is untrue, inaccurate, not current or incomplete, we may suspend or terminate your access to this Site and refuse you any and all current or future use of the Site (or any part thereof).
+            <br><br>
+            That Aquarium may assign you a password and account for identification, to enable you to access and use certain portions of this Site. Each time you use a password or identification, you will be deemed to be authorized to access and use the Site in a manner consistent with our Terms of Use, and we have no obligation to investigate the authorization or source of any such access or use of the Site. You are solely responsible for protecting the security and confidentiality of the password and identification assigned and for restricting access to your computer, and you agree to accept responsibility for all activities that occur under your account or password. You shall immediately notify www.thataquarium.com of any unauthorized use of your password or identification or any other breach or threatened breach of this Site’s security here.
+            <br><br>
+            <strong>You will be solely responsible for ALL access to and use of this Site by anyone using this password and identification whether or not such access to and use of this Site (including all obligations, communications and transmissions) is actually authorized by you.</strong>
+            <br><br>
+            That Aquarium reserves the right to refuse service, terminate accounts, and/or cancel orders at its discretion, including, without limitation, should we believe that the conduct by the customer violates applicable law or is harmful to www.thataquarium.com interests.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>PERMITTED USE</u></strong>
+            <br><br>
+            You may access and use the Site solely for your personal use in accordance with this Terms of Use. You agree not to access or use the Site in any manner that is prohibited in this Agreement or is otherwise unlawful.
+            <br><br>
+            You represent and warrant that you are at least 18 years old or visiting the Site under the supervision of a parent or guardian. We reserve the right, in our sole discretion, to terminate or suspend your access to, and/or use of, the Site, or any portion, at any time, with or without notice and for any reason (or no reason), and you agree that if your authorization to access the Site is terminated or suspended, you will not thereafter access, or attempt to access, the Site, directly or indirectly until your termination or suspension is removed and we give you written notice thereof.
+            <br><br>
+            You are not allowed to reproduce, modify, distribute, publish or display any portion of any content or make any commercial use of any of the information provided on this Site unless permitted by www.thataquarium.com in writing beforehand. This includes, but not limited to, the following:
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>You shall not distribute in any form, any information, or other material that violates and/or infringes the copyrights, patents, trademarks, trade secrets, logos or other proprietary rights of any person, company or its affiliates</li>
+                <br>
+                <li>You shall agree not to copy, republish, archive or tamper with this website in any way. No content shall be used for commercial use</li>
+                <br>
+                <li>You shall not take any action that may damage or affect the systems or security of this website or interfere with any other users, whether by restricting or preventing any other user’s use of this website or otherwise</li>
+                <br>
+                <li>You agree not to transmit any material that is illegal, unlawful, defamatory, infringes on the intellectual property rights of another entity, or is otherwise objectionable in any way, through this website</li>
+                <br>
+                <li>You shall not collect any data from this website or its related systems or attempt to decipher any transmissions to or from the servers hosting this website</li>
+                <br>
+                <li>You agree not to decompile, reverse engineer or disassemble any software or other products or processes accessible through the website, and not to insert any code or product or manipulate the content in any way that affects the user’s experience. You are not allowed to use the website in any manner that is illegal or impairs the operation of the website or its availability or usage by others. You further agree not to use any data mining, bugs, viruses, worms, trap doors, web crawlers, robots, cancelbots, spiders, Trojan horses, other harmful code of properties or any data gathering or extraction method in connection with your use of the Site.</li>
+            </ul>
+            <br>
+        </p>
+        <p class = "terms-wall-of-text mx-custom-terms">
+            By accessing or using the Site, you agree that you will comply with these Terms of Use and any warnings or instructions on the Site. You agree that when accessing or using the Site, you will act in accordance with the law, custom and in good faith. You may not make any change or alteration to the Site or any Content or services that may appear on this Site and may not impair in any way the integrity or operation of the Site. Without limiting the generality of any other provision of these Terms of Use, if you default negligently or willfully in any of the obligations set forth in these Terms of Use, you shall be liable for all the losses and damages that this may cause to us, our partners, suppliers, licensors, directors, shareholders and employees.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>TERMS OF SALE</u></strong>
+            <br><br>
+            The risk of loss of items purchased by you shall pass to you upon delivery of the goods to the third party delivery agents, in compliance to the standard terms of sale. Any delay or damage due to custom clearance or for items lost during third parties’ deliveries, the liability for loss is limited by the terms and conditions stated in the mailing bill.
+            <br><br>
+            You agree that www.thataquarium.com shall be entitled to specific performance or injunctive relief, or both, in addition to any damages that may be legally entitled to recover, together with reasonable expenses of any form of dispute resolution, including, without limitation, legal fees on a full indemnity basis.
+            <br><br>
+            No instance of waiver by www.thataquarium.com of its rights or remedies under these Terms of Use shall imply any obligation to grant any similar, future or other waiver.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>TERMS OF DELIVERY</u></strong>
+            <br><br>
+            Free delivery on orders over S$80 to a single destination on mainland Singapore, not including Sentosa, Jurong Island, and any other out-lying islands.
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>Please ensure that the management regulations at the address provided allows for delivery access. In the event of a failed delivery due to restrictions at your delivery address, the item(s) will be returned to our premises. Additional fees may apply for redelivery attempts.</li>
+                <br>
+                <li>In the event the delivery address provided is incorrect, the item(s) will be returned to our premises if we are unable to reach you at the contact number provided. Additional fees may apply for redelivery attempts.</li>
+                <br>
+                <li>Delivery will be to ground level or to high-rise levels only if accessible by service lifts. In such cases, item(s) for delivery will need to be able to fit into the service lifts.</li>
+                <br>
+                <li>Delivery of bulky or heavy item(s) requiring the use of additional or specialized equipment, additional labour, or the use of bigger vehicles (lorries, pick up trucks etc), will incur additional charges.</li>
+                <br>
+                <li>Please notify us at least 24 hours in advance here if you would like to make changes to the delivery date & time. Only 1 time change is allowed. Additional changes may incur charges.</li>
+                <br>
+                <li>If we are unable to make your delivery on the chosen date & timing slot, we will contact you to make alternate arrangements.</li>
+                <br>
+                <li>In the event of delivery delay due to unforeseen circumstances, we will contact you as soon as possible.</li>
+                <br>
+                <li>We will, to the best of our capabilities, work with our courier partners to deliver the item(s) to you in good condition.  However, That Aquarium will not be liable for any damages to your property(s) / item(s) sustained during the delivery process.</li>
+                <br>
+                <li>The receiving party is to check the quantity and condition of the item(s) before signing for the delivery. If no one is available to receive the item(s) at the delivery address, you may request our personnel to leave the item(s) at your doorstep, but we will not be liable if your purchased item(s) goes missing or is damaged by the time you return.</li>
+            </ul>
+        </p>
+        <p class = "terms-wall-of-text mx-custom-terms">
+            <br>
+            We reserve the right to charge additional delivery fees if additional manpower, time, equipment, or re-delivery service is required.
+            <br><br>
+            We reserve the right to refuse unreasonable service requests that is not made in advance. Any service request(s) have to be made at the point of purchase, prior to the scheduled delivery. These service request(s) may incur additional charges.
+            <br><br>
+            We reserve the right to refuse delivery service, and to change the Terms of Delivery without prior notice at any time.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>ACCURACY OF INFORMATION</u></strong>
+            <br><br>
+            Due to inherent characteristics of certain materials, actual measurements of individual items might vary slightly. Slight marks and colour/print variations should not be considered as a fault, but they are inherent characteristics of the product.
+            <br><br>
+            While we attempt to be as accurate as possible when describing our products on this site, to the extent permitted by applicable law, we do not warrant that the product descriptions, colour, pricings, availability of product or any other content on the site are accurate, complete, reliable, current, or error-free. www.thataquarium.com may contain typographical errors or inaccuracies from time to time and may not be complete or current. Therefore, That Aquarium reserves the right to correct any errors, inaccuracies or omissions, as well as change or update any information without prior notice.
+            <br><br>
+            Most products displayed on www.thataquarium.com are available in our stores islandwide and while stocks last. In some cases, merchandise displayed for sale on this site may not be available instore and vice versa.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>EVENTS OUTSIDE REASONABLE CONTROL</u></strong>
+            <br><br>
+            We will not be liable for any failure to perform, or delay in performance of, any of our obligations under a Contract that is caused by Events outside our reasonable control.
+            <br><br>
+            Such Events include any act, event, non-happening, omission or accident beyond our reasonable control and include (without limitation) the following:
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>strikes, lockdowns or other industrial action;</li>
+                <br>
+                <li>civil commotion, riot, invasion, terrorist attack or threat of terrorist attack, war (whether declared or undeclared) or threat or preparation for war;</li>
+                <br>
+                <li>natural disasters such as, but not limited to, fire, explosion, storm, flood, earthquake, subsidence or an epidemic;</li>
+                <br>
+                <li>unavailability of railways, shipping, aircraft, motor transport or other means of public or private transport (whether due to above Events or otherwise);</li>
+                <br>
+                <li>impossibility of the use of public or private telecommunications networks; or</li>
+                <br>
+                <li>the acts, decrees, legislation, regulations or restrictions of any government.</li>
+            </ul>
+            <br>
+        </p>
+        <p class = "terms-wall-of-text mx-custom-terms">      
+            Our performance under any Contract is deemed to be suspended for the period that the Event continues, and we will have an extension of time for performance for the duration of that period. We will use our reasonable endeavours to bring the Event to a close or to find a solution by which our obligations under the Contract may be performed despite the Event.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>EVENTS OUTSIDE REASONABLE CONTROL</u></strong>
+            <br><br>
+            We will not be liable for any failure to perform, or delay in performance of, any of our obligations under a Contract that is caused by Events outside our reasonable control.
+            <br><br>
+            Such Events include any act, event, non-happening, omission or accident beyond our reasonable control and include (without limitation) the following:
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>strikes, lockdowns or other industrial action;</li>
+                <br>
+                <li>civil commotion, riot, invasion, terrorist attack or threat of terrorist attack, war (whether declared or undeclared) or threat or preparation for war;</li>
+                <br>
+                <li>natural disasters such as, but not limited to, fire, explosion, storm, flood, earthquake, subsidence or an epidemic;</li>
+                <br>
+                <li>unavailability of railways, shipping, aircraft, motor transport or other means of public or private transport (whether due to above Events or otherwise);</li>
+                <br>
+                <li>impossibility of the use of public or private telecommunications networks; or</li>
+                <br>
+                <li>the acts, decrees, legislation, regulations or restrictions of any government.</li>
+                
+            </ul>
+            <br>
+        </p>
+        <p class = "terms-wall-of-text mx-custom-terms">
+            Our performance under any Contract is deemed to be suspended for the period that the Event continues, and we will have an extension of time for performance for the duration of that period. We will use our reasonable endeavours to bring the Event to a close or to find a solution by which our obligations under the Contract may be performed despite the Event.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>WEBSITE ACCESS</u></strong>
+            <br><br>
+            We make no representations and provide no warranties that:
+            <br><br>
+            <ul class = "mx-custom-terms">
+                <li>the website will be made available at any specific time or from any specific geographical location;</li>
+                <br>
+                <li>your access to the website will be continuous or uninterrupted; or</li>
+                <br>
+                <li>the website will be accessible or optimized on all browsers, computers, tablets, phones or viewing platforms.</li>
+            </ul>
+            <br>
+        </p>
+        <p class = "terms-wall-of-text terms-wall-of-text-end mx-custom-terms">        
+            We reserve the right to suspend access to all or part of the website for any reason, including for business or operational reasons, such as improving the appearance or functionality of the website, content updates, periodic maintenance, or to resolve any issues that we become aware of. Wherever we anticipate that we need to suspend access to the website for a considerable period of time, we will try to provide you with prior notice where reasonably practicable.
+            <br><br>
+            Our website is provided for users in Singapore. Although it may be possible to access the website from other countries, we make no representation that our website is compliant with any legal requirements in force in any jurisdiction other than Singapore, or that the content available on the website will be appropriate for users in other countries.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>LIMITATION OF LIABILITY</u></strong>
+            <br><br>
+            Subject to applicable law, under no circumstances, including, but not limited to negligence, shall www.thataquarium.com, its parents, affiliates, and/or suppliers be liable for any direct, indirect, incidental, exemplary or consequential damages howsoever caused to any person that result from any person’s use, misuse, abuse, access of, or inability to access or use the website and/or its materials.
+            <br><br>
+            www.thataquarium.com does not warrant that the content of this site will be error free and/or uninterrupted.
+            <br><br>
+            <br>
+            <strong class = "terms-text-section-header"><u>INDEMNIFICATION</u></strong>
+            <br><br>
+            You agree to defend, indemnify and hold us, our partners, suppliers, licensors, directors, shareholders and employees (the “Indemnified Parties”) harmless for any loss, damages or costs, including reasonable attorneys' fees, resulting from any third party claim, action, or demand resulting from your use of the Site or any Content (including User Content), or any of our products or services purchased on the Site, or your breach of these Terms of Use. You also agree to indemnify the Indemnified Parties for any loss, damages, or costs, including reasonable attorneys' fees, resulting from your use of software robots, spiders, crawlers, or similar data gathering and extraction tools, or any other action you take that imposes an unreasonable burden or load on our infrastructure.
+        </p>
+    </div>
 {% endblock content %}

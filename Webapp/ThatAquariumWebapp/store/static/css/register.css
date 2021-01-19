@@ -1,0 +1,54 @@
+.details {
+    height: 375px;
+    margin-top: calc(50vh - 100px - 175px);
+}
+
+.password-footnote {
+    font-size: 0.625rem;
+    width: 70%;
+    margin: auto;
+}
+
+.signup {
+    padding-left: 2vw;
+}
+
+.back-arrow {
+    position: absolute;
+    margin-left: calc(5vw - 80px);
+}
+
+@media (max-width: 1200px) {
+    
+    .back-arrow {
+        margin-left: calc(10vw - 80px);
+    }
+
+}
+
+@media (max-width: 800px) {
+    
+    .back-arrow {
+        margin-left: calc(12.5vw - 80px);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .signup {
+        padding-left: 7vw;
+    }
+    
+    .back-arrow {
+        margin-left: calc(30vw - 80px);
+    }
+
+}
+
+.hidden-errors {
+    text-align: center;
+    color: red;
+    font-size: 0.625rem;
+    margin-top: 15px;
+}

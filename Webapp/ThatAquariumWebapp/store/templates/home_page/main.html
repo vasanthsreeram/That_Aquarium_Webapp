@@ -28,25 +28,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link navbar-important-item" id = "hot-deals" href="{% url 'hot'%}">
+                        <a class="nav-link navbar-text-item-current" id = "hot-deals" href="{% url 'hot'%}">
                             Hot Deals
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" id = "featured" href="{% url 'featured'%}">
+                        <a class="nav-link navbar-text-item-normal" id = "featured" href="{% url 'featured'%}">
                             Featured
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" id = "new-arrivals" href="{% url 'new'%}">
+                        <a class="nav-link navbar-text-item-normal" id = "new-arrivals" href="{% url 'new'%}">
                             New Arrivals
                             <div class = "hover-underline"></div>
                         </a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link navbar-unimportant-item" id = "categories" href="{% url 'new'%}">
+                        <a class="nav-link navbar-text-item-normal" id = "categories" href="{% url 'new'%}">
                             Categories
                             <div class = "hover-underline"></div>
                         </a>
@@ -56,25 +56,25 @@
                 <div class="ml-auto">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" id = "t-and-c" href="{% url 'terms'%}">
+                            <a class="nav-link navbar-text-item-normal" id = "t-and-c" href="{% url 'terms'%}">
                                 T&C
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" id = "faq" href="{% url 'FAQ'%}">
+                            <a class="nav-link navbar-text-item-normal" id = "faq" href="{% url 'FAQ'%}">
                                 FAQ
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-unimportant-item" id = "about-us" href="{% url 'about'%}">
+                            <a class="nav-link navbar-text-item-normal" id = "about-us" href="{% url 'about'%}">
                                 About Us
                                 <div class = "hover-underline"></div>
                             </a>
                         </li>
                         <li class = "nav-item">
-                            <a class = "nav-link search-text navbar-unimportant-item" id = "search-text" href = "{% url 'search' %}">
+                            <a class = "nav-link search-text navbar-text-item-normal" id = "search-text" href = "{% url 'search' %}">
                                 Search
                                 <div class = "hover-underline"></div>
                             </a>
@@ -100,8 +100,12 @@
                             <img src="{% static 'images/Home Page/account_circle-24px.svg' %}" class = "nav-images right-of-search-bar account-image">
                         </a>
                     </div>
-                    <div>
-                        <p class = "account-line-1 account-line"><i>Hi, {{ request.user }}!</i></p>
+                    <div class = "account-text">
+                        {% if 1 == 1 %}
+                        <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
+                        {% else %}
+                            <p class = "account-line-1 account-line"><i>Hi, {{ request.user }}!</i></p>
+                        {% endif %}
                         <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
                     </div>
                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
@@ -113,8 +117,12 @@
                     <a class = "account-options-text" href="{% url 'address'%}">Addresses</a>
                     <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
                     <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
-                    <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
-                    <a class = "account-options-text account-options-text-last" href="{% url 'logout'%}">Log out</a>
+                    <!-- Change the condition to check whether user has login or not once done -->
+                    {% if 1 == 1 %}
+                        <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
+                    {% else %}
+                        <a class = "account-options-text account-options-text-last" href="{% url 'logout'%}">Log out</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>
