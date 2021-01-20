@@ -4,7 +4,7 @@
 
 .details {
     height: 300px;
-    margin-top: calc(50vh - 100px - 150px);
+    margin-top: 20vh;
     box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
     border-radius: 20px;
 }
@@ -148,7 +148,7 @@
     }
 
     .details {
-        margin-top: calc(50vh - 200px - 175px)!important;
+        margin-top: 10vh;
     }
 
     .login-icons {
