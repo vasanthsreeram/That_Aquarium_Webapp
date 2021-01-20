@@ -8,7 +8,7 @@
             {% csrf_token %}
             <div class="details">
                 <p class = "login-text">Login</p>
-                <input name = "username" placeholder="Email" class = "email">
+                <input name = "username" placeholder="Email" type="email" class = "email">
                 <img src = "{% static 'images/Shared/email.svg' %}" class = "login-icons">
                 <input name = "password" type="password" placeholder="Password" class = "password">
                 <img src = "{% static 'images/Shared/lock-24px.svg' %}" class = "login-icons">

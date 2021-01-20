@@ -13,6 +13,7 @@ $(document).ready(function() {
         form_fields[2].placeholder='Full Name';
         form_fields[2].className='email';
         form_fields[3].placeholder='Email';
+        form_fields[3].type='email';
         form_fields[3].className='email';
         form_fields[4].placeholder='Password';
         form_fields[4].className='password';
