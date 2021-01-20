@@ -15,7 +15,13 @@ def home(request):
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = request.user
+        Order,created = order.objects.get_or_create(customer=customer)
+        items = Order.orderitem_set.all()
+    else:
+        items = []
+    context = {"items":items}
     return render(request,'home_page/cart.html',context)
 
 def checkout(request):

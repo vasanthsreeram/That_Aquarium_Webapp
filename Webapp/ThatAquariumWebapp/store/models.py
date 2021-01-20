@@ -9,7 +9,7 @@ class Product(models.Model):
     product_class = models.CharField(max_length=100,default="class")
     product_category = models.CharField(max_length=100,default="parts")
     price = models.FloatField()
-    pictures = models.ImageField(null=True,blank=True)
+    image = models.ImageField(null=True,blank=True)
     quantity = models.IntegerField(default=0)
     description = models.TextField(default="Description")
 
@@ -59,6 +59,9 @@ class orderitem(models.Model):
         total = self.product.price * self.quantity
         return total
 
+    def __str__(self):
+        return self.product.__str__()
+
 
 class address(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
@@ -66,7 +69,7 @@ class address(models.Model):
     postcode = models.IntegerField(blank=True)
 
     def __str__(self):
-        return self.address
+        return self.postcode.__str__()
 
 
 class shipping(models.Model):
@@ -75,6 +78,6 @@ class shipping(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     address = models.ForeignKey(address,on_delete=models.SET_NULL,null=True,blank=True)
     def __str__(self):
-        return self.address
+        return self.address.__str__()
 
 
