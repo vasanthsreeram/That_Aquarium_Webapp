@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
 class Customer(models.Model):
 
     # memberships = [
@@ -9,7 +11,6 @@ class Customer(models.Model):
     # ]
     user = models.OneToOneField(User,on_delete=models.CASCADE, null=True, blank=True)
     full_name = models.CharField(max_length=100, null=True)
-    email = models.CharField(max_length=250,null=True)
     # membership = models.CharField(max_length=1,choices=memberships,null=True)
     def __str__(self):
         if self.full_name == None:

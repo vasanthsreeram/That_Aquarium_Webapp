@@ -10,10 +10,10 @@
             {% csrf_token %}
             <div class="details">
                 <p class = "login-text">Welcome!</p>
-                <input type = "text" class="email" placeholder = "Full Name">
-                <input type = "text" class="email" placeholder = "Email">
-                <input type = "password" class="password" placeholder = "Password">
-                <input type = "password" class="password" placeholder = "Confirm Password">
+                {{ form.first_name }}
+                {{ form.username }}
+                {{ form.password1 }}
+                {{ form.password2 }}
                 <p class = "password-footnote">Password Requirements - 8 characters long, 1 uppercase, 1 lowercase and 1 number</p>
             </div>
             {% if form.errors.fullname != "" %}
@@ -47,5 +47,18 @@
                 <button name="Create User" class = login>Sign Up!</button>
             </div>
         </form>
+    	<script>
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[2].placeholder='Fullname';
+		form_fields[2].className='email';
+		form_fields[3].placeholder='Email';
+		form_fields[3].className='email';
+		form_fields[4].placeholder='Enter password';
+		form_fields[4].className='password';
+		form_fields[5].placeholder='confirm Password';
+		form_fields[5].className='password';
+
+
+	</script>
     </div>
 {% endblock content %}
