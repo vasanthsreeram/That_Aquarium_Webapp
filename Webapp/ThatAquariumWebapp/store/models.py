@@ -52,6 +52,7 @@ class orderitem(models.Model):
     order = models.ForeignKey(order,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+    is_wishlist = models.BooleanField(default=False)
 
     @property
     def get_total(self):
