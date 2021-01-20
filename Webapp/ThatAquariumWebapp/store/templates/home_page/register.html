@@ -11,33 +11,23 @@
             <div class="details">
                 <p class = "login-text">Welcome!</p>
                 {{ form.first_name }}
+                <img src = "{% static 'images/Signup/supervisor_account-24px.svg' %}" class = "login-icons">
                 {{ form.username }}
+                <img src = "{% static 'images/Shared/email.svg' %}" class = "login-icons">
                 {{ form.password1 }}
+                <img src = "{% static 'images/Shared/lock-24px.svg' %}" class = "login-icons">
                 {{ form.password2 }}
+                <img src = "{% static 'images/Shared/lock-24px.svg' %}" class = "login-icons">
                 <p class = "password-footnote">Password Requirements - 8 characters long, 1 uppercase, 1 lowercase and 1 number</p>
             </div>
-            {% if form.errors.fullname != "" %}
-                <div class = "hidden-errors error-1">
-                    Invalid Name
-                </div>
-            {% endif %}
-            {% if form.errors.email != "" %}
-                <div class = "hidden-errors error-2">
-                    Invalid Email
-                </div>
-            {% endif %}
-            {% if form.errors.password1 != "" %}
-                <div class = "hidden-errors error-3">
-                    Invalid Password
-                </div>
-            {% endif %}
-            {% if form.errors.password2 != "" %}
-                <div class = "hidden-errors error-4">
-                    Invalid Password
-                </div>
-            {% endif %}
             <div class = "hidden-errors error-5">
-                {{ form.errors }}
+                {% if username_error != "" %}
+                    {{ username_error }}
+                {% elif first_name_error != "" %}
+                    {{ first_name_error }}
+                {% else %}
+                    {{ form.errors }}
+                {% endif %}
             </div>
             <div class="submit-buttons">
                 <a href="{% url 'login' %}" class = "signup">
@@ -47,18 +37,5 @@
                 <button name="Create User" class = login>Sign Up!</button>
             </div>
         </form>
-    	<script>
-		var form_fields = document.getElementsByTagName('input')
-		form_fields[2].placeholder='Fullname';
-		form_fields[2].className='email';
-		form_fields[3].placeholder='Email';
-		form_fields[3].className='email';
-		form_fields[4].placeholder='Enter password';
-		form_fields[4].className='password';
-		form_fields[5].placeholder='confirm Password';
-		form_fields[5].className='password';
-
-
-	</script>
     </div>
 {% endblock content %}

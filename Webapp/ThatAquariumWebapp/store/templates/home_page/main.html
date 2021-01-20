@@ -102,11 +102,12 @@
                     </div>
                     <div class = "account-text">
                         {% if not request.user.is_authenticated %}
-                        <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
+                            <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
+                            <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
                         {% else %}
                             <p class = "account-line-1 account-line"><i>Hi, {{ request.user.first_name }}!</i></p>
+                            <p class = "account-line-2 account-line"><u><i>Your Account</i></u></p>
                         {% endif %}
-                        <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
                     </div>
                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
                 </div>
