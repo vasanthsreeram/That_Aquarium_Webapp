@@ -119,7 +119,7 @@ def registerpage(request):
         if form.is_valid():
             form.save()
 
-            messages.success(request,f"account has been created for {form.cleaned_data.get('username')}")
+            messages.success(request,f"Account has been created for {form.cleaned_data.get('first_name')}")
             return redirect('login')
 
     context = {'form':form}
