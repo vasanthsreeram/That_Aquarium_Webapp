@@ -21,13 +21,7 @@
                 <p class = "password-footnote">Password Requirements - 8 characters long, 1 uppercase, 1 lowercase and 1 number</p>
             </div>
             <div class = "hidden-errors error-5">
-                {% if username_error != "" %}
-                    {{ username_error }}
-                {% elif first_name_error != "" %}
-                    {{ first_name_error }}
-                {% else %}
-                    {{ form.errors }}
-                {% endif %}
+                {{ form.errors }}
             </div>
             <div class="submit-buttons">
                 <a href="{% url 'login' %}" class = "signup">

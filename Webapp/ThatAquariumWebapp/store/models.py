@@ -3,29 +3,16 @@ from django.contrib.auth.models import User
 
 
 
-class Customer(models.Model):
-
-    # memberships = [
-    #     ("m","member"),
-    #     ("g","gold")
-    # ]
-    user = models.OneToOneField(User,on_delete=models.CASCADE, null=True, blank=True)
-    full_name = models.CharField(max_length=100, null=True)
-    # membership = models.CharField(max_length=1,choices=memberships,null=True)
-    def __str__(self):
-        if self.full_name == None:
-            return "name"
-        return self.full_name
-
-
 class Product(models.Model):
     product_name = models.CharField(max_length=150,default="product")
     product_type = models.CharField(max_length=100,default="accessory")
     product_class = models.CharField(max_length=100,default="class")
     product_category = models.CharField(max_length=100,default="parts")
     price = models.FloatField()
-    pictures = models.ImageField(null=True,blank=True)
-    stock = models.IntegerField(default=0)
+    image = models.ImageField(null=True,blank=True)
+    quantity = models.IntegerField(default=0)
+    description = models.TextField(default="Description")
+
     def __str__(self):
         return self.product_name
 
@@ -39,7 +26,7 @@ class Product(models.Model):
 
 
 class order(models.Model):
-    customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True)
+    customer = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=200,null=True)
@@ -65,28 +52,32 @@ class orderitem(models.Model):
     order = models.ForeignKey(order,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+    is_wishlist = models.BooleanField(default=False)
 
     @property
     def get_total(self):
         total = self.product.price * self.quantity
         return total
 
+    def __str__(self):
+        return self.product.__str__()
+
 
 class address(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     address = models.TextField(blank=True)
     postcode = models.IntegerField(blank=True)
 
     def __str__(self):
-        return self.address
+        return self.postcode.__str__()
 
 
 class shipping(models.Model):
-    customer =  models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
+    customer =  models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     order = models.ForeignKey(order, on_delete=models.SET_NULL,null=True,blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     address = models.ForeignKey(address,on_delete=models.SET_NULL,null=True,blank=True)
     def __str__(self):
-        return self.address
+        return self.address.__str__()
 
 

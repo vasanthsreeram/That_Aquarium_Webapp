@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.template.defaulttags import register
+from django.contrib.auth.models import Group
 
 def home(request):
     products = Product.objects.all()
@@ -15,7 +16,13 @@ def home(request):
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = request.user
+        Order,created = order.objects.get_or_create(customer=customer)
+        items = Order.orderitem_set.all()
+    else:
+        items = []
+    context = {"items":items}
     return render(request,'home_page/cart.html',context)
 
 @register.filter
@@ -123,28 +130,18 @@ def registerpage(request):
         #you can put a message if you want
         return redirect('front_page')
     form = CreateUserForm()
-    context = {'form':form}
+
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
-        print(dir(form))
-        print(form.data)
-        #apparently this causes password breach? idk custom errors are weird pls fix and add all custom errors and checks
-        context["username_error"] = ""
-        context["first_name_error"] = ""
-        if form.data["username"] == "":
-            context["username_error"] = "Email cannot be empty."
-        elif form.data["first_name"] == "":
-            context["first_name_error"] = "Username cannot be empty."
-        elif "@" not in form.data["username"]:
-            context["username_error"] = "Email is invalid."
-        else:
-            if form.is_valid():
-                form.save()
+        #for the email validation there is a built feature in every browser
+        if form.is_valid():
+            saved_user = form.save()
+            group = Group.objects.get(name='Member')
+            saved_user.groups.add(group)
 
-                messages.success(request,f"Successfully created your account. Please confirm your email and login again.")
-                return redirect('login')
-
-    print("context: ", context )
+            messages.success(request,"Successfully created your account. Please confirm your email and login again.")
+            return redirect('login')
+    context = {'form': form}
     return render(request,'home_page/register.html',context)
 
 def privacy(request):

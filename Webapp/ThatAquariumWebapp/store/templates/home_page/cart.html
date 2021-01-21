@@ -16,11 +16,11 @@
     </div>
     <div class = "cart-body mx-auto">
         <div class = "cart-region">
-            {% if 1 == 1 %} <!-- Condition to check length of cart items (Change when backend ready) -->
-                {% for i in '12' %} <!-- Loop through the cart items (django does not support integers so rip) (Change when backend ready) -->
-                    <div>
-                        cart items
-                    </div>
+            {% if items|length != 0 %} <!-- Condition to check length of cart items is not equal to 0 (Change when backend ready) -->
+                {% for item in items %} <!-- Loop through the cart items (django does not support integers so rip) (Change when backend ready) -->
+                    <img src='{{ item.product.imageURL }}'>
+                    <p>qty {{ item.quantity }}</p>
+                    <p>total price : {{ item.get_total }}</p>
                 {% endfor %}
             {% else %}
                 <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
