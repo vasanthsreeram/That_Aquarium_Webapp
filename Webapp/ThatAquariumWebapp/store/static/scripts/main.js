@@ -32,5 +32,25 @@ $(document).ready(function() {
     $(".submit-button").click(function() {
         searchRedirect();
     });
+    
+    currentPage = window.location.pathname;
+    // this part is hardcoded. Key is path name, value is unique class name of the underline object
+    names = {
+        "/hot/": ".hover-underline-1",
+        "/featured/": ".hover-underline-2",
+        "/new/": ".hover-underline-3",
+        "/search/": ".hover-underline-4", // This one is kinda unused but is there for categories
+        "/terms-and-conditions/": ".hover-underline-5",
+        "/privacy-policy/": ".hover-underline-5",
+        "/FAQ/": ".hover-underline-6",
+        "/about/": ".hover-underline-7",
+        "/search/": ".hover-underline-8",
+        "/cart/": ".hover-underline-9",
+    };
+    if (names[currentPage] != undefined) {
+        $(names[currentPage]).addClass("hover-underline-current");
+        $(names[currentPage]).parent().removeClass("navbar-text-item-normal");
+        $(names[currentPage]).parent().addClass("navbar-text-item-current");
+    };
 
 });

@@ -22,6 +22,11 @@ body {
     text-align: center;
 }
 
+.hover-underline-current {
+    width: 100%!important;
+    margin-left: 0%!important;
+}
+
 @media (max-width: 552px) {
 
     .navbar-collapsed-button {
@@ -89,7 +94,7 @@ body {
 
 @media (min-width: 992px) {
 
-    .search-text {
+    .search-text, .cart-text {
         display: none;
     }
 
@@ -234,6 +239,24 @@ body {
 .cart-image {
     transform: scale(1.5);
     margin: 12.5px 10px 0vw 40px;
+    transition: 0.2s ease;
+    animation: cart-image-hover-unhover 0.1s forwards;
+}
+
+@keyframes cart-image-hover {
+    0% {filter: invert(1);}
+    75% {filter: drop-shadow(0px 1px 1px white) invert(1);}
+    100% {filter: drop-shadow(0px 1px 2px white) invert(1);}
+}
+
+@keyframes cart-image-hover-unhover {
+    0% {filter: drop-shadow(0px 1px 2px white) invert(1);}
+    75% {filter: drop-shadow(0px 1px 1px white) invert(1);}
+    100% {filter: invert(1);}
+}
+
+.cart-image:hover {
+    animation: cart-image-hover 0.1s forwards;
 }
 
 .nav-images {

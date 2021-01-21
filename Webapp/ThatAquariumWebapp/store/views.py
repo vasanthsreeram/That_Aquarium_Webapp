@@ -7,6 +7,7 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.template.defaulttags import register
 
 def home(request):
     products = Product.objects.all()
@@ -16,6 +17,10 @@ def home(request):
 def cart(request):
     context = {}
     return render(request,'home_page/cart.html',context)
+
+@register.filter
+def get_range(value = 1):
+    return range(value)
 
 def checkout(request):
     context = {}
@@ -34,9 +39,13 @@ def FAQ(request):
     context = {}
     return render(request,'home_page/FAQ.html')
 
-def About(request):
+def about(request):
     context = {}
     return render(request,'home_page/about.html')
+
+def contact(request):
+    context = {}
+    return render(request,'home_page/contact.html')
 
 def new_arrival(request):
     context = {}

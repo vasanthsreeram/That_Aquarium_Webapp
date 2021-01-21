@@ -2,5 +2,215 @@
 {% load static %}
 
 {% block content %}
-    <h1>Cart will be here </h1>
+    <link href = "{% static 'css/cart.css' %}" rel = "stylesheet" type = "text/css">
+    <script src = "{% static 'scripts/cart.js' %}"></script>
+    <div class = "subheader mx-auto">
+        <a href = "{% url 'cart' %}" class = "cart navbar-text-item-current navbar-text-item-current-orange">
+            Cart & Checkout
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+        <a href = "{% url 'wishlist' %}" class = "wishlist navbar-text-item-normal navbar-text-item-normal-orange">
+            Wishlist
+            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+    <div class = "cart-body mx-auto">
+        <div class = "cart-region">
+            {% if 1 == 1 %} <!-- Condition to check length of cart items (Change when backend ready) -->
+                {% for i in '12' %} <!-- Loop through the cart items (django does not support integers so rip) (Change when backend ready) -->
+                    <div>
+                        cart items
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
+            {% endif %}
+        </div>
+        <div class = "summary-region">
+            <form id = "cart-form">
+
+
+                <div class = "order-summary summary-region-items">
+                    <p class = "summary-region-items-header">Order Summary</p>
+                    <div class = "order-summary-inner">
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-1">
+                            <p class = "order-summary-inner-text-row-1-left order-summary-inner-text-row-left">Items:</p>
+                            <p class = "order-summary-inner-text-row-1-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-2">
+                            <p class = "order-summary-inner-text-row-2-left order-summary-inner-text-row-left">Delivery:</p>
+                            <p class = "order-summary-inner-text-row-2-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-3">
+                            <p class = "order-summary-inner-text-row-3-left order-summary-inner-text-row-left">Taxes (Inclusive) (7%):</p>
+                            <p class = "order-summary-inner-text-row-3-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-4">
+                            <p class = "order-summary-inner-text-row-4-left order-summary-inner-text-row-left">Discounts:</p>
+                            <p class = "order-summary-inner-text-row-4-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-5">
+                            <p class = "order-summary-inner-text-row-5-left order-summary-inner-text-row-left">Coupon Code:</p>
+                            <p class = "order-summary-inner-text-row-5-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-6">
+                            <input type = "text" placeholder="Coupon Code" class = "order-summary-inner-text-row-6-left order-summary-inner-text-row-left">
+                            <button class = "order-summary-inner-text-row-6-right order-summary-inner-text-row-right">Apply</button>
+                        </div>
+                        <div class = "order-summary-inner-text order-summary-inner-text-row-7">
+                            <p class = "order-summary-inner-text-row-7-left order-summary-inner-text-row-left">Order Total</p>
+                            <p class = "order-summary-inner-text-row-7-right order-summary-inner-text-row-right">S$0.00</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "delivery-method summary-region-items">
+                    <p class = "summary-region-items-header">Delivery Method</p>
+                    <div class = "delivery-inner">
+                        <div class = "delivery-method-type">
+                            <input type = "radio" id = "delivery-1" name = "delivery" value = "custom" class = "radio-options" checked="checked">
+                            <label for = "delivery-1" class = "labels">
+                                <div class = "label-text label-text-1">
+                                    <p class = "label-actual-text label-actual-text-1">Custom Delivery (Free above $80)</p>
+                                    <p class = "label-actual-text label-actual-text-2">Averages 1-3 working days</p>
+                                </div>
+                            </label>
+                            <div class = "extra-costs">$5.00</div>
+                        </div>
+                        <div class = "delivery-method-type">
+                            <input type = "radio" id = "delivery-2" name = "delivery" value = "collect" class = "radio-options">
+                            <label for = "delivery-2" class = "labels">
+                                <div class = "label-text label-text-2">
+                                    <p class = "label-actual-text label-actual-text-1">Self Collection</p>
+                                    <p class = "label-actual-text label-actual-text-2">Collect at one of our branches during working hours</p>
+                                </div>
+                            </label>
+                            <div class = "extra-costs">FREE</div>
+                        </div>
+                        <div>
+                            <div class = "continue continue-delivery">
+                                <div class = "continue-text"> <!-- div for flexbox -->
+                                    Continue
+                                </div>
+                            </div> <!-- Purposely not a button -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "address summary-region-items">
+                    <div class = "summary-region-items-header-group">
+                        <p class = "summary-region-items-header address-header-text">Delivery/Collection Address</p>
+                        <a href = "{% url 'address' %}" class = "edit-address">Manage Addresses</a>
+                        <a href = "{% url 'contact' %}" class = "map">Map</a>
+                    </div>
+                    <div class = "address-inner">
+                        <div class = "delivery-choice">
+                            {% for i in "1" %} <!-- loop amount of delivery addresses-->
+                                <!-- When you link with backend and edit the for loop, make sure the integeres auto increment for the ids, values and such below -->
+                                <div class = "delivery-method-type">
+                                    <input type = "radio" id = "delivery-address-1" name = "delivery-address" value = "address-choice-1" class = "radio-options" checked="checked">
+                                    <label for = "delivery-address-1" class = "labels">
+                                        <div class = "label-text label-text-1">
+                                            <p class = "label-actual-text label-actual-text-1">{{ "Person_Name" }}</p>
+                                            <p class = "label-actual-text label-actual-text-2">{{ "Person_Address" }}</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class = "collection-choice">
+                            <div class = "delivery-method-type">
+                                <input type = "radio" id = "address-1" name = "collection" value = "yishun" class = "radio-options" checked="checked">
+                                <label for = "address-1" class = "labels">
+                                    <div class = "label-text label-text-1">
+                                        <p class = "label-actual-text label-actual-text-1">Yishun Branch (Default)</p>
+                                        <p class = "label-actual-text label-actual-text-2">Blk 618 Yishun Ring Road, #01-3236, S760618</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class = "delivery-method-type">
+                                <input type = "radio" id = "address-2" name = "collection" value = "changi" class = "radio-options">
+                                <label for = "address-2" class = "labels">
+                                    <div class = "label-text label-text-2">
+                                        <p class = "label-actual-text label-actual-text-1">Changi Branch</p>
+                                        <p class = "label-actual-text label-actual-text-2">284 Changi Road, S419763</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class = "delivery-method-type">
+                                <input type = "radio" id = "address-3" name = "collection" value = "clementi" class = "radio-options">
+                                <label for = "address-3" class = "labels">
+                                    <div class = "label-text label-text-3">
+                                        <p class = "label-actual-text label-actual-text-1">Clementi Branch</p>
+                                        <p class = "label-actual-text label-actual-text-2">Blk 328 Clementi Avenue 2, #01-198, S120328</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class = "delivery-method-type">
+                                <input type = "radio" id = "address-4" name = "collection" value = "tampines" class = "radio-options" disabled>
+                                <label for = "address-4" class = "labels">
+                                    <div class = "label-text label-text-4">
+                                        <p class = "label-actual-text label-actual-text-1">Tampines Branch</p>
+                                        <p class = "label-actual-text label-actual-text-2">Blk 929 Tampines Street 91, #01-447, S520929</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class = "back-continue">
+                            <div class = "back">
+                                <div class = "back-text back-collection"> <!-- div for flexbox -->
+                                    Back
+                                </div>
+                            </div> <!-- Purposely not a button -->
+                            <div class = "continue continue-collection">
+                                <div class = "continue-text"> <!-- div for flexbox -->
+                                    Continue
+                                </div>
+                            </div> <!-- Purposely not a button -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class = "payment summary-region-items">
+                    <div class = "summary-region-items-header-group">
+                        <p class = "summary-region-items-header">Payment Method</p>
+                        <a href = "{% url 'payment' %}" class = "edit-card">Edit Your Cards</a>
+                    </div>
+                    <div class = "payment-inner">
+                        <div class = "payment-choice">
+                            {% for i in "1" %} <!-- loop amount of delivery addresses-->
+                                <!-- When you link with backend and edit the for loop, make sure the integeres auto increment for the ids, values and such below -->
+                                <div class = "payment-method-type">
+                                    <input type = "radio" id = "payment-1" name = "payment-address" value = "payment-choice-1" class = "radio-options" checked="checked">
+                                    <label for = "payment-1" class = "labels">
+                                        <div class = "label-text label-text-1">
+                                            <p class = "label-actual-text label-actual-text-1">{{ "Payment_Type" }}</p>
+                                            <p class = "label-actual-text label-actual-text-2">{{ "Payment_Description" }}</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class = "back-continue">
+                            <div class = "back">
+                                <div class = "back-text back-payment"> <!-- div for flexbox -->
+                                    Back
+                                </div>
+                            </div> <!-- Purposely not a button -->
+                            <div class = "continue checkout">
+                                <div class = "continue-text"> <!-- div for flexbox -->
+                                    Checkout
+                                </div>
+                            </div> <!-- Purposely not a button -->
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
 {% endblock content %}

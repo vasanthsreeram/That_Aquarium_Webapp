@@ -6,12 +6,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home,name= 'front_page'),
-    path('cart/', views.cart,name= 'cart'),
-    path('account/', views.account,name= 'account'),
-    path('terms-and-conditions/', views.terms,name= 'terms'),
-    path('FAQ/', views.FAQ,name= 'FAQ'),
-    path('about/', views.About,name= 'about'),
+    path('', views.home,name='front_page'),
+    path('cart/', views.cart,name='cart'),
+    path('account/', views.account,name='account'),
+    path('terms-and-conditions/', views.terms,name='terms'),
+    path('FAQ/', views.FAQ,name='FAQ'),
+    path('about-us/', views.about,name='about'),
+    path('contact-us/', views.contact,name='contact'),
     path('hot/', views.hot_deals, name='hot'),
     path('featured/', views.featured, name='featured'),
     path('new/', views.new_arrival, name='new'),
