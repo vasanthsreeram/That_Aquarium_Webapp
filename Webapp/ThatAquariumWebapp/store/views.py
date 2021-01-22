@@ -1,37 +1,52 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
-from django.http import JsonResponse
-from django.contrib.auth.forms import UserCreationForm
-from .models import *
-from .forms import CreateUserForm
+from django.http import HttpResponse,JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from django.template.defaulttags import register
 from django.contrib.auth.models import Group
+import json
+from .models import *
+from .forms import CreateUserForm
+from .decorator import *
+
+
 
 def home(request):
     products = Product.objects.all()
-    context = {"products": products}
+    if request.user.is_authenticated:
+        customer = request.user
+        order,created = Order.objects.get_or_create(customer=customer)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        order = {'get_cart_item':0}
+        items = []
+        cartItems = order['get_cart_item']
+    context = {"products": products,"cartItems": cartItems}
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user
-        Order,created = order.objects.get_or_create(customer=customer)
-        items = Order.orderitem_set.all()
+        order,created = Order.objects.get_or_create(customer=customer)
+        items = order.orderitem_set.all()
+        cartItem = order.get_cart_items
     else:
+        order = {'get_cart_item':0}
         items = []
-    context = {"items":items}
+        cartItem = order['get_cart_item']
+    context = {"items":items,'cartItem':cartItem}
     return render(request,'home_page/cart.html',context)
 
-@register.filter
-def get_range(value = 1):
-    return range(value)
-
 def checkout(request):
+
+
     context = {}
     return render(request,'home_page/checkout.html',context)
+
+def product(request):
+    context= {}
+    return render((request,"home_page/product.html",context))
 
 @login_required(login_url="login")
 def account(request):
@@ -149,3 +164,30 @@ def privacy(request):
 
 def forget(request):
     return render(request, 'home_page/forget_password.html')
+
+
+def updateItem(request):
+
+    data = json.loads(request.body)
+    productID = data['productID']
+    action = data['action']
+    print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
+
+    customer= request.user
+    product = Product.objects.get(id=productID)
+    order,created = Order.objects.get_or_create(customer=customer,)
+
+    orderItem,created = Orderitem.objects.get_or_create(order=order,product=product)
+
+    if action == 'add':
+        orderItem.quantity +=1
+    elif action == 'remove':
+        orderItem.quantity -=1
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+
+
+    return JsonResponse('Item was added',safe=False)

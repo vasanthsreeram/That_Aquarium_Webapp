@@ -1,4 +1,6 @@
 var currentCartPos = 0;
+var tempData = [];
+var overlayPos = 0;
 $(document).ready(function() {
     
     function hideAll() {
@@ -149,6 +151,11 @@ $(document).ready(function() {
         };
     };
 
+    function closeOverlay() {
+        $(".add-stuff-overlay").fadeOut(250);
+        $(".add-card-overlay, .add-address-overlay, .add-billing-overlay").hide(0);
+    };
+
     $(".continue-delivery, .back-payment").click(function() {
         deliveryContinue();
     });
@@ -181,9 +188,9 @@ $(document).ready(function() {
 
     $(".payment-address-same").click(function() {
         if ($(this).is(":checked") == false) {
-            $(".edit-payment-address").show(0);
+            $(".edit-payment-address, .payment-address-preview-address").show(0);
         } else {
-            $(".edit-payment-address").hide(0);
+            $(".edit-payment-address, .payment-address-preview-address").hide(0);
         }; 
     });
 
@@ -193,23 +200,214 @@ $(document).ready(function() {
     });
 
     $(".add-stuff-overlay-clickable, .overlay-back").click(function() {
-        $(".add-stuff-overlay").fadeOut(250);
-        $(".add-card-overlay, .add-address-overlay, .add-billing-overlay").hide(0);
+        closeOverlay();
+        if (overlayPos == 1) {
+            $(".card-number").val(tempData[0]);
+            $(".expiry-date").val(tempData[1]);
+            $(".cvv").val(tempData[2]);
+        } else if (overlayPos == 2) {
+            $(".address-full-name").val(tempData[0]);
+            $(".address-phone-number").val(tempData[1]);
+            $(".address-address-line-1").val(tempData[2]);
+            $(".address-address-line-2").val(tempData[3]);
+            $(".address-post-code").val(tempData[4]);
+        } else if (overlayPos == 3) {
+            $(".billing-full-name").val(tempData[0]);
+            $(".billing-phone-number").val(tempData[1]);
+            $(".billing-address-line-1").val(tempData[2]);
+            $(".billing-address-line-2").val(tempData[3]);
+            $(".billing-post-code").val(tempData[4]);
+        };
     }); 
 
     $(".add-card").click(function() {
         $(".add-stuff-overlay").fadeIn(250);
         $(".add-card-overlay").show(0);
+        overlayPos = 1;
+        tempData = [$(".card-number").val(), $(".expiry-date").val(), $(".cvv").val()];
     });
 
     $(".edit-address").click(function() {
         $(".add-stuff-overlay-clickable").parent().fadeIn(250);
         $(".add-address-overlay").show(0);
+        overlayPos = 2;
+        tempData = [$(".address-full-name").val(), $(".address-phone-number").val(), $(".address-address-line-1").val(), $(".address-address-line-2").val(), $(".address-post-code").val()]
     });
 
     $(".edit-payment-address").click(function() {
         $(".add-stuff-overlay-clickable").parent().fadeIn(250);
         $(".add-billing-overlay").show(0);
+        overlayPos = 3;
+        tempData = [$(".billing-full-name").val(), $(".billing-phone-number").val(), $(".billing-address-line-1").val(), $(".billing-address-line-2").val(), $(".billing-post-code").val()]
+    });
+
+    $(".save-card").click(function() {
+        var valid = true;
+        $(".card-number, .expiry-date, .cvv").css({
+            border: "0px solid red"
+        });
+        if ($(".card-number").val().length < 13) {
+            valid = false;
+            $(".card-number").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".expiry-date").val().length != 4) {
+            valid = false;
+            $(".expiry-date").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".cvv").val().length != 3) {
+            valid = false;
+            $(".cvv").css({
+                border: "1px solid red"
+            });
+        };
+        if (valid == true) {
+            if ($(".temp-card-detail").length == 0) {
+                $(".payment-inner").prepend(`
+                <div class = "payment-method-type">
+                    <input type = "radio" id = "payment-1" name = "payment-address" value = "payment-choice-1" class = "radio-options">
+                    <label for = "payment-1" class = "labels">
+                        <div class = "label-text label-text-1">
+                            <p class = "label-actual-text label-actual-text-1">Debit/Credit Card</p>
+                            <p class = "label-actual-text label-actual-text-2 temp-card-detail">Card Ending with ` + $(".card-number").val().slice($(".card-number").val().length - 4, $(".card-number").val().length) + `</p>
+                        </div>
+                    </label>
+                </div>
+                `)
+            } else {
+                $(".temp-card-detail").html("Card Ending with " + $(".card-number").val().slice($(".card-number").val().length - 4, $(".card-number").val().length));
+            };
+            $(".card-number, .expiry-date, .cvv").css({
+                border: "0px solid red"
+            });
+            closeOverlay();
+            tempData = [];
+            $(".add-card").html("Edit Temporary Card");
+        };
+    });
+
+    $(".save-address").click(function() {
+        var valid = true;
+        $(".address-full-name, .address-phone-number, .address-address-line-1, .address-post-code").css({
+            border: "0px solid red"
+        });
+        if ($(".address-full-name").val() == "") {
+            valid = false;
+            $(".address-full-name").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".address-phone-number").val() == "") {
+            valid = false;
+            $(".address-phone-number").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".address-address-line-1").val() == "") {
+            valid = false;
+            $(".address-address-line-1").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".address-post-code").val() == "") {
+            valid = false;
+            $(".address-post-code").css({
+                border: "1px solid red"
+            });
+        };
+        if (valid == true) {
+            if ($(".temp-address-detail").length == 0) {
+                if ($(".address-address-line-2").val() == "") {
+                    $(".delivery-choice").prepend(`
+                    <div class = "delivery-method-type">
+                        <input type = "radio" id = "delivery-address-1" name = "delivery-address" value = "address-choice-1" class = "radio-options" checked="checked">
+                        <label for = "delivery-address-1" class = "labels">
+                            <div class = "label-text label-text-1">
+                                <p class = "label-actual-text label-actual-text-1 temp-address-name">` + $(".address-full-name").val() + `</p>
+                                <p class = "label-actual-text label-actual-text-2 temp-address-detail">` + $(".address-address-line-1").val() + ", " + $(".address-post-code").val() + `</p>
+                            </div>
+                        </label>
+                    </div>
+                    `)
+                } else {
+                    $(".delivery-choice").prepend(`
+                    <div class = "delivery-method-type">
+                        <input type = "radio" id = "delivery-address-1" name = "delivery-address" value = "address-choice-1" class = "radio-options" checked="checked">
+                        <label for = "delivery-address-1" class = "labels">
+                            <div class = "label-text label-text-1">
+                                <p class = "label-actual-text label-actual-text-1 temp-address-name">` + $(".address-full-name").val() + `</p>
+                                <p class = "label-actual-text label-actual-text-2 temp-address-detail">` + $(".address-address-line-1").val() + " " + $(".address-address-line-2").val() + ", " + $(".address-post-code").val() + `</p>
+                            </div>
+                        </label>
+                    </div>
+                    `)
+                };
+                $(".delivery-choice").css({
+                    height: "auto"
+                });
+            } else {
+                $(".temp-address-name").html($(".address-full-name").val());
+                if ($(".address-address-line-2").val() == "") {
+                    $(".temp-address-detail").html($(".address-address-line-1").val() + ", " + $(".address-post-code").val());
+                } else {
+                    $(".temp-address-detail").html($(".address-address-line-1").val() + " " + $(".address-address-line-2").val() + ", " + $(".address-post-code").val());
+                };
+            };
+            $(".address-full-name, .address-phone-number, .address-address-line-1, .address-post-code").css({
+                border: "0px solid red"
+            });
+            closeOverlay();
+            tempData = [];
+            $(".edit-address").html("Edit Temporary Address");
+            $(".no-addresses").hide(0);
+        }; 
+    });
+
+    $(".save-billing").click(function() {
+        var valid = true;
+        $(".billing-full-name, .billing-phone-number, .billing-address-line-1, .billing-post-code").css({
+            border: "0px solid red"
+        });
+        if ($(".billing-full-name").val() == "") {
+            valid = false;
+            $(".billing-full-name").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".billing-phone-number").val() == "") {
+            valid = false;
+            $(".billing-phone-number").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".billing-address-line-1").val() == "") {
+            valid = false;
+            $(".billing-address-line-1").css({
+                border: "1px solid red"
+            });
+        };
+        if ($(".billing-post-code").val() == "") {
+            valid = false;
+            $(".billing-post-code").css({
+                border: "1px solid red"
+            });
+        };
+        if (valid == true) {
+            if ($(".billing-address-line-2").val() == "") {
+                $(".payment-address-preview-address").html($(".billing-full-name").val() + ", " + $(".billing-phone-number").val() + ", " + $(".billing-address-line-1").val() + ", " + $(".billing-post-code").val());
+            } else {
+                $(".payment-address-preview-address").html($(".billing-full-name").val() + ", " + $(".billing-phone-number").val() + ", " + $(".billing-address-line-1").val() + " " + $(".billing-address-line-2").val() + ", " + $(".billing-post-code").val());
+            };
+            $(".billing-full-name, .billing-phone-number, .billing-address-line-1, .billing-post-code").css({
+                border: "0px solid red"
+            });
+            closeOverlay();
+            tempData = [];
+            $(".edit-payment-address").html("Edit");
+        }; 
     });
 
     backCollection();

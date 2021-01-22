@@ -25,11 +25,10 @@ class Product(models.Model):
             return url
 
 
-class order(models.Model):
+class Order(models.Model):
     customer = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
-    transaction_id = models.CharField(max_length=200,null=True)
 
     def __str__(self):
         return str(self.id)
@@ -47,9 +46,9 @@ class order(models.Model):
         return total
 
 
-class orderitem(models.Model):
+class Orderitem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
-    order = models.ForeignKey(order,on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
     is_wishlist = models.BooleanField(default=False)
@@ -63,7 +62,7 @@ class orderitem(models.Model):
         return self.product.__str__()
 
 
-class address(models.Model):
+class Address(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     address = models.TextField(blank=True)
     postcode = models.IntegerField(blank=True)
@@ -72,11 +71,11 @@ class address(models.Model):
         return self.postcode.__str__()
 
 
-class shipping(models.Model):
+class Shipping(models.Model):
     customer =  models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
-    order = models.ForeignKey(order, on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL,null=True,blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    address = models.ForeignKey(address,on_delete=models.SET_NULL,null=True,blank=True)
+    address = models.ForeignKey(Address,on_delete=models.SET_NULL,null=True,blank=True)
     def __str__(self):
         return self.address.__str__()
 

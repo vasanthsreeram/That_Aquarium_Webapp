@@ -413,7 +413,7 @@ body {
     margin-left: 5%;
 }
 
-.post-code, .billing-post-code {
+.address-post-code, .billing-post-code {
     width: 50%;
     margin-left: 5%;
 }
@@ -475,7 +475,7 @@ body {
         flex-direction: column;
     }
     
-    .cvv, .post-code, .billing-post-code {
+    .cvv, .address-post-code, .billing-post-code {
         width: 100%;
         margin-left: 0px;
     }

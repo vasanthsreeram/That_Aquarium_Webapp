@@ -19,8 +19,8 @@
                     <input type = "text" placeholder="CVV" class = "overlay-inputs cvv" name = "cvv" id = "cvv" maxlength="3">
                 </div>
                 <div class = "overlay-buttons">
-                    <div class = "overlay-back">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save">Save</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-back cancel-card">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-card">Save</div> <!-- Purposely not a button so it's easier to deal with -->
                 </div>
             </form>
         </div>
@@ -29,21 +29,21 @@
             <form>
                 <p class = "overlay-header-delivery">Delivery Address</p>
                 <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Full Name" class = "overlay-inputs full-name overlay-inputs-smaller-gap" name = "full-name" id = "full-name">
+                    <input type = "text" placeholder="Full Name" class = "overlay-inputs address-full-name overlay-inputs-smaller-gap" name = "full-name" id = "full-name">
                 </div>
                 <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs phone-number overlay-inputs-smaller-gap" name = "phone-number" id = "phone-number">
+                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs address-phone-number overlay-inputs-smaller-gap" name = "phone-number" id = "phone-number">
                 </div>
                 <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs address-line-1 overlay-inputs-smaller-gap" name = "address-line-1" id = "address-line-1">
+                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs address-address-line-1 overlay-inputs-smaller-gap" name = "address-line-1" id = "address-line-1">
                 </div>
                 <div class = "overlay-input-row-2 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs address-line-2 overlay-inputs-smaller-gap" name = "address-line-2" id = "address-line-2">
-                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs post-code overlay-inputs-smaller-gap" name = "post-code" id = "post-code">
+                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs address-address-line-2 overlay-inputs-smaller-gap" name = "address-line-2" id = "address-line-2">
+                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs address-post-code overlay-inputs-smaller-gap" name = "post-code" id = "post-code">
                 </div>
                 <div class = "overlay-buttons">
-                    <div class = "overlay-back">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save">Save</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-address">Save</div> <!-- Purposely not a button so it's easier to deal with -->
                 </div>
             </form>
         </div>
@@ -65,8 +65,8 @@
                     <input type = "text" placeholder="Postal Code" class = "overlay-inputs billing-post-code overlay-inputs-smaller-gap" name = "billing-post-code" id = "billing-post-code">
                 </div>
                 <div class = "overlay-buttons">
-                    <div class = "overlay-back">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save">Save</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-back cancel-billing">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-billing">Save</div> <!-- Purposely not a button so it's easier to deal with -->
                 </div>
             </form>
         </div>
@@ -88,8 +88,8 @@
 
     <div class = "cart-body mx-auto">
         <div class = "cart-region">
-            {% if items|length != 0 %} <!-- Condition to check length of cart items is not equal to 0 (Change when backend ready) -->
-                {% for item in items %} <!-- Loop through the cart items (django does not support integers so rip) (Change when backend ready) -->
+            {% if items|length != 0 %}
+                {% for item in items %}
                     <img src='{{ item.product.imageURL }}'>
                     <p>qty {{ item.quantity }}</p>
                     <p>total price : {{ item.get_total }}</p>
@@ -186,7 +186,7 @@
                     <div class = "address-inner">
                         <div class = "delivery-choice">
                             {% if 1 == 1 and request.user.is_authenticated %} <!-- Edit to length of address list -->
-                                {% for i in "1" %} <!-- loop amount of delivery addresses-->
+                                {% for i in "12" %} <!-- loop amount of delivery addresses-->
                                     <!-- When you link with backend and edit the for loop, make sure the integeres auto increment for the ids, values and such below -->
                                     <div class = "delivery-method-type">
                                         <input type = "radio" id = "delivery-address-1" name = "delivery-address" value = "address-choice-1" class = "radio-options" checked="checked">
@@ -296,10 +296,10 @@
                                 <label for = "payment-address-same" class = "labels payment-address-same-label">
                                     <div class = "label-text label-text-1">
                                         <p class = "label-actual-text label-actual-text-1 payment-address-same-text">Billing Address same as Delivery Address</p>
-                                        <p class = "label-actual-text label-actual-text-2"></p>
+                                        <p class = "label-actual-text label-actual-text-2 payment-address-preview-address"></p>
                                     </div>
                                 </label>
-                                <div class = "edit-payment-address">Edit</div>
+                                <div class = "edit-payment-address">Add</div>
                             </div>
                         </div>
                         <div class = "back-continue">
