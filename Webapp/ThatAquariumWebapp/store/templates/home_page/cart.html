@@ -16,8 +16,8 @@
     </div>
     <div class = "cart-body mx-auto">
         <div class = "cart-region">
-            {% if items|length != 0 %} <!-- Condition to check length of cart items is not equal to 0 (Change when backend ready) -->
-                {% for item in items %} <!-- Loop through the cart items (django does not support integers so rip) (Change when backend ready) -->
+            {% if items|length != 0 %}
+                {% for item in items %}
                     <img src='{{ item.product.imageURL }}'>
                     <p>qty {{ item.quantity }}</p>
                     <p>total price : {{ item.get_total }}</p>

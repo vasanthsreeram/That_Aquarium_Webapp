@@ -1,3 +1,7 @@
+
+
+
+
 function searchRedirect() {
     if (window.location.hostname == "127.0.0.1") {
         window.location.href = "http://127.0.0.1:8000/search/?=" + $(".search-bar").val() // for development only

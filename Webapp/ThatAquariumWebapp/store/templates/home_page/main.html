@@ -1,10 +1,37 @@
-<!DOCTYPE html>
+
 {% load static %}
+
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <title>That Aquarium</title>
+        <script>
+//you are gonna hate me for putting this here but idk why it didn't work when I put it in the main.js
+
+//need this below shit for the add cart 'webhook'/api
+
+
+var user = '{{ request.user }}'
+
+
+function getCookie(name) {
+let cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+const cookies = document.cookie.split(';');
+for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    // Does this cookie string begin with the name we want?
+    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+    }
+}
+}
+return cookieValue;
+}
+var csrftoken = getCookie('csrftoken'); // yep that fucking troublesome to get that token
+</script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -12,8 +39,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/main.css' %}" type = "text/css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+{#        <link href="https://fonts.googleapis.com/css2?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">#}
         <meta name="viewport" content="width=device-width, initial-scale = 1, maximum-scale = 1, minimum-scale =1"/>
+
     </head>
     
     <body>
@@ -124,6 +152,7 @@
                     <a class = "account-options-text" href="{% url 'address'%}">Addresses</a>
                     <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
                     <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
+                    <a class = "account-options-text" >cart  {{ cartItems }}</a>
                     <!-- Change the condition to check whether user has login or not once done -->
                     {% if not request.user.is_authenticated %}
                         <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
@@ -133,6 +162,7 @@
                 </div>
             </div>
         </nav>
+
         {% block content %}
         
         {% endblock content %}

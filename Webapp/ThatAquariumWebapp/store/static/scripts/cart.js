@@ -92,4 +92,5 @@ $(document).ready(function() {
     // Tax Calculator
     $(".order-summary-inner-text-row-3-right").html("S$" + String(parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) * 0.07).toFixed(2));
 
+
 });
