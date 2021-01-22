@@ -392,7 +392,7 @@ body {
 }
 
 .back-shadow {
-    position: absolute;
+    position: fixed;
     width: 0vw;
     height: 0vh;
     background-color: rgba(0, 0, 0, 0.6);

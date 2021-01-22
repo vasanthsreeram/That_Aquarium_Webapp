@@ -83,7 +83,7 @@ def orders(request):
 @login_required(login_url="login")
 def wishlist(request):
     context = {}
-    return render(request,'home_page/cart.html')
+    return render(request,'home_page/wishlist.html')
 
 @login_required(login_url="login")
 def membership(request):
