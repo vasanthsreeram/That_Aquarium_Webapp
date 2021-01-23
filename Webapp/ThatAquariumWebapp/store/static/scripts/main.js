@@ -1,8 +1,8 @@
 // cookies stuff
 
-var user = '{{ request.user }}'
 
-function getCookie(name) {
+
+function getToken(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -17,7 +17,31 @@ function getCookie(name) {
     };
     return cookieValue;
 }
-var csrftoken = getCookie('csrftoken');
+var csrftoken = getToken('csrftoken');
+
+function getCookie(name){
+    var cookieArr = document.cookie.split(";");
+
+    for (var i =0;i<cookieArr.length;i++){
+        var cookiePair = cookieArr[i].split("=");
+        if (name == cookiePair[0].trim()){
+            return decodeURIComponent(cookiePair[1]);
+
+        }
+    }
+    return null
+}
+
+var cart = JSON.parse(getCookie('cart'))
+
+if (cart==undefined){
+    cart = {}
+    console.log("cart was created")
+    document.cookie = 'cart='+JSON.stringify(cart)+";domain=;path=/"
+
+}
+
+console.log("cart:", cart)
 
 // everything else
 

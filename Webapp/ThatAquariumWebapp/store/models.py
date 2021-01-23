@@ -8,7 +8,7 @@ class Product(models.Model):
     product_type = models.CharField(max_length=100,default="accessory")
     product_class = models.CharField(max_length=100,default="class")
     product_category = models.CharField(max_length=100,default="parts")
-    price = models.FloatField()
+    price = models.DecimalField(decimal_places=2,max_digits=9)
     image = models.ImageField(null=True,blank=True)
     quantity = models.IntegerField(default=0)
     description = models.TextField(default="Description")
