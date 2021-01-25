@@ -5,6 +5,7 @@
     <link href = "{% static 'css/cart.css' %}" rel = "stylesheet" type = "text/css">
     <script src = "{% static 'scripts/cart.js' %}"></script>
 
+
     <div class = "add-stuff-overlay">
 
         <div class="add-card-overlay">
@@ -92,6 +93,8 @@
                 {% for item in items %}
                     <img src='{{ item.product.imageURL }}'>
                     <p>qty {{ item.quantity }}</p>
+                    <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart">increase qty</button>
+                    <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart">reduce qty</button>
                     <p>total price : {{ item.get_total }}</p>
                 {% endfor %}
             {% else %}
@@ -107,7 +110,7 @@
                     <div class = "order-summary-inner">
                         <div class = "order-summary-inner-text order-summary-inner-text-row-1">
                             <p class = "order-summary-inner-text-row-1-left order-summary-inner-text-row-left">Items:</p>
-                            <p class = "order-summary-inner-text-row-1-right order-summary-inner-text-row-right">S$0.00</p>
+                            <p class = "order-summary-inner-text-row-1-right order-summary-inner-text-row-right">S${{ CartTotal }}</p>
                         </div>
                         <div class = "order-summary-inner-text order-summary-inner-text-row-2">
                             <p class = "order-summary-inner-text-row-2-left order-summary-inner-text-row-left">Delivery:</p>
@@ -316,11 +319,8 @@
                         </div>
                     </div>
                 </div>
-
-
-                
-                
             </form>
         </div>
     </div>
+    <script src="{% static 'scripts/frontpage.js' %}"></script>
 {% endblock content %}

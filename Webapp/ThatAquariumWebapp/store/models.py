@@ -45,13 +45,46 @@ class Order(models.Model):
         total = sum([item.quantity for item in orderitem])
         return total
 
+class Wishlist(models.Model):
+    customer = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    date_ordered = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
+
+    @property
+    def get_cart_total(self):
+        orderitem = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitem])
+        return total
+
+    @property
+    def get_cart_items(self):
+        orderitem = self.orderitem_set.all()
+        total = sum([item.quantity for item in orderitem])
+        return total
+
+class WishlistItem(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True,blank=True)
+    quantity = models.IntegerField(default=0)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
+
+    def __str__(self):
+        return self.product.__str__()
+
 
 class Orderitem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
     order = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
-    is_wishlist = models.BooleanField(default=False)
+
 
     @property
     def get_total(self):
@@ -64,11 +97,13 @@ class Orderitem(models.Model):
 
 class Address(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    fullname = models.CharField(blank=True,null=True,max_length=150)
+    phone = models.IntegerField(blank=True,null=True,)
     address = models.TextField(blank=True)
     postcode = models.IntegerField(blank=True)
 
     def __str__(self):
-        return self.postcode.__str__()
+        return self.id.__str__()
 
 
 class Shipping(models.Model):
@@ -77,6 +112,6 @@ class Shipping(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     address = models.ForeignKey(Address,on_delete=models.SET_NULL,null=True,blank=True)
     def __str__(self):
-        return self.address.__str__()
+        return self.id.__str__()
 
 

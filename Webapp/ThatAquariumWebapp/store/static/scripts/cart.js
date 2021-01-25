@@ -414,7 +414,7 @@ $(document).ready(function() {
     $(".edit-payment-address, .add-card-overlay, .add-address-overlay, .add-billing-overlay").hide(0);
     $(".add-stuff-overlay").fadeOut(0);
     // if value of items is zero, delivery methods, addresses and payment won't be clickable
-    $(".order-summary-inner-text-row-1-right").html("S$50.00")
+    //$(".order-summary-inner-text-row-1-right").html("S$50.00")
     if (checkEmptyCart() == false) {
         updateDeliveryCost();
         calculateTax();

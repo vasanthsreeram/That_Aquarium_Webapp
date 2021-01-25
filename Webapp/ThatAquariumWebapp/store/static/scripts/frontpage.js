@@ -1,13 +1,13 @@
 //I am gonna add a js for the add to cart function you can modify it if it suits you btr just make sure everything works in the end
 var updatebtns = document.getElementsByClassName('update-cart')
 
+
 for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
-        console.log('ProductID:', productID, "action:", action)
 
-        console.log("user", user)
+
         if (user === 'AnonymousUser') {
             addCookieItem(productID,action)
         } else {
@@ -18,7 +18,7 @@ for (var i = 0; i < updatebtns.length; i++) {
 }
 
 function addCookieItem(productID, action) {
-    console.log("hi")
+
     if (action == 'add') {
         if (cart[productID] == undefined) {
             cart[productID] = {'quantity': 1}

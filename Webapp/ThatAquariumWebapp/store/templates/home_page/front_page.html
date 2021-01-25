@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
     {% for product in products %}
     <div class="col-lg-4">
         <img class="thumbnail" height="360" width="500" src="{{ product.image.url }}">
@@ -10,9 +10,13 @@
             <h6><strong>{{ product.product_name }}</strong></h6>
             <h6>quantity :{{ product.quantity }}</h6>
             <hr>
-            
+
             <button  data-product={{ product.id }} data-action="add" class="btn update-cart">Add to Cart</button>
-            <a class="btn btn-outline-success" href="#">View</a>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <button name="view" value="{{ product.id }}" >View</button>
+            </form>
+
             <h4 style="display: inline-block; float: right"><strong>${{ product.price|floatformat:2 }}</strong></h4>
             
         </div>

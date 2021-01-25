@@ -4,39 +4,37 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
-import json
-from .models import *
 from .forms import CreateUserForm
-from .decorator import *
+from .utils import *
 
 
 
 def home(request):
     products = Product.objects.all()
-    if request.user.is_authenticated:
-        customer = request.user
-        order,created = Order.objects.get_or_create(customer=customer)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        order = {'get_cart_item':0}
-        items = []
-        cartItems = order['get_cart_item']
-    context = {"products": products,"cartItems": cartItems}
+    cartItem,items,CartTotal =cartData(request)
+    if request.method =="POST":
+        id = int(request.POST.get("view")[0])
+        display_product = None
+        for product in products:
+            if product.id == id:
+                display_product = product
+                break
+        context = {"product":display_product}
+        return render(request,'home_page/product.html',context)
+    context = {"items": items,"products": products,"cartItems": cartItem}
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user
-        order,created = Order.objects.get_or_create(customer=customer)
-        items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
-    else:
-        order = {'get_cart_item':0}
-        items = []
-        cartItem = order['get_cart_item']
-    context = {"items":items,'cartItem':cartItem}
+    cartItem,items,CartTotal =cartData(request)
+
+    context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal}
     return render(request,'home_page/cart.html',context)
+
+def product(request):
+
+    context = {}
+    return render(request,"home_page/product.html",context)
+
 
 def checkout(request):
 
@@ -44,30 +42,12 @@ def checkout(request):
     context = {}
     return render(request,'home_page/checkout.html',context)
 
-def product(request):
-    context= {}
-    return render((request,"home_page/product.html",context))
+
 
 @login_required(login_url="login")
 def account(request):
     context = {}
     return render(request,'home_page/account.html')
-
-def terms(request):
-    context = {}
-    return render(request,'home_page/terms.html')
-
-def FAQ(request):
-    context = {}
-    return render(request,'home_page/FAQ.html')
-
-def about(request):
-    context = {}
-    return render(request,'home_page/about.html')
-
-def contact(request):
-    context = {}
-    return render(request,'home_page/contact.html')
 
 def new_arrival(request):
     context = {}
@@ -171,7 +151,7 @@ def updateItem(request):
     data = json.loads(request.body)
     productID = data['productID']
     action = data['action']
-    print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
+    #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
 
     customer= request.user
     product = Product.objects.get(id=productID)
@@ -188,6 +168,20 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-
-
     return JsonResponse('Item was added',safe=False)
+
+def terms(request):
+    context = {}
+    return render(request,'home_page/terms.html')
+
+def FAQ(request):
+    context = {}
+    return render(request,'home_page/FAQ.html')
+
+def about(request):
+    context = {}
+    return render(request,'home_page/about.html')
+
+def contact(request):
+    context = {}
+    return render(request,'home_page/contact.html')
