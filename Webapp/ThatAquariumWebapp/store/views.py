@@ -19,7 +19,7 @@ def home(request):
             if product.id == id:
                 display_product = product
                 break
-        context = {"product":display_product}
+        context = {"product":display_product,"cartItems": cartItem}
         return render(request,'home_page/product.html',context)
     context = {"items": items,"products": products,"cartItems": cartItem}
     return render(request,'home_page/front_page.html',context)
@@ -31,25 +31,27 @@ def cart(request):
     return render(request,'home_page/cart.html',context)
 
 def product(request):
-
-    context = {}
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
     return render(request,"home_page/product.html",context)
 
 
 def checkout(request):
+    cartItem, items, CartTotal = cartData(request)
 
-
-    context = {}
+    context = {"cartItems": cartItem}
     return render(request,'home_page/checkout.html',context)
 
 
 
 @login_required(login_url="login")
 def account(request):
-    context = {}
-    return render(request,'home_page/account.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/account.html',context)
 
 def new_arrival(request):
+
     products = Product.objects.filter(display_type="N")
     cartItem,items,CartTotal =cartData(request)
     if request.method =="POST":
@@ -59,18 +61,20 @@ def new_arrival(request):
             if product.id == id:
                 display_product = product
                 break
-        context = {"product":display_product}
+        context = {"product":display_product,"cartItems": cartItem}
         return render(request,'home_page/product.html',context)
     context = {"items": items,"products": products,"cartItems": cartItem}
     return render(request,'home_page/new_arrival.html',context)
 
 def featured(request):
-    context = {}
-    return render(request,'home_page/featured.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/featured.html',context)
 
 def hot_deals(request):
-    context = {}
-    return render(request,'home_page/hot.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/hot.html',context)
 
 def search(request):
     try:
@@ -83,31 +87,37 @@ def search(request):
         return render(request,'home_page/search.html', {"results": results}) #results is a list of results to return
 
 def orders(request):
-    context = {}
-    return render(request,'home_page/orders.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/orders.html',context)
 
 @login_required(login_url="login")
 def wishlist(request):
-    context = {}
-    return render(request,'home_page/wishlist.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/wishlist.html',context)
 
 @login_required(login_url="login")
 def membership(request):
-    context = {}
-    return render(request,'home_page/membership.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/membership.html',context)
 
 def address(request):
-    context = {}
-    return render(request,'home_page/address.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/address.html',context)
 
 def payment(request):
-    context = {}
-    return render(request,'home_page/payment.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/payment.html',context)
 
 @login_required(login_url="login")
 def settings(request):
-    context = {}
-    return render(request,'home_page/settings.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/settings.html',context)
 
 def loginpage(request):
     if request.user.is_authenticated:
@@ -127,10 +137,12 @@ def loginpage(request):
     return render(request,'home_page/login.html')
 
 def logoutUser(request):
+
     logout(request)
     return redirect("login")
 
 def registerpage(request):
+
 
     if request.user.is_authenticated:# this basically checks if the user is logged in
         #you can put a message if you want
@@ -151,13 +163,17 @@ def registerpage(request):
     return render(request,'home_page/register.html',context)
 
 def privacy(request):
-    return render(request, 'home_page/privacy_policy.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request, 'home_page/privacy_policy.html',context)
 
 def forget(request):
+    cartItem, items, CartTotal = cartData(request)
     return render(request, 'home_page/forget_password.html')
 
 
 def updateItem(request):
+
 
     data = json.loads(request.body)
     productID = data['productID']
@@ -182,17 +198,21 @@ def updateItem(request):
     return JsonResponse('Item was added',safe=False)
 
 def terms(request):
-    context = {}
-    return render(request,'home_page/terms.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/terms.html',context)
 
 def FAQ(request):
-    context = {}
-    return render(request,'home_page/FAQ.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/FAQ.html',context)
 
 def about(request):
-    context = {}
-    return render(request,'home_page/about.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/about.html',context)
 
 def contact(request):
-    context = {}
-    return render(request,'home_page/contact.html')
+    cartItem, items, CartTotal = cartData(request)
+    context = {"cartItems": cartItem}
+    return render(request,'home_page/contact.html',context)
