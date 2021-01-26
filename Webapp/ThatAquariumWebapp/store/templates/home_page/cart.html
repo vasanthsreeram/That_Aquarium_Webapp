@@ -91,11 +91,17 @@
         <div class = "cart-region">
             {% if items|length != 0 %}
                 {% for item in items %}
-                    <img src='{{ item.product.imageURL }}'>
-                    <p>qty {{ item.quantity }}</p>
-                    <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart">increase qty</button>
-                    <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart">reduce qty</button>
-                    <p>total price : {{ item.get_total }}</p>
+                    <div class = "cart-item">
+                        <img src='{{ item.product.imageURL }}' class = "item-images">
+                        <div>
+                            <p class = "item-name">Item Name</p>
+                            <p class = "item-description">Item Description</p>
+                        </div>
+                        <p>qty {{ item.quantity }}</p>
+                        <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart">increase qty</button>
+                        <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart">reduce qty</button>
+                        <p>{{ item.get_total }}</p>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
