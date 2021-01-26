@@ -460,6 +460,7 @@ body {
 
 .remove-image {
     width: 16px;
+    margin-top: -2px;
 }
 
 .item-right-side-elements {
@@ -474,11 +475,11 @@ body {
     border: none;
     outline: none;
     font-size: 0.75rem;
-    width: 100px;
     height: 30px;
     transition: 0.2s ease;
     font-weight: 600;
     margin-top: 25px;
+    background-color: transparent;
 }
 
 .save-later {
@@ -488,6 +489,7 @@ body {
 } 
 
 .remove-from-cart {
+    width: 100px;
     color: red;
     border: 1px solid red;
     border-radius: 5px;

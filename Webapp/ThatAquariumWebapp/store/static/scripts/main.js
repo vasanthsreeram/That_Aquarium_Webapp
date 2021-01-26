@@ -94,10 +94,15 @@ $(document).ready(function() {
         "/search/": ".hover-underline-8",
         "/cart/": ".hover-underline-9",
     };
+    
     if (names[currentPage] != undefined) {
         $(names[currentPage]).addClass("hover-underline-current");
         $(names[currentPage]).parent().removeClass("navbar-text-item-normal");
         $(names[currentPage]).parent().addClass("navbar-text-item-current");
+    };
+
+    if ($(".cart-items-counter").html() == "0") {
+        $(".cart-items-counter").hide(0);
     };
 
 });
