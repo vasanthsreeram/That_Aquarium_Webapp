@@ -76,6 +76,10 @@
 
     </div>
 
+    <div class = "go-to-checkout-overlay">
+        Scroll down to Checkout
+    </div>
+
     <div class = "subheader mx-auto">
         <a href = "{% url 'cart' %}" class = "cart navbar-text-item-current navbar-text-item-current-orange">
             Cart & Checkout
@@ -99,7 +103,9 @@
                         </div>
                         <div class = "item-right-side-elements">
                             <div class = "cart-buttons">
-                                <button class = "save-later">Move to Wishlist</button>
+                                {% if request.user.is_authenticated %}
+                                    <button class = "save-later">Move to Wishlist</button>
+                                {% endif %}
                                 <button class = "btn update-cart remove-from-cart" data-action="delete" data-product={{ item.product.id }}>
                                     <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
                                     Remove
@@ -122,7 +128,7 @@
                 <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
             {% endif %}
         </div>
-        <div class = "summary-region">
+        <div class = "summary-region" id = "summary-region">
             <form id = "cart-form">
 
 

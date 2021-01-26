@@ -109,15 +109,19 @@ $(document).ready(function() {
     };
     
     function updateDeliveryCost() {
-        if ($("#delivery-1").is(":checked") && parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) <= 80.00) {
-            $(".order-summary-inner-text-row-2-right").html("S$5.00")
-            $("#delivery-1").siblings(".extra-costs").html("S$5.00")
-        } else if ($("#delivery-2").is(":checked") && parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) <= 80.00) {
+        if (parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) == 0.0) {
             $(".order-summary-inner-text-row-2-right").html("S$0.00")
-            $("#delivery-1").siblings(".extra-costs").html("S$5.00")
         } else {
-            $(".order-summary-inner-text-row-2-right").html("S$0.00")
-            $("#delivery-1").siblings(".extra-costs").html("FREE")
+            if ($("#delivery-1").is(":checked") && parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) <= 80.00) {
+                $(".order-summary-inner-text-row-2-right").html("S$5.00")
+                $("#delivery-1").siblings(".extra-costs").html("S$5.00")
+            } else if ($("#delivery-2").is(":checked") && parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) <= 80.00) {
+                $(".order-summary-inner-text-row-2-right").html("S$0.00")
+                $("#delivery-1").siblings(".extra-costs").html("S$5.00")
+            } else {
+                $(".order-summary-inner-text-row-2-right").html("S$0.00")
+                $("#delivery-1").siblings(".extra-costs").html("FREE")
+            };
         };
         updateTotalCost();
     };
@@ -452,11 +456,23 @@ $(document).ready(function() {
         };
     });
 
+    $(".go-to-checkout-overlay").click(function() {
+        $("html, body").animate({scrollTop: $(".summary-region").offset().top}, 400);
+    });
+
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (currentScrollPos > $(".summary-region").offset().top - window.innerHeight * 0.75) {
+          $(".go-to-checkout-overlay").stop().fadeOut(250);
+        } else {
+            $(".go-to-checkout-overlay").stop().fadeIn(250);
+        }
+    }
+
     backCollection();
-    $(".edit-payment-address, .add-card-overlay, .add-address-overlay, .add-billing-overlay").hide(0);
-    $(".add-stuff-overlay").fadeOut(0);
+    // $(".edit-payment-address, .add-card-overlay, .add-address-overlay, .add-billing-overlay, .add-stuff-overlay").hide(0); // Already in css but here for reference
     // if value of items is zero, delivery methods, addresses and payment won't be clickable
-    //$(".order-summary-inner-text-row-1-right").html("S$50.00")
+    //$(".order-summary-inner-text-row-1-right").html("S$50.00") // For testing for custom values (Does not affect final payment value)
     if (checkEmptyCart() == false) {
         updateDeliveryCost();
         calculateTax();
