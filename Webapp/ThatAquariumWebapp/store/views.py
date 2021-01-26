@@ -10,7 +10,7 @@ from .utils import *
 
 
 def home(request):
-    products = Product.objects.all()
+    products = Product.objects.filter(display_type="H")
     cartItem,items,CartTotal =cartData(request)
     if request.method =="POST":
         id = int(request.POST.get("view")[0])
@@ -50,8 +50,19 @@ def account(request):
     return render(request,'home_page/account.html')
 
 def new_arrival(request):
-    context = {}
-    return render(request,'home_page/new_arrival.html')
+    products = Product.objects.filter(display_type="N")
+    cartItem,items,CartTotal =cartData(request)
+    if request.method =="POST":
+        id = int(request.POST.get("view")[0])
+        display_product = None
+        for product in products:
+            if product.id == id:
+                display_product = product
+                break
+        context = {"product":display_product}
+        return render(request,'home_page/product.html',context)
+    context = {"items": items,"products": products,"cartItems": cartItem}
+    return render(request,'home_page/new_arrival.html',context)
 
 def featured(request):
     context = {}
