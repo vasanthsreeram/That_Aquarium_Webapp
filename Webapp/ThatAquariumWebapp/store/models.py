@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
+
+    display = [
+        ('H', 'Hot deals'),
+        ('F', 'Featured'),
+        ('N', 'New Arrivals'),
+        ('B', 'Blocked'), #hidden from every where but exists in the database
+        ('D', 'Database'),#this means it will be avaliable in the search but not in the other fields
+    ]
     product_name = models.CharField(max_length=150,default="product")
     product_type = models.CharField(max_length=100,default="accessory")
     product_class = models.CharField(max_length=100,default="class")
@@ -12,6 +20,8 @@ class Product(models.Model):
     image = models.ImageField(null=True,blank=True)
     quantity = models.IntegerField(default=0)
     description = models.TextField(default="Description")
+    display_type = models.CharField(max_length=1,choices=display,default='D')
+
 
     def __str__(self):
         return self.product_name
