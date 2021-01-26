@@ -27,135 +27,6 @@ body {
     margin-left: 0%!important;
 }
 
-@media (max-width: 552px) {
-
-    .navbar-collapsed-button {
-        margin-right: 400px!important;
-        margin-top: 75px;
-    }
-
-    .logo-a {
-        margin-left: calc(-47px + 50vw - 93.75px)!important;
-        /* margin-top: -60px!important; */
-        transform: scale(1)!important;
-    }
-
-    .account-back {
-        margin-top: 75px;
-    }
-
-    .account-back:hover {
-        margin-top: 290px!important;
-    }
-
-    .navbar-collapsed-button {
-        margin-top: 20px!important;
-    }
-
-    .account-back:hover {
-        margin-top: 75px!important;
-    }
-
-}
-
-@media (min-width: 553px) and (max-width: 991px) {
-    
-    .account-back:hover {
-        margin-top: 0px!important;
-    }
-    
-}
-
-
-@media (max-width: 991px) {
-
-    .navbar-collapsed-button {
-        margin-right: 200px;
-    }
-
-    .search-and-cart {
-        display: none!important;
-    }
-
-    #hot-deals, #featured, #new-arrivals {
-        text-align: center;
-        margin: 0px!important;
-    }
-
-    .account-back {
-        top: 15px;
-    }
-
-    .navbar-text-item-current, .navbar-text-item-normal {
-        display: inline-block;
-    }
-
-}
-
-@media (min-width: 992px) {
-
-    .search-text, .cart-text {
-        display: none;
-    }
-
-}
-
-@media (min-width: 992px) and (max-width: 1120px) {
-
-    #new-arrivals {
-        display: none;
-    }
-
-}
-
-@media (max-width: 1240px) {
-
-    #categories {
-        display: none;
-    }
-
-}
-
-@media (max-width: 1380px) {
-
-    .search-bar {
-        display: none
-    }
-
-    .submit-button {
-        margin-left: 0px!important;
-    }
-
-    .cart-image {
-        margin: 0vw 0px 0vw 20px!important;
-    }
-
-    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
-        margin: 0vw 0px 0vw 0vw;
-    }
-
-}
-
-@media (max-width: 1475px) {
-
-    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
-        margin: 0vw 10px 0vw 0vw;
-    }
-
-}
-
-@media (min-width: 1475px) and (max-width: 1625px) {
-
-    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
-        margin: 0vw 20px 0vw 0vw;
-    }
-
-    #hot-deals {
-        margin-left: 10px;
-    }
-
-}
-
 .navbar-collapsed-button, .navbar-collapsed-button:focus {
     border: none;
     outline: none;
@@ -241,6 +112,10 @@ body {
     margin: 12.5px 10px 0vw 40px;
     transition: 0.2s ease;
     animation: cart-image-hover-unhover 0.1s forwards;
+}
+
+.cart-items-counter:hover ~ .cart-image {
+    animation: cart-image-hover 0.1s forwards;
 }
 
 @keyframes cart-image-hover {
@@ -411,4 +286,155 @@ body {
 
 .account-text {
     width: 110px;
+}
+
+.cart-items-counter {
+    color: black;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 0px;
+    margin-left: 56px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 15;
+    position: absolute;
+}
+
+@media (max-width: 552px) {
+
+    .navbar-collapsed-button {
+        margin-right: 400px!important;
+        margin-top: 75px;
+    }
+
+    .logo-a {
+        margin-left: calc(-47px + 50vw - 93.75px)!important;
+        /* margin-top: -60px!important; */
+        transform: scale(1)!important;
+    }
+
+    .account-back {
+        margin-top: 75px;
+    }
+
+    .account-back:hover {
+        margin-top: 290px!important;
+    }
+
+    .navbar-collapsed-button {
+        margin-top: 20px!important;
+    }
+
+    .account-back:hover {
+        margin-top: 75px!important;
+    }
+
+}
+
+@media (min-width: 553px) and (max-width: 991px) {
+    
+    .account-back:hover {
+        margin-top: 0px!important;
+    }
+    
+}
+
+
+@media (max-width: 991px) {
+
+    .navbar-collapsed-button {
+        margin-right: 200px;
+    }
+
+    .search-and-cart {
+        display: none!important;
+    }
+
+    #hot-deals, #featured, #new-arrivals {
+        text-align: center;
+        margin: 0px!important;
+    }
+
+    .account-back {
+        top: 15px;
+    }
+
+    .navbar-text-item-current, .navbar-text-item-normal {
+        display: inline-block;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .search-text, .cart-text {
+        display: none;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1120px) {
+
+    #new-arrivals {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1240px) {
+
+    #categories {
+        display: none;
+    }
+
+}
+
+@media (max-width: 1380px) {
+
+    .search-bar {
+        display: none
+    }
+
+    .cart-items-counter {
+        margin-top: -12px;
+        margin-left: 32px;
+    }
+
+    .submit-button {
+        margin-left: 0px!important;
+    }
+
+    .cart-image {
+        margin: 0vw 0px 0vw 20px!important;
+    }
+
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
+        margin: 0vw 0px 0vw 0vw;
+    }
+
+}
+
+@media (max-width: 1475px) {
+
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
+        margin: 0vw 10px 0vw 0vw;
+    }
+
+}
+
+@media (min-width: 1475px) and (max-width: 1625px) {
+
+    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
+        margin: 0vw 20px 0vw 0vw;
+    }
+
+    #hot-deals {
+        margin-left: 10px;
+    }
+
 }

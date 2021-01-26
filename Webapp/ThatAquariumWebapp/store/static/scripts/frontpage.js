@@ -21,13 +21,18 @@ function addCookieItem(productID, action) {
     if (action == 'add') {
         if (cart[productID] == undefined) {
             cart[productID] = {'quantity': 1}
+            if ($(".cart-items-counter").html() == "0") {
+                $(".cart-items-counter").show(0);
+            };
+            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
         } else {
             cart[productID]['quantity'] += 1
-
+            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
         }
     }
     if (action == "remove") {
         cart[productID]['quantity'] -= 1
+        $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
         if (cart[productID]['quantity'] <= 0) {
             delete cart[productID]
         }
