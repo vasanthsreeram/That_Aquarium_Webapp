@@ -1,6 +1,7 @@
 var currentCartPos = 0;
 var tempData = [];
 var overlayPos = 0;
+
 $(document).ready(function() {
     
     function hideAll() {
@@ -408,6 +409,43 @@ $(document).ready(function() {
             tempData = [];
             $(".edit-payment-address").html("Edit");
         }; 
+    });
+
+    $(".change-quantity-add").click(function() {
+        $(".order-summary-inner-text-row-1-right").html("S$" + String(parseFloat(parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) + parseFloat($(this).parent().siblings(".item-total").html().split("S$")[1]) * 1 / parseInt($(this).parent().children(".item-quantity").html())).toFixed(2)));
+        $(this).parent().siblings(".item-total").html("S$" + String(parseFloat(parseFloat($(this).parent().siblings(".item-total").html().split("S$")[1]) * (parseInt($(this).parent().children(".item-quantity").html()) + 1) / parseInt($(this).parent().children(".item-quantity").html())).toFixed(2)));
+        $(this).parent().children(".item-quantity").html(parseInt($(this).parent().children(".item-quantity").html()) + 1);
+        updateDeliveryCost();
+        calculateTax();
+        updateTotalCost();
+        if (checkEmptyCart() == true) {
+            hideAll();
+        };
+    });
+
+    $(".change-quantity-minus").click(function() {
+        if ($(this).parent().children(".item-quantity").html() > 1) {            
+            $(".order-summary-inner-text-row-1-right").html("S$" + String(parseFloat(parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) - parseFloat($(this).parent().siblings(".item-total").html().split("S$")[1]) * 1 / parseInt($(this).parent().children(".item-quantity").html())).toFixed(2)));
+            $(this).parent().siblings(".item-total").html("S$" + String(parseFloat(parseFloat($(this).parent().siblings(".item-total").html().split("S$")[1]) * (parseInt($(this).parent().children(".item-quantity").html()) - 1) / parseInt($(this).parent().children(".item-quantity").html())).toFixed(2)));
+            $(this).parent().children(".item-quantity").html(parseInt($(this).parent().children(".item-quantity").html()) - 1);
+            updateDeliveryCost();
+            calculateTax();
+            updateTotalCost();
+            if (checkEmptyCart() == true) {
+                hideAll();
+            };
+        };
+    });
+
+    $(".remove-from-cart").click(function() {
+        $(".order-summary-inner-text-row-1-right").html("S$" + String(parseFloat(parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) - parseFloat($(this).parent().siblings(".item-total").html().split("S$")[1])).toFixed(2)));
+        $(this).parent().parent().parent().remove();
+        updateDeliveryCost();
+        calculateTax();
+        updateTotalCost();
+        if (checkEmptyCart() == true) {
+            hideAll();
+        };
     });
 
     backCollection();

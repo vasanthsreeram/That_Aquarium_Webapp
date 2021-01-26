@@ -91,11 +91,32 @@
         <div class = "cart-region">
             {% if items|length != 0 %}
                 {% for item in items %}
-                    <img src='{{ item.product.imageURL }}'>
-                    <p>qty {{ item.quantity }}</p>
-                    <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart">increase qty</button>
-                    <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart">reduce qty</button>
-                    <p>total price : {{ item.get_total }}</p>
+                    <div class = "cart-item">
+                        <img src='{{ item.product.imageURL }}' class = "item-images">
+                        <div class = "item-text">
+                            <p class = "item-name">Item Name</p>
+                            <p class = "item-description">Item Description</p>
+                        </div>
+                        <div class = "item-right-side-elements">
+                            <div class = "cart-buttons">
+                                <button class = "save-later">Move to Wishlist</button>
+                                <button class = "btn update-cart remove-from-cart" data-action="delete" data-product={{ item.product.id }}>
+                                    <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
+                                    Remove
+                                </button>
+                            </div>
+                            <div class = "item-right-side-bottom-elements">
+                                <div class = "quantities">
+                                    <p class = "quantity-text">Quantity:</p>
+                                    <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart change-quantity change-quantity-minus">-</button>
+                                    <p class = "item-quantity">{{ item.quantity }}</p>
+                                    <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart change-quantity change-quantity-add">+</button>
+                                </div>
+                                <div class = "divider"></div>
+                                <p class = "item-total">S${{ item.get_total }}</p>
+                            </div>
+                        </div>
+                    </div>
                 {% endfor %}
             {% else %}
                 <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
