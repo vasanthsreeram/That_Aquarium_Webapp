@@ -149,6 +149,7 @@ $(document).ready(function() {
                 currentCartPos = 0;
             }, 301);
             hideAll();
+            $(".order-summary-inner-text-row-1-right").html("S$0.00");
             return true;
         } else {
             backCollection();
