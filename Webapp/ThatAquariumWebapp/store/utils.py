@@ -34,11 +34,14 @@ def cartData(request):
         order,created = Order.objects.get_or_create(customer=customer)
         items = order.orderitem_set.all()
         cartItem = order.get_cart_items
+        CartTotal = 0
+        for item in items:
+            CartTotal += item.quantity
     else:
         cartItem,items = CookieCart(request)
-    CartTotal = 0
-    for item in items:
-        CartTotal+=item["get_total"]
+        CartTotal = 0
+        for item in items:
+            CartTotal+=item["get_total"]
 
     return [cartItem,items,CartTotal]
 
