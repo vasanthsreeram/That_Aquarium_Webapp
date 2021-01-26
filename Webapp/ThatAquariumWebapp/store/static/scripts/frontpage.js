@@ -11,7 +11,6 @@ for (var i = 0; i < updatebtns.length; i++) {
         if (user === 'AnonymousUser') {
             addCookieItem(productID,action)
         } else {
-            console.log("yep logged in ")
             updateUserOrder(productID, action)
         }
     })
@@ -30,12 +29,12 @@ function addCookieItem(productID, action) {
     if (action == "remove") {
         cart[productID]['quantity'] -= 1
         if (cart[productID]['quantity'] <= 0) {
-            console.log("removing the item")
             delete cart[productID]
         }
-
     }
-    console.log(cart)
+    if (action == "delete") {
+        delete cart[productID];
+    };
     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
 }
 
@@ -55,7 +54,6 @@ function updateUserOrder(productID,action) {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             location.reload()
         })
 }

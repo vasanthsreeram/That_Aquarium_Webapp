@@ -435,12 +435,12 @@ body {
     width: 240px;
     object-fit: cover;
     display: flex;
-    margin: auto 30px auto 30px;
+    margin: 30px 30px 0px 30px;
     border-radius: 10px;
 }
 
 .cart-item {
-    height: 200px;
+    min-height: 200px;
     width: 57.5vw;
     box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
     border-radius: 20px;
@@ -455,12 +455,130 @@ body {
     font-size: 1.25rem;
     margin-top: 30px;
     margin-bottom: 10px;
-    width: 28.75vw;
+    padding-right: 30px;
+}
+
+.remove-image {
+    width: 16px;
+}
+
+.item-right-side-elements {
+    margin-left: auto;
+    width: 250px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.save-later, .remove-from-cart, .save-later:focus, .remove-from-cart:focus {
+    border: none;
+    outline: none;
+    font-size: 0.75rem;
+    width: 100px;
+    height: 30px;
+    transition: 0.2s ease;
+    font-weight: 600;
+    margin-top: 25px;
+}
+
+.save-later {
+    color: rgb(100, 100, 100);
+    margin-left: auto;
+    width: 125px;
+} 
+
+.remove-from-cart {
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-right: 35px;
+}
+
+.remove-from-cart:hover {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+}
+
+.remove-from-cart:hover > .remove-image {
+    filter: grayscale(1) invert(1);
+}
+
+.save-later:hover {
+    color: black;
+}
+
+.cart-buttons {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
 }
 
 .item-description {
     font-weight: 400;
     font-size: 0.8125rem;
+    padding-right: 30px;
+}
+
+.quantities {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.125rem;
+    margin-top: 40px;
+}
+
+.change-quantity {
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.4);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    padding: 0;
+    transition: 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.change-quantity:hover {
+    border: 1px solid black;
+}
+
+.quantity-text {
+    margin-right: 20px;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.change-quantity-add {
+    margin-right: 35px;
+}
+
+.item-quantity {
+    margin: 0px 20px 0px 20px;
+}
+
+.divider {
+    width: calc(100% - 25px);
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.item-total {
+    margin: 10px 35px 0px auto;
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.item-text {
+    overflow: hidden;
+}
+
+.item-right-side-bottom-elements {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 600px) {
@@ -471,13 +589,79 @@ body {
 
 }
 
+@media (max-width: 700px) {
+
+    .cart-item {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .item-images {
+        margin-top: 30px;
+    }
+
+    .item-text {
+        margin-left: 30px;
+        padding-right: 30px;
+    }
+
+    .item-right-side-elements {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .divider {
+        margin-left: 25px;
+        width: calc(100% - 50px);
+    }
+
+    .item-description {
+        overflow: auto;
+        height: auto;
+    }
+
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+
+    .cart-item {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .item-images {
+        margin-top: 30px;
+    }
+
+    .item-text {
+        margin-left: 300px;
+        margin-top: -170px;
+    }
+
+    .item-right-side-elements {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .divider {
+        margin-left: 25px;
+        width: calc(100% - 50px);
+    }
+
+    .item-description {
+        overflow: auto;
+        height: auto;
+    }
+
+}
+
 @media (max-width: 1250px) {
 
     .cart-body {
         flex-direction: column;
     }
 
-    .summary-region {
+    .summary-region, .cart-item {
         width: 85vw;
     }
 
