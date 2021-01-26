@@ -1,12 +1,11 @@
 //I am gonna add a js for the add to cart function you can modify it if it suits you btr just make sure everything works in the end
 var updatebtns = document.getElementsByClassName('update-cart')
 
-
 for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
-
+        console.log(user)
 
         if (user === 'AnonymousUser') {
             addCookieItem(productID,action)
@@ -45,7 +44,9 @@ function addCookieItem(productID, action) {
 
 function updateUserOrder(productID,action) {
     console.log(csrftoken)
-    var url = 'update_item/'
+    console.log("productID",productID)
+    console.log("action", action)
+    var url = '/update_item/'
     fetch(url, { //this is a way to send data as a json to another link using an api
         method: 'POST',
         headers: {

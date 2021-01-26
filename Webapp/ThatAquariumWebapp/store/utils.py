@@ -36,7 +36,7 @@ def cartData(request):
         cartItem = order.get_cart_items
         CartTotal = 0
         for item in items:
-            CartTotal += item.quantity
+            CartTotal += item.get_total
     else:
         cartItem,items = CookieCart(request)
         CartTotal = 0

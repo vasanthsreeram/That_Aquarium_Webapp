@@ -173,8 +173,7 @@ def forget(request):
 
 
 def updateItem(request):
-
-
+    print("is this working?")
     data = json.loads(request.body)
     productID = data['productID']
     action = data['action']
@@ -190,6 +189,8 @@ def updateItem(request):
         orderItem.quantity +=1
     elif action == 'remove':
         orderItem.quantity -=1
+    elif action == "delete":
+        orderItem.quantity = 0
     orderItem.save()
 
     if orderItem.quantity <= 0:
