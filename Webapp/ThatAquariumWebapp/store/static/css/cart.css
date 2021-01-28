@@ -696,7 +696,7 @@ body {
         margin: 0px 0px 0px 20px;
     }
 
-    .add-card-overlay, .add-address-overlay, .add-billing-overlay {
+    .add-card-overlay, .add-address-overlay, .add-billing-overlay, .new-address-overlay, .edit-address-overlay {
         width: 75vw;
     }
 
@@ -728,7 +728,7 @@ body {
         margin: 25px auto 25px auto;
     }
 
-    .add-address-overlay, .add-billing-overlay {
+    .add-address-overlay, .add-billing-overlay, .new-address-overlay, .edit-address-overlay {
         height: 600px;
     }
 
