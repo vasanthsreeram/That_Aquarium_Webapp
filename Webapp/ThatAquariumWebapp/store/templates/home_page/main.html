@@ -135,7 +135,7 @@
                     {% if not request.user.is_authenticated %}
                         <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
                     {% else %}
-                        <a class = "account-options-text account-options-text-last" href="{% url 'logout'%}">Log out</a>
+                        <a class = "account-options-text account-options-text-last" href="{% url 'logout'%}">Logout</a>
                     {% endif %}
                 </div>
             </div>

@@ -196,7 +196,8 @@ def updateItem(request):
         if action == 'add':
             orderItem.quantity +=1
         elif action == 'remove':
-            orderItem.quantity -=1
+            if orderItem.quantity > 1:
+                orderItem.quantity -=1
         elif action == "delete":
             orderItem.quantity = 0
         orderItem.save()
@@ -213,7 +214,8 @@ def updateItem(request):
         if action == 'add':
             orderItem.quantity += 1
         elif action == 'remove':
-            orderItem.quantity -= 1
+            if orderItem.quantity > 1:
+                orderItem.quantity -= 1
         elif action == "delete":
             orderItem.quantity = 0
         orderItem.save()

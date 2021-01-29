@@ -606,6 +606,11 @@ body {
     display: none;
 }
 
+.no-items {
+    text-align: center;
+    margin-top: 40px;
+}
+
 @media (max-width: 600px) {
 
     .subheader {
