@@ -48,11 +48,11 @@ $(document).ready(function() {
 
     $(".new-address-final").click(function() {
         // all the necessary details are stored here
-        var name = $(".full-name-new").val();
-        var addr1 = $(".address-line-1-new").val();
-        var addr2 = $(".address-line-2-new").val();
-        var post = $(".post-code-new").val();
-        var phone = $(".phone-number-new").val();
+        var name = $("#full-name-new").val();
+        var addr1 = $("#address-line-1-new").val();
+        var addr2 = $("#address-line-2-new").val();
+        var post = $("#post-code-new").val();
+        var phone = $("#phone-number-new").val();
         var action = "add"
 
         console.log(name,addr1,addr2,post,phone,action)
@@ -66,11 +66,11 @@ $(document).ready(function() {
 
     $(".save-address-final").click(function() {
         // all the necessary details are stored here
-        var name = $(".full-name").val();
-        var addr1 = $(".address-line-1").val();
-        var addr2 = $(".address-line-2").val();
-        var post = $(".post-code").val();
-        var phone = $(".phone-number").val();
+        var name = $("#full-name").val();
+        var addr1 = $("#address-line-1").val();
+        var addr2 = $("#address-line-2").val();
+        var post = $("#post-code").val();
+        var phone = $("#phone-number").val();
         var action = "add"
         console.log(name,addr1,addr2,post,phone,action)
         updateAddress(name,addr1,addr2,post,phone,action)
