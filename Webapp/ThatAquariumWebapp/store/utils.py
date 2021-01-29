@@ -45,3 +45,18 @@ def cartData(request):
 
     return [cartItem,items,CartTotal]
 
+def WishlistData(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        wishlist,created = Wishlist.objects.get_or_create(customer=customer)
+        items = wishlist.wishlistitem_set.all()
+
+        order, created = Order.objects.get_or_create(customer=customer)
+
+
+        cartItem = order.get_cart_items
+        CartTotal = 0
+        for item in items:
+            CartTotal += item.get_total
+
+    return [cartItem, items, CartTotal]

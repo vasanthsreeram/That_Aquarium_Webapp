@@ -64,19 +64,19 @@ class Wishlist(models.Model):
 
     @property
     def get_cart_total(self):
-        orderitem = self.orderitem_set.all()
+        orderitem = self.wishlistitem_set.all()
         total = sum([item.get_total for item in orderitem])
         return total
 
     @property
     def get_cart_items(self):
-        orderitem = self.orderitem_set.all()
+        orderitem = self.wishlistitem_set.all()
         total = sum([item.quantity for item in orderitem])
         return total
 
 class WishlistItem(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,blank=True)
-    order = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True,blank=True)
+    order = models.ForeignKey(Wishlist,on_delete=models.SET_NULL,null=True,blank=True)
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
