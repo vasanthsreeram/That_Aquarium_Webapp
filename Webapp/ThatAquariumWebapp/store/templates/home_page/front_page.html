@@ -11,7 +11,8 @@
             <h6>quantity :{{ product.quantity }}</h6>
             <hr>
 
-            <button  data-product={{ product.id }} data-action="add" class="btn update-cart">Add to Cart</button>
+            <button  data-product={{ product.id }} data-action="addc" class="btn update-cart">Add to Cart</button>
+            <button  data-product={{ product.id }} data-action="addw" class="btn update-cart">Add to Wishlist</button>
             <form action="" method="POST">
                 {% csrf_token %}
                 <button name="view" value="{{ product.id }}" >View</button>

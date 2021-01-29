@@ -106,7 +106,7 @@
                                 {% if request.user.is_authenticated %}
                                     <button class = "save-later">Move to Wishlist</button>
                                 {% endif %}
-                                <button class = "btn update-cart remove-from-cart" data-action="delete" data-product={{ item.product.id }}>
+                                <button class = "btn update-cart remove-from-cart" data-action="deletec" data-product={{ item.product.id }}>
                                     <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
                                     Remove
                                 </button>
@@ -114,9 +114,9 @@
                             <div class = "item-right-side-bottom-elements">
                                 <div class = "quantities">
                                     <p class = "quantity-text">Quantity:</p>
-                                    <button  data-product={{ item.product.id }} data-action="remove" class="btn update-cart change-quantity change-quantity-minus">-</button>
+                                    <button  data-product={{ item.product.id }} data-action="removec" class="btn update-cart change-quantity change-quantity-minus">-</button>
                                     <p class = "item-quantity">{{ item.quantity }}</p>
-                                    <button  data-product={{ item.product.id }} data-action="add" class="btn update-cart change-quantity change-quantity-add">+</button>
+                                    <button  data-product={{ item.product.id }} data-action="addc" class="btn update-cart change-quantity change-quantity-add">+</button>
                                 </div>
                                 <div class = "divider"></div>
                                 <p class = "item-total">S${{ item.get_total }}</p>
