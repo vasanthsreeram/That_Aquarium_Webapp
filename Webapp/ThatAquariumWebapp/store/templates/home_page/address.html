@@ -2,5 +2,94 @@
 {% load static %}
 
 {% block content %}
-    <h1>Terms and conditions will be coded here</h1>
+    <link href = "{% static 'css/address.css' %}" type = "text/css" rel="stylesheet">
+    <link href = "{% static 'css/cart.css' %}" type = "text/css" rel="stylesheet">
+    <script src = "{% static 'scripts/address.js' %}"></script>
+
+    <div class = "content-overlay">
+
+        <div class = "new-address-overlay">
+            <form>
+                <p class = "overlay-header-delivery">New Address</p>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Full Name" class = "overlay-inputs address-full-name overlay-inputs-smaller-gap" name = "full-name-new" id = "full-name-new">
+                </div>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs address-phone-number overlay-inputs-smaller-gap" name = "phone-number-new" id = "phone-number-new">
+                </div>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs address-address-line-1 overlay-inputs-smaller-gap" name = "address-line-1-new" id = "address-line-1-new">
+                </div>
+                <div class = "overlay-input-row-2 overlay-input-row">
+                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs address-address-line-2 overlay-inputs-smaller-gap" name = "address-line-2-new" id = "address-line-2-new">
+                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs address-post-code overlay-inputs-smaller-gap" name = "post-code-new" id = "post-code-new">
+                </div>
+                <div class = "overlay-buttons">
+                    <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-address new-address-final">New Address</div> <!-- Purposely not a button so it's easier to deal with -->
+                </div>
+            </form>
+        </div>
+
+        <div class = "edit-address-overlay">
+            <form>
+                <p class = "overlay-header-delivery">Edit Address</p>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Full Name" class = "overlay-inputs address-full-name overlay-inputs-smaller-gap" name = "full-name" id = "full-name">
+                </div>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs address-phone-number overlay-inputs-smaller-gap" name = "phone-number" id = "phone-number">
+                </div>
+                <div class = "overlay-input-row-1 overlay-input-row">
+                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs address-address-line-1 overlay-inputs-smaller-gap" name = "address-line-1" id = "address-line-1">
+                </div>
+                <div class = "overlay-input-row-2 overlay-input-row">
+                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs address-address-line-2 overlay-inputs-smaller-gap" name = "address-line-2" id = "address-line-2">
+                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs address-post-code overlay-inputs-smaller-gap" name = "post-code" id = "post-code">
+                </div>
+                <div class = "overlay-buttons">
+                    <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-address save-address-final">Save</div> <!-- Purposely not a button so it's easier to deal with -->
+                </div>
+            </form>
+        </div>
+
+        <div class = "content-overlay-clickable"></div>
+
+    </div>
+
+    <h6 class = "address-header">
+        Address Book
+        <div class = "address-header-underline"></div>
+    </h6>
+    <div class = "addresses-list">
+        {% for i in "12" %}
+            <div class = "address-item">
+                <div class = "details">
+                    <div class = "details-specific details-specific-1">
+                        <p class = "details-text details-name"><b>Full Name:</b></p>
+                        <p class = "details-text details-name-value">{{ "John Tan" }}</p>
+                    </div>
+                    <div class = "details-specific details-specific-2">
+                        <p class = "details-text details-address"><b>Address:</b></p>
+                        <p class = "details-text details-address-value-1">{{ "Blk 123 Ang Mo Kio Avenue 1" }},</p>
+                        <p class = "details-text details-address-value-2">{{ "#01-01" }},</p>
+                        <p class = "details-text details-address-value-3">{{ "654123" }}</p>
+                    </div>
+                    <div class = "details-specific details-specific-3">
+                        <p class = "details-text details-number"><b>Phone Number:</b></p>
+                        <p class = "details-text details-number-value">{{ "8765 4321" }}</p>
+                    </div>
+                </div>
+                <div class = "edit">Edit</div>
+                <div class = "remove">Remove</div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class = "new-address">
+        <div> <!-- This div is for vertical center alignment -->
+            <img src = "{% static 'images/Shared/add-24px.svg' %}">
+            Add New Address
+        </div>
+    </div>
 {% endblock content %}
