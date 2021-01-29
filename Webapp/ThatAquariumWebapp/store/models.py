@@ -106,12 +106,12 @@ class Orderitem(models.Model):
 
 
 class Address(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    fullname = models.CharField(blank=True,null=True,max_length=150)
-    phone = models.IntegerField(blank=True,null=True,)
-    address1 = models.CharField(max_length=200,blank=True,null=True)
-    address2 = models.CharField(max_length=200, blank=True, null=True)
-    postcode = models.IntegerField(blank=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL,null=True)
+    fullname = models.CharField(max_length=150,null=True)
+    phone = models.IntegerField(null=True)
+    address1 = models.CharField(max_length=200,null=True)
+    address2 = models.CharField(max_length=200,null=True)
+    postcode = models.IntegerField(null=True)
 
     def __str__(self):
         return self.id.__str__()
