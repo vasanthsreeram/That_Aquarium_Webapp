@@ -93,13 +93,26 @@ def search(request):
     else:
         results = ["lol"]
         categories = [
-            ["Accessories", 1, []], 
-            ["Aeration", 2, 
-                [
-                    ["Aeration Accessories", 1], ["Air Pump", 2], ["Air Stone", 3]
-                ]
+            ["Accessories", 
+                []
+            ], 
+            ["Aeration", 
+                ["Aeration Accessories", "Air Pump", "Air Stone"]
+            ],
+            ["Cleaning", 
+                ["Battery Cleaner Device", "Cleaning Set", "Dropper/Siphon", "Hand Pump/Gravel Cleaner" "Hose Brush", "Magnet Cleaner", "Others-Cleaning", "Tank Scraper", "Tank Brush"]
             ]
-            ] # list of list with first element as category item, second as a counter because django cannot do range and third as subcategories with each list having the second element as counter
+            ] 
+            # list of list with first element as category item, second as a counter because django cannot do range and third as subcategories with each list having the second element as counter
+            # the counter is added in the following for loop
+        for x, i in enumerate(categories):
+            i.append(x + 1)
+            if len(i[1]) != 0:
+                for y, j in enumerate(i[1]):
+                    categories[x][1][y] = [j, y + 1]
+                    print(j)
+        print(categories)
+
         print(query)
         if len(results) == 0:
             results = ["No Search Results Found"]

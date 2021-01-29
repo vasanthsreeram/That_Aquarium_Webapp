@@ -18,42 +18,44 @@
                                 <p class = "label-actual-text label-actual-text-2"></p>
                             </div>
                         </label>
-                        <input type = "checkbox" id = "categories-filter" name = "categories-filter-0" class = "categories-filter categories-filter-0" checked="checked">
+                        <input type = "checkbox" id = "categories-filter-0" name = "categories-filter" class = "categories-filter categories-filter-0" checked="checked">
                     </div>
                 </div>
                 <div class = "all-categories-box">
                     {% for category in categories %}
-                        {% if category.2|length != 0 %}
+                        {% if category.1|length != 0 %}
                             <div class = "specific-categories">
                                 <div class = "specific-main-categories">
                                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "expandable">
-                                    <label for = "categories-filter-{{ category.1 }}" class = "categories-filter-label">
-                                        <div class = "label-text label-text-{{ category.1 }}">
+                                    <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
+                                        <div class = "label-text label-text-{{ category.2 }}">
                                             <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
                                         </div>
                                     </label>
-                                    <input type = "checkbox" id = "categories-filter" name = "categories-filter-{{ category.1 }}" class = "categories-filter categories-filter-{{category.1}}" checked="checked">
+                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
                                 </div>
-                                {% for subcategory in category.2 %}
-                                    <div class = "specific-sub-categories">
-                                        <label for = "categories-filter-{{category.1}}-{{subcategory.1}}" class = "categories-filter-label">
-                                            <div class = "label-text label-text-{{ category.1 }}">
-                                                <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
-                                            </div>
-                                        </label>
-                                        <input type = "checkbox" id = "categories-filter" name = "categories-filter-{{category.1}}-{{subcategory.1}}" class = "categories-filter sub-categories-filter categories-filter-{{category.1}}-{{subcategory.1}}" checked="checked">
+                                {% for subcategory in category.1 %}
+                                    <div class="specific-sub-categories-for-hiding">
+                                        <div class = "specific-sub-categories">
+                                            <label for = "categories-filter-{{category.2}}-{{subcategory.1}}" class = "categories-filter-label">
+                                                <div class = "label-text label-text-{{ category.2 }}">
+                                                    <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
+                                                </div>
+                                            </label>
+                                            <input type = "checkbox" id = "categories-filter-{{category.2}}-{{subcategory.2}}" name = "categories-filter" class = "categories-filter sub-categories-filter categories-filter-{{category.2}}-{{subcategory.2}}" checked="checked">
+                                        </div>
                                     </div>
                                 {% endfor %}
                             </div>
                         {% else %}
                             <div class = "specific-categories">
                                 <div class = "specific-main-categories">
-                                    <label for = "categories-filter" class = "categories-filter-label">
-                                        <div class = "label-text label-text-{{ category.1 }}">
+                                    <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
+                                        <div class = "label-text label-text-{{ category.2 }}">
                                             <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
                                         </div>
                                     </label>
-                                    <input type = "checkbox" id = "categories-filter" name = "categories-filter" class = "categories-filter categories-filter-{{category.1}}" checked="checked">
+                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
                                 </div>
                             </div>
                         {% endif %}
