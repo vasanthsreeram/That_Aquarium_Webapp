@@ -29,9 +29,7 @@
                         </div>
                         <div class = "item-right-side-elements">
                             <div class = "cart-buttons">
-                                {% if request.user.is_authenticated %}
-                                    <button class = "save-later">Add to Cart</button>
-                                {% endif %}
+                                <button class = "save-later" data-action="removewaddc" data-product={{ item.product.id }}>Add to Cart</button>
                                 <button class = "btn update-cart remove-from-cart" data-action="deletew" data-product={{ item.product.id }}>
                                     <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
                                     Remove

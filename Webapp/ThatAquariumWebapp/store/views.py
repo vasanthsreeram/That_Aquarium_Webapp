@@ -182,43 +182,52 @@ def updateItem(request):
     data = json.loads(request.body)
     productID = data['productID']
     action = data['action']
-    loc = action[-1]
-    action = action[0:-1]
-    #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
-    if loc=="c":
-        customer= request.user
-        product = Product.objects.get(id=productID)
-        order,created = Order.objects.get_or_create(customer=customer,)
+    if action == "removecaddw":
+        #remove from cart, add to wishlist
+        pass
+    elif action == "removewaddc":
+        #remove from wishlist, add to cart
+        pass
+    else:
+        loc = action[-1]
+        action = action[0:-1]
+        #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
+        if loc=="c":
+            customer= request.user
+            product = Product.objects.get(id=productID)
+            order,created = Order.objects.get_or_create(customer=customer,)
 
-        orderItem,created = Orderitem.objects.get_or_create(order=order,product=product)
+            orderItem,created = Orderitem.objects.get_or_create(order=order,product=product)
 
-        if action == 'add':
-            orderItem.quantity +=1
-        elif action == 'remove':
-            orderItem.quantity -=1
-        elif action == "delete":
-            orderItem.quantity = 0
-        orderItem.save()
+            if action == 'add':
+                orderItem.quantity +=1
+            elif action == 'remove':
+                if orderItem.quantity > 1:
+                    orderItem.quantity -=1
+            elif action == "delete":
+                orderItem.quantity = 0
+            orderItem.save()
 
-        if orderItem.quantity <= 0:
-            orderItem.delete()
-    elif loc == "w":
-        customer = request.user
-        product = Product.objects.get(id=productID)
-        order, created = Wishlist.objects.get_or_create(customer=customer)
+            if orderItem.quantity <= 0:
+                orderItem.delete()
+        elif loc == "w":
+            customer = request.user
+            product = Product.objects.get(id=productID)
+            order, created = Wishlist.objects.get_or_create(customer=customer)
 
-        orderItem, created = WishlistItem.objects.get_or_create(order=order, product=product)
+            orderItem, created = WishlistItem.objects.get_or_create(order=order, product=product)
 
-        if action == 'add':
-            orderItem.quantity += 1
-        elif action == 'remove':
-            orderItem.quantity -= 1
-        elif action == "delete":
-            orderItem.quantity = 0
-        orderItem.save()
+            if action == 'add':
+                orderItem.quantity += 1
+            elif action == 'remove':
+                if orderItem.quantity > 1:
+                    orderItem.quantity -= 1
+            elif action == "delete":
+                orderItem.quantity = 0
+            orderItem.save()
 
-        if orderItem.quantity <= 0:
-            orderItem.delete()
+            if orderItem.quantity <= 0:
+                orderItem.delete()
 
     return JsonResponse('Item was added',safe=False)
 

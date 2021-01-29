@@ -12,7 +12,7 @@ $(document).ready(function() {
         };
     });
 
-    $(".remove-from-cart").click(function() {
+    $(".remove-from-cart, .save-later").click(function() {
         $(this).parent().parent().parent().remove();
     });
 
