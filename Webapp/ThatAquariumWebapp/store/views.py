@@ -214,7 +214,7 @@ def updateAddress(request):
         addr.delete()
         return JsonResponse('Address was removed', safe=False)
     elif action == "edit":
-        id = data["addr_id"]
+        id = data["id"]
         name = data["name"]
         phone = data["phone"]
         address1 = data["address1"]

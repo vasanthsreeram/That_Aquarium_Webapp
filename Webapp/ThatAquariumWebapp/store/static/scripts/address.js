@@ -143,7 +143,7 @@ function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        "addr_id": addr_id,
+                        "id": addr_id,
                         "name": name,
                         "phone": phone,
                         "address1": addr1,
