@@ -2,6 +2,75 @@
 {% load static %}
 
 {% block content %}
-    <h1>Search will be coded here</h1>
+
+    <link href = "{% static 'css/search.css' %}" rel = "stylesheet" type = "text/css">
+    <script src = "{% static 'scripts/search.js' %}"></script>
+
+    <div class = "categories-options">
+        <form>
+            <p class = "categories-header">Search Filter</p>
+            <div>
+                <div class = "specific-categories specific-categories-0">
+                    <div class = "specific-main-categories">
+                        <label for = "categories-filter-0" class = "categories-filter-label">
+                            <div class = "label-text label-text-0">
+                                <p class = "label-actual-text label-actual-text-1">All Categories</p>
+                                <p class = "label-actual-text label-actual-text-2"></p>
+                            </div>
+                        </label>
+                        <input type = "checkbox" id = "categories-filter" name = "categories-filter-0" class = "categories-filter categories-filter-0" checked="checked">
+                    </div>
+                </div>
+                <div class = "all-categories-box">
+                    {% for category in categories %}
+                        {% if category.2|length != 0 %}
+                            <div class = "specific-categories">
+                                <div class = "specific-main-categories">
+                                    <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "expandable">
+                                    <label for = "categories-filter-{{ category.1 }}" class = "categories-filter-label">
+                                        <div class = "label-text label-text-{{ category.1 }}">
+                                            <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
+                                        </div>
+                                    </label>
+                                    <input type = "checkbox" id = "categories-filter" name = "categories-filter-{{ category.1 }}" class = "categories-filter categories-filter-{{category.1}}" checked="checked">
+                                </div>
+                                {% for subcategory in category.2 %}
+                                    <div class = "specific-sub-categories">
+                                        <label for = "categories-filter-{{category.1}}-{{subcategory.1}}" class = "categories-filter-label">
+                                            <div class = "label-text label-text-{{ category.1 }}">
+                                                <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
+                                            </div>
+                                        </label>
+                                        <input type = "checkbox" id = "categories-filter" name = "categories-filter-{{category.1}}-{{subcategory.1}}" class = "categories-filter sub-categories-filter categories-filter-{{category.1}}-{{subcategory.1}}" checked="checked">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class = "specific-categories">
+                                <div class = "specific-main-categories">
+                                    <label for = "categories-filter" class = "categories-filter-label">
+                                        <div class = "label-text label-text-{{ category.1 }}">
+                                            <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
+                                        </div>
+                                    </label>
+                                    <input type = "checkbox" id = "categories-filter" name = "categories-filter" class = "categories-filter categories-filter-{{category.1}}" checked="checked">
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if results|length == 0 %}
+        {% for result in results %}
+            {% if result == "No Search Results Found" %}
+
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     {{ results }}
+
 {% endblock content %}

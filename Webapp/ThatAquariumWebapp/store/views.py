@@ -92,8 +92,18 @@ def search(request):
         return render(request,'home_page/search.html', {"results": []})
     else:
         results = ["lol"]
+        categories = [
+            ["Accessories", 1, []], 
+            ["Aeration", 2, 
+                [
+                    ["Aeration Accessories", 1], ["Air Pump", 2], ["Air Stone", 3]
+                ]
+            ]
+            ] # list of list with first element as category item, second as a counter because django cannot do range and third as subcategories with each list having the second element as counter
         print(query)
-        return render(request,'home_page/search.html', {"results": results}) #results is a list of results to return
+        if len(results) == 0:
+            results = ["No Search Results Found"]
+        return render(request,'home_page/search.html', {"results": results, "categories": categories}) #results is a list of results to return
 
 def orders(request):
     cartItem = cartItemData(request)
