@@ -28,7 +28,8 @@ def home(request):
 def cart(request):
     items,CartTotal =cartData(request)
     cartItem = cartItemData(request)
-    context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal}
+    addresses = addressData(request)
+    context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal,"addresses":addresses}
     return render(request,'home_page/cart.html',context)
 
 @login_required(login_url="login")
