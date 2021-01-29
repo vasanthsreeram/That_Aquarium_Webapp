@@ -64,3 +64,12 @@ def cartItemData(request):
     else:
         cartItem,items = CookieCart(request)
     return cartItem
+
+
+def addressData(request):
+    if request.user.is_authenticated:
+        customer = request.user
+
+        address = customer.address_set.all()
+        print(address)
+    return address

@@ -53,12 +53,15 @@ $(document).ready(function() {
         var addr2 = $(".address-line-2-new").val();
         var post = $(".post-code-new").val();
         var phone = $(".phone-number-new").val();
+        var action = "add"
+
+        console.log(name,addr1,addr2,post,phone,action)
 
         //Insert informing backend of new address here 
-
+        updateAddress(name,addr1,addr2,post,phone,action)
         //end of insert
 
-        window.location.reload();
+        //window.location.reload();
     });
 
     $(".save-address-final").click(function() {
@@ -68,12 +71,14 @@ $(document).ready(function() {
         var addr2 = $(".address-line-2").val();
         var post = $(".post-code").val();
         var phone = $(".phone-number").val();
-
+        var action = "add"
+        console.log(name,addr1,addr2,post,phone,action)
+        updateAddress(name,addr1,addr2,post,phone,action)
         //Insert informing backend of edited address here 
 
         //end of insert
 
-        window.location.reload();
+        //window.location.reload();
     });
 
     $(".content-overlay-clickable").click(function() {
@@ -88,3 +93,21 @@ $(document).ready(function() {
     }); 
 
 });
+
+function updateAddress(name,addr1,addr2,post,phone,action){
+    console.log("token")
+    console.log(csrftoken)
+    console.log("loaction being added")
+    console.log(name,addr1,addr2,post,phone,action)
+    var url = '/update_address/'
+    fetch(url, { //this is a way to send data as a json to another link using an api
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify({"name":name,"phone":phone,"address1":addr1,"address2":addr2,"postcode":post,"action":action}),
+    })
+
+
+}

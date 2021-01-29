@@ -5,7 +5,7 @@
     <link href = "{% static 'css/address.css' %}" type = "text/css" rel="stylesheet">
     <link href = "{% static 'css/cart.css' %}" type = "text/css" rel="stylesheet">
     <script src = "{% static 'scripts/address.js' %}"></script>
-
+{#    <script>var csrftoken = "{{ csrf_token }}"</script>#}
     <div class = "content-overlay">
 
         <div class = "new-address-overlay">
@@ -27,6 +27,7 @@
                 <div class = "overlay-buttons">
                     <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
                     <div class = "overlay-save save-address new-address-final">New Address</div> <!-- Purposely not a button so it's easier to deal with -->
+
                 </div>
             </form>
         </div>
@@ -63,12 +64,12 @@
         <div class = "address-header-underline"></div>
     </h6>
     <div class = "addresses-list">
-        {% for i in "12" %}
+        {% for address in addresses %}
             <div class = "address-item">
                 <div class = "details">
                     <div class = "details-specific details-specific-1">
                         <p class = "details-text details-name"><b>Full Name:</b></p>
-                        <p class = "details-text details-name-value">{{ "John Tan" }}</p>
+                        <p class = "details-text details-name-value">{{ address.fullname }}</p>
                     </div>
                     <div class = "details-specific details-specific-2">
                         <p class = "details-text details-address"><b>Address:</b></p>

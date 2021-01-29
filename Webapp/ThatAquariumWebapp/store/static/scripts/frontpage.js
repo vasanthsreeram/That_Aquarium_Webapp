@@ -5,13 +5,39 @@ for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
+        var qty = Number(this.dataset.qty)
         console.log(user)
+        console.log("qty :" , qty.toString())
+        if (action.length == 1) {
+            if (action == "w") {
 
-        if (user === 'AnonymousUser') {
-            addCookieItem(productID,action)
-        } else {
-            updateUserOrder(productID, action)
+                updateUserOrder(productID, "deletec")
+                for (var i = 0; i < qty; i++) {
+                    setTimeout(function () {
+                        updateUserOrder(productID, "addw")
+                    }, (i + i + 1) * 400);
+                }
+
+            } else {
+                if (action == "c") {
+                    updateUserOrder(productID, "deletew")
+                    for (var i = 0; i < qty; i++) {
+                        setTimeout(function () {
+                            updateUserOrder(productID, "addc")
+                        }, (i + i + 1) * 400);
+                    }
+                }
+            }
         }
+        else{
+            if (user === 'AnonymousUser') {
+                addCookieItem(productID, action)
+            }
+            else {
+                updateUserOrder(productID, action)
+            }
+        }
+
     })
 }
 
@@ -43,7 +69,6 @@ function addCookieItem(productID, action) {
 }
 
 function updateUserOrder(productID,action) {
-    console.log(csrftoken)
     console.log("productID",productID)
     console.log("action", action)
     var url = '/update_item/'
