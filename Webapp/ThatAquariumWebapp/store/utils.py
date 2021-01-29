@@ -72,4 +72,5 @@ def addressData(request):
 
         address = customer.address_set.all()
         print(address)
+
     return address

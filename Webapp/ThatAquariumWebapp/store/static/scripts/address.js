@@ -37,12 +37,24 @@ $(document).ready(function() {
         $("#address-line-1").val(addr1);
         $("#address-line-2").val(addr2);
         $("#post-code").val(post);
+        var addr_id = this.dataset.id
+        var action = "edit"
+        updateAddress(name,addr1,addr2,post,phone,addr_id,action)
+
+
     });
 
     $(".remove").click(function() {
-        //Insert informing backend of removal of address here
 
-        //end of insert
+        var addr_id = this.dataset.id
+        var addr1 = null,
+            addr2 = null,
+            post = null,
+            phone = null,
+            action = "remove";
+
+        updateAddress(name,addr1,addr2,post,phone,addr_id,action)
+
         $(this).parent().remove();
     });
 
@@ -54,11 +66,8 @@ $(document).ready(function() {
         var post = $("#post-code-new").val();
         var phone = $("#phone-number-new").val();
         var action = "add"
-
-        console.log(name,addr1,addr2,post,phone,action)
-
-        //Insert informing backend of new address here 
-        updateAddress(name,addr1,addr2,post,phone,action)
+        var addr_id = null
+        updateAddress(name,addr1,addr2,post,phone,addr_id,action)
         //end of insert
 
         //window.location.reload();
@@ -72,9 +81,8 @@ $(document).ready(function() {
         var post = $("#post-code").val();
         var phone = $("#phone-number").val();
         var action = "add"
-        console.log(name,addr1,addr2,post,phone,action)
-        updateAddress(name,addr1,addr2,post,phone,action)
-        //Insert informing backend of edited address here 
+        var addr_id = null
+        updateAddress(name,addr1,addr2,post,phone,addr_id,action)
 
         //end of insert
 
@@ -94,20 +102,72 @@ $(document).ready(function() {
 
 });
 
-function updateAddress(name,addr1,addr2,post,phone,action){
-    console.log("token")
-    console.log(csrftoken)
-    console.log("loaction being added")
-    console.log(name,addr1,addr2,post,phone,action)
+function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
     var url = '/update_address/'
-    fetch(url, { //this is a way to send data as a json to another link using an api
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': csrftoken,
-            'Content-Type':'application/json',
-        },
-        body: JSON.stringify({"name":name,"phone":phone,"address1":addr1,"address2":addr2,"postcode":post,"action":action}),
-    })
-
+    if (action == "add") {
+        fetch(url, { //this is a way to send data as a json to another link using an api
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "name": name,
+                "phone": phone,
+                "address1": addr1,
+                "address2": addr2,
+                "postcode": post,
+                "action": action
+            }),
+        }).then((response) => {
+            return response.json()
+        })
+            .then((data) => {
+                window.location.reload()
+            })
+    } else {
+        if (action == "remove") {
+            fetch(url, { //this is a way to send data as a json to another link using an api
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "id": addr_id,
+                    "action": action
+                }),
+            }).then((response) => {
+                return response.json()
+            })
+                .then((data) => {
+                    window.location.reload()
+                })
+        } else {
+            if (action == "edit") {
+                fetch(url, { //this is a way to send data as a json to another link using an api
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "id": addr_id,
+                        "name": name,
+                        "phone": phone,
+                        "address1": addr1,
+                        "address2": addr2,
+                        "postcode": post,
+                        "action": action
+                    }),
+                }).then((response) => {
+                    return response.json()
+                })
+                    .then((data) => {
+                        window.location.reload()
+                    })
+            }
+        }
+    }
 
 }
