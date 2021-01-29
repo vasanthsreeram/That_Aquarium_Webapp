@@ -71,4 +71,5 @@ def addressData(request):
         customer = request.user
 
         address = customer.address_set.all()
+        print(address)
     return address

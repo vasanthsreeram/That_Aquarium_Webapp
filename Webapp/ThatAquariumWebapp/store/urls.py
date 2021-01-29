@@ -29,5 +29,6 @@ urlpatterns = [
     path('privacy-policy/', views.privacy, name='privacy_policy'),
     path('forget-password/', views.forget, name='forget_password'),
     path('product/', views.product, name='product_view'),
-    path('update_item/',views.updateItem,name='update_item')
+    path('update_item/',views.updateItem,name='update_item'),
+    path('update_address/',views.updateAddress,name='update_address')
 ]

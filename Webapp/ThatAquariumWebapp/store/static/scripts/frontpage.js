@@ -69,7 +69,6 @@ function addCookieItem(productID, action) {
 }
 
 function updateUserOrder(productID,action) {
-    console.log(csrftoken)
     console.log("productID",productID)
     console.log("action", action)
     var url = '/update_item/'

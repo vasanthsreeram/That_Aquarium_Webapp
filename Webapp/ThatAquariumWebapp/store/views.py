@@ -108,11 +108,7 @@ def membership(request):
     context = {"cartItems": cartItem}
     return render(request,'home_page/membership.html',context)
 
-def address(request):
-    cartItem = cartItemData(request)
-    addresses = addressData(request)
-    context = {"cartItems": cartItem,"addresses":addresses}
-    return render(request,'home_page/address.html',context)
+
 
 def payment(request):
     cartItem = cartItemData(request)
@@ -124,6 +120,13 @@ def settings(request):
     cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/settings.html',context)
+
+def address(request):
+    cartItem = cartItemData(request)
+    addresses = addressData(request)
+
+    context = {"cartItems": cartItem,"addresses":addresses}
+    return render(request,'home_page/address.html',context)
 
 def loginpage(request):
     if request.user.is_authenticated:
@@ -177,6 +180,20 @@ def forget(request):
     cartItem = cartItemData(request)
     return render(request, 'home_page/forget_password.html')
 
+def updateAddress(request):
+    data = json.loads(request.body)
+    # name = data["name"]
+    # phone = data["phone"]
+    # address1 = data["address1"]
+    # address2 = data["address2"]
+    # postcode = data["postcode"]
+    # action = data["action"]
+    print(data)
+    # if action== "add":
+    #     pass
+    # elif action == "":
+    #     pass
+
 
 def updateItem(request):
     data = json.loads(request.body)
@@ -184,9 +201,6 @@ def updateItem(request):
     action = data['action']
     loc = action[-1]
     action = action[0:-1]
-
-    print("action :",action)
-    print("loc:",loc)
     #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
     if loc=="c":
         customer= request.user
