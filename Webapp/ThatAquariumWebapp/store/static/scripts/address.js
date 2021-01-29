@@ -30,8 +30,9 @@ $(document).ready(function() {
         var addr2 = $(this).siblings(".details").children(".details-specific-2").children(".details-address-value-2").html();
         var post = $(this).siblings(".details").children(".details-specific-2").children(".details-address-value-3").html();
         var phone = $(this).siblings(".details").children(".details-specific-3").children(".details-number-value").html();
-        addr1 = addr1.slice(0, addr1.length - 1)
-        addr2 = addr2.slice(0, addr2.length - 1)
+        var dataID = $(this).attr("data-id");
+        addr1 = addr1.slice(0, addr1.length - 1);
+        addr2 = addr2.slice(0, addr2.length - 1);
         $("#full-name").val(name);
         $("#phone-number").val(phone);
         $("#address-line-1").val(addr1);
