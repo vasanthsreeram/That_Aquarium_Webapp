@@ -11,7 +11,8 @@ from .utils import *
 
 def home(request):
     products = Product.objects.filter(display_type="H")
-    cartItem,items,CartTotal =cartData(request)
+    items,CartTotal =cartData(request)
+    cartItem = cartItemData(request)
     if request.method =="POST":
         id = int(request.POST.get("view")[0])
         display_product = None
@@ -25,24 +26,26 @@ def home(request):
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    cartItem,items,CartTotal =cartData(request)
+    items,CartTotal =cartData(request)
+    cartItem = cartItemData(request)
     context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal}
     return render(request,'home_page/cart.html',context)
 
 @login_required(login_url="login")
 def wishlist(request):
-    cartItem, items, CartTotal = WishlistData(request)
+    items, CartTotal = WishlistData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem,"items":items,"CartTotal":CartTotal}
     return render(request,'home_page/wishlist.html',context)
 
 def product(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,"home_page/product.html",context)
 
 
 def checkout(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
 
     context = {"cartItems": cartItem}
     return render(request,'home_page/checkout.html',context)
@@ -51,14 +54,15 @@ def checkout(request):
 
 @login_required(login_url="login")
 def account(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/account.html',context)
 
 def new_arrival(request):
-
+    cartItem = cartItemData(request)
     products = Product.objects.filter(display_type="N")
-    cartItem,items,CartTotal =cartData(request)
+    items,CartTotal =cartData(request)
+
     if request.method =="POST":
         id = int(request.POST.get("view")[0])
         display_product = None
@@ -72,12 +76,12 @@ def new_arrival(request):
     return render(request,'home_page/new_arrival.html',context)
 
 def featured(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/featured.html',context)
 
 def hot_deals(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/hot.html',context)
 
@@ -92,7 +96,7 @@ def search(request):
         return render(request,'home_page/search.html', {"results": results}) #results is a list of results to return
 
 def orders(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/orders.html',context)
 
@@ -100,23 +104,23 @@ def orders(request):
 
 @login_required(login_url="login")
 def membership(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/membership.html',context)
 
 def address(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/address.html',context)
 
 def payment(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/payment.html',context)
 
 @login_required(login_url="login")
 def settings(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/settings.html',context)
 
@@ -164,12 +168,12 @@ def registerpage(request):
     return render(request,'home_page/register.html',context)
 
 def privacy(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request, 'home_page/privacy_policy.html',context)
 
 def forget(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     return render(request, 'home_page/forget_password.html')
 
 
@@ -219,21 +223,21 @@ def updateItem(request):
     return JsonResponse('Item was added',safe=False)
 
 def terms(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/terms.html',context)
 
 def FAQ(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/FAQ.html',context)
 
 def about(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/about.html',context)
 
 def contact(request):
-    cartItem, items, CartTotal = cartData(request)
+    cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request,'home_page/contact.html',context)

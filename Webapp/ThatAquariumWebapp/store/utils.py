@@ -33,7 +33,6 @@ def cartData(request):
         customer = request.user
         order,created = Order.objects.get_or_create(customer=customer)
         items = order.orderitem_set.all()
-        cartItem = order.get_cart_items
         CartTotal = 0
         for item in items:
             CartTotal += item.get_total
@@ -43,20 +42,25 @@ def cartData(request):
         for item in items:
             CartTotal+=item["get_total"]
 
-    return [cartItem,items,CartTotal]
+    return [items,CartTotal]
 
 def WishlistData(request):
     if request.user.is_authenticated:
         customer = request.user
         wishlist,created = Wishlist.objects.get_or_create(customer=customer)
         items = wishlist.wishlistitem_set.all()
-
-        order, created = Order.objects.get_or_create(customer=customer)
-
-
-        cartItem = order.get_cart_items
         CartTotal = 0
         for item in items:
             CartTotal += item.get_total
 
-    return [cartItem, items, CartTotal]
+    return [ items, CartTotal]
+
+def cartItemData(request):
+    if request.user.is_authenticated:
+
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer)
+        cartItem = order.get_cart_items
+    else:
+        cartItem,items = CookieCart(request)
+    return cartItem
