@@ -76,4 +76,15 @@ $(document).ready(function() {
         window.location.reload();
     });
 
+    $(".content-overlay-clickable").click(function() {
+        hideAll();
+        if (overlayState == 0) {
+            $("#full-name, #phone-number, #address-line-1, #address-line-2, #post-code").val("");
+            overlayState = -1;
+        } else if (overlayState == 1) {
+            $("#full-name-new, #phone-number-new, #address-line-1-new, #address-line-2-new, #post-code-new").val("");
+            overlayState = -1;
+        };
+    }); 
+
 });
