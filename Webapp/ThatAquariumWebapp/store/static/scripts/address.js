@@ -9,6 +9,7 @@ $(document).ready(function() {
     $(".cancel-address").click(function() {
         if (overlayState == 0) {
             $("#full-name, #phone-number, #address-line-1, #address-line-2, #post-code").val("");
+            $(".save-address").attr("data-id", "");
             overlayState = -1;
         } else if (overlayState == 1) {
             $("#full-name-new, #phone-number-new, #address-line-1-new, #address-line-2-new, #post-code-new").val("");
@@ -30,7 +31,7 @@ $(document).ready(function() {
         var addr2 = $(this).siblings(".details").children(".details-specific-2").children(".details-address-value-2").html();
         var post = $(this).siblings(".details").children(".details-specific-2").children(".details-address-value-3").html();
         var phone = $(this).siblings(".details").children(".details-specific-3").children(".details-number-value").html();
-        var dataID = $(this).attr("data-id");
+        $(".save-address").attr("data-id", $(this).attr("data-id"));
         addr1 = addr1.slice(0, addr1.length - 1);
         addr2 = addr2.slice(0, addr2.length - 1);
         $("#full-name").val(name);
@@ -74,10 +75,8 @@ $(document).ready(function() {
         var post = $("#post-code").val();
         var phone = $("#phone-number").val();
         var action = "edit"
-        var addr_id = this.dataset.id
+        var addr_id = $(".save-address").attr("data-id");
         updateAddress(name,addr1,addr2,post,phone,addr_id,action)
-
-
     });
 
     $(".content-overlay-clickable").click(function() {
