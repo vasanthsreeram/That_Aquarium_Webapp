@@ -37,11 +37,6 @@ $(document).ready(function() {
         $("#address-line-1").val(addr1);
         $("#address-line-2").val(addr2);
         $("#post-code").val(post);
-        var addr_id = this.dataset.id
-        var action = "edit"
-        updateAddress(name,addr1,addr2,post,phone,addr_id,action)
-
-
     });
 
     $(".remove").click(function() {
@@ -68,9 +63,6 @@ $(document).ready(function() {
         var action = "add"
         var addr_id = null
         updateAddress(name,addr1,addr2,post,phone,addr_id,action)
-        //end of insert
-
-        //window.location.reload();
     });
 
     $(".save-address-final").click(function() {
@@ -80,13 +72,11 @@ $(document).ready(function() {
         var addr2 = $("#address-line-2").val();
         var post = $("#post-code").val();
         var phone = $("#phone-number").val();
-        var action = "add"
-        var addr_id = null
+        var action = "edit"
+        var addr_id = this.dataset.id
         updateAddress(name,addr1,addr2,post,phone,addr_id,action)
 
-        //end of insert
 
-        //window.location.reload();
     });
 
     $(".content-overlay-clickable").click(function() {
@@ -145,6 +135,7 @@ function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
                 })
         } else {
             if (action == "edit") {
+                console.log(addr_id)
                 fetch(url, { //this is a way to send data as a json to another link using an api
                     method: 'POST',
                     headers: {
@@ -152,7 +143,7 @@ function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        "id": addr_id,
+                        "addr_id": addr_id,
                         "name": name,
                         "phone": phone,
                         "address1": addr1,

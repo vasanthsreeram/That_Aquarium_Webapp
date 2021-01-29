@@ -195,7 +195,7 @@ def updateAddress(request):
     data = json.loads(request.body)
 
     action = data["action"]
-
+    print(data)
     customer = request.user
 
     if action == "add":
@@ -214,7 +214,7 @@ def updateAddress(request):
         addr.delete()
         return JsonResponse('Address was removed', safe=False)
     elif action == "edit":
-        id = data["id"]
+        id = data["addr_id"]
         name = data["name"]
         phone = data["phone"]
         address1 = data["address1"]
@@ -223,13 +223,9 @@ def updateAddress(request):
         addr = Address.objects.get(id=id)
 
         addr.fullname = name
-        addr.save()
         addr.phone = phone
-        addr.save()
         addr.address1 = address1
-        addr.save()
         addr.address2 = address2
-        addr.save()
         addr.postcode = postcode
         addr.save()
         return JsonResponse('Address was modified', safe=False)

@@ -26,7 +26,7 @@
                 </div>
                 <div class = "overlay-buttons">
                     <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save save-address new-address-final">New Address</div> <!-- Purposely not a button so it's easier to deal with -->
+                    <div class = "overlay-save save-address new-address-final" data-id = {{ address.id }}>New Address</div> <!-- Purposely not a button so it's easier to deal with -->
 
                 </div>
             </form>
@@ -82,7 +82,7 @@
                         <p class = "details-text details-number-value">{{ address.phone }}</p>
                     </div>
                 </div>
-                <div class = "edit" data-id={{ address.id }}>Edit</div>
+                <div class = "edit" >Edit</div>
                 <div class = "remove" data-id={{ address.id }}>Remove</div>
             </div>
         {% endfor %}
