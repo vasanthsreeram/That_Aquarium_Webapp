@@ -25,13 +25,14 @@ def home(request):
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    cartItem,items,CartTotal =cartData(request)
+    cartItem, items, CartTotal = cartData(request)
     context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal}
     return render(request,'home_page/cart.html',context)
 
 @login_required(login_url="login")
 def wishlist(request):
     cartItem, items, CartTotal = WishlistData(request)
+    # cartItem, items, CartTotal = cartData(request) #Comment out when not testing
     context = {"cartItems": cartItem,"items":items,"CartTotal":CartTotal}
     return render(request,'home_page/wishlist.html',context)
 

@@ -3,91 +3,17 @@
 
 {% block content %}
     <link href = "{% static 'css/cart.css' %}" rel = "stylesheet" type = "text/css">
-    <script src = "{% static 'scripts/cart.js' %}"></script>
-
-
-    <div class = "add-stuff-overlay">
-
-        <div class="add-card-overlay">
-            <form>
-                <p class = "overlay-header">New Card</p>
-                <p class = "overlay-subheader">Card Name follows Billing Address</p>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Card Number" class = "overlay-inputs card-number" name = "card-number" id = "card-number" maxlength="16">
-                </div>
-                <div class = "overlay-input-row-2 overlay-input-row">
-                    <input type = "text" placeholder="Expiry Date (MMYY)" class = "overlay-inputs expiry-date" name = "expiry-date" id = "expiry-date" maxlength="4">
-                    <input type = "text" placeholder="CVV" class = "overlay-inputs cvv" name = "cvv" id = "cvv" maxlength="3">
-                </div>
-                <div class = "overlay-buttons">
-                    <div class = "overlay-back cancel-card">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save save-card">Save</div> <!-- Purposely not a button so it's easier to deal with -->
-                </div>
-            </form>
-        </div>
-
-        <div class="add-address-overlay">
-            <form>
-                <p class = "overlay-header-delivery">Delivery Address</p>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Full Name" class = "overlay-inputs address-full-name overlay-inputs-smaller-gap" name = "full-name" id = "full-name">
-                </div>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs address-phone-number overlay-inputs-smaller-gap" name = "phone-number" id = "phone-number">
-                </div>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs address-address-line-1 overlay-inputs-smaller-gap" name = "address-line-1" id = "address-line-1">
-                </div>
-                <div class = "overlay-input-row-2 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs address-address-line-2 overlay-inputs-smaller-gap" name = "address-line-2" id = "address-line-2">
-                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs address-post-code overlay-inputs-smaller-gap" name = "post-code" id = "post-code">
-                </div>
-                <div class = "overlay-buttons">
-                    <div class = "overlay-back cancel-address">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save save-address">Save</div> <!-- Purposely not a button so it's easier to deal with -->
-                </div>
-            </form>
-        </div>
-
-        <div class="add-billing-overlay">
-            <form>
-                <p class = "overlay-header-delivery">Billing Address</p>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Full Name" class = "overlay-inputs billing-full-name overlay-inputs-smaller-gap" name = "billing-full-name" id = "billing-full-name">
-                </div>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Phone Number" class = "overlay-inputs billing-phone-number overlay-inputs-smaller-gap" name = "billing-phone-number" id = "billing-phone-number">
-                </div>
-                <div class = "overlay-input-row-1 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 1" class = "overlay-inputs billing-address-line-1 overlay-inputs-smaller-gap" name = "billing-address-line-1" id = "billing-address-line-1">
-                </div>
-                <div class = "overlay-input-row-2 overlay-input-row">
-                    <input type = "text" placeholder="Address Line 2 (Unit, Building, etc.)" class = "overlay-inputs billing-address-line-2 overlay-inputs-smaller-gap" name = "billing-address-line-2" id = "billing-address-line-2">
-                    <input type = "text" placeholder="Postal Code" class = "overlay-inputs billing-post-code overlay-inputs-smaller-gap" name = "billing-post-code" id = "billing-post-code">
-                </div>
-                <div class = "overlay-buttons">
-                    <div class = "overlay-back cancel-billing">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
-                    <div class = "overlay-save save-billing">Save</div> <!-- Purposely not a button so it's easier to deal with -->
-                </div>
-            </form>
-        </div>
-
-        <div class="add-stuff-overlay-clickable"></div>
-
-    </div>
-
-    <div class = "go-to-checkout-overlay">
-        Scroll down to Checkout
-    </div>
+    <link href = "{% static 'css/wishlist.css' %}" rel = "stylesheet" type = "text/css">
+    <script src = "{% static 'scripts/wishlist.js' %}"></script>
 
     <div class = "subheader mx-auto">
-        <a href = "{% url 'cart' %}" class = "cart navbar-text-item-current navbar-text-item-current-orange">
+        <a href = "{% url 'cart' %}" class = "cart navbar-text-item-normal navbar-text-item-normal-orange">
             Cart & Checkout
             <div class = "hover-underline hover-underline-orange"></div>
         </a>
-        <a href = "{% url 'wishlist' %}" class = "wishlist navbar-text-item-normal navbar-text-item-normal-orange">
+        <a href = "{% url 'wishlist' %}" class = "wishlist navbar-text-item-current navbar-text-item-current-orange">
             Wishlist
-            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+            <div class = "hover-underline hover-underline-orange"></div>
         </a>
     </div>
 
@@ -104,7 +30,7 @@
                         <div class = "item-right-side-elements">
                             <div class = "cart-buttons">
                                 {% if request.user.is_authenticated %}
-                                    <button class = "save-later">Move to cart</button>
+                                    <button class = "save-later">Add to Cart</button>
                                 {% endif %}
                                 <button class = "btn update-cart remove-from-cart" data-action="deletew" data-product={{ item.product.id }}>
                                     <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
@@ -125,229 +51,10 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p>There's nothing in your cart right now. Browse our shop and add some stuff!</p>
+                <p class = "no-items">There's nothing in your wishlist right now. Browse our shop and add some stuff!</p>
             {% endif %}
         </div>
-        <div class = "summary-region" id = "summary-region">
-            <form id = "cart-form">
-
-
-                <div class = "order-summary summary-region-items">
-                    <p class = "summary-region-items-header">Order Summary</p>
-                    <div class = "order-summary-inner">
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-1">
-                            <p class = "order-summary-inner-text-row-1-left order-summary-inner-text-row-left">Items:</p>
-                            <p class = "order-summary-inner-text-row-1-right order-summary-inner-text-row-right">S${{ CartTotal }}</p>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-2">
-                            <p class = "order-summary-inner-text-row-2-left order-summary-inner-text-row-left">Delivery:</p>
-                            <p class = "order-summary-inner-text-row-2-right order-summary-inner-text-row-right">S$0.00</p>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-3">
-                            <p class = "order-summary-inner-text-row-3-left order-summary-inner-text-row-left">Taxes (Inclusive) (7%):</p>
-                            <p class = "order-summary-inner-text-row-3-right order-summary-inner-text-row-right">S$0.00</p>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-4">
-                            <p class = "order-summary-inner-text-row-4-left order-summary-inner-text-row-left">Discounts:</p>
-                            <p class = "order-summary-inner-text-row-4-right order-summary-inner-text-row-right">S$0.00</p>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-5">
-                            <p class = "order-summary-inner-text-row-5-left order-summary-inner-text-row-left">Coupon Code:</p>
-                            <p class = "order-summary-inner-text-row-5-right order-summary-inner-text-row-right">S$0.00</p>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-6">
-                            <input type = "text" placeholder="Coupon Code" class = "order-summary-inner-text-row-6-left order-summary-inner-text-row-left">
-                            <button class = "order-summary-inner-text-row-6-right order-summary-inner-text-row-right">Apply</button>
-                        </div>
-                        <div class = "order-summary-inner-text order-summary-inner-text-row-7">
-                            <p class = "order-summary-inner-text-row-7-left order-summary-inner-text-row-left">Order Total</p>
-                            <p class = "order-summary-inner-text-row-7-right order-summary-inner-text-row-right">S$0.00</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class = "delivery-method summary-region-items">
-                    <p class = "summary-region-items-header">Delivery Method</p>
-                    <p class = "delivery-subheader summary-region-items-subheader">Custom Delivery</p>
-                    <div class = "delivery-inner">
-                        <div class = "delivery-method-type">
-                            <input type = "radio" id = "delivery-1" name = "delivery" value = "custom" class = "radio-options delivery-options" checked="checked">
-                            <label for = "delivery-1" class = "labels">
-                                <div class = "label-text label-text-1">
-                                    <p class = "label-actual-text label-actual-text-1">Custom Delivery (Free above $80)</p>
-                                    <p class = "label-actual-text label-actual-text-2">Averages 1-3 working days</p>
-                                </div>
-                            </label>
-                            <div class = "extra-costs">$5.00</div>
-                        </div>
-                        <div class = "delivery-method-type">
-                            <input type = "radio" id = "delivery-2" name = "delivery" value = "collect" class = "radio-options delivery-options">
-                            <label for = "delivery-2" class = "labels">
-                                <div class = "label-text label-text-2">
-                                    <p class = "label-actual-text label-actual-text-1">Self Collection</p>
-                                    <p class = "label-actual-text label-actual-text-2">Collect at one of our branches during working hours</p>
-                                </div>
-                            </label>
-                            <div class = "extra-costs">FREE</div>
-                        </div>
-                        <div>
-                            <div class = "continue continue-delivery">
-                                <div class = "continue-text"> <!-- div for flexbox -->
-                                    Continue
-                                </div>
-                            </div> <!-- Purposely not a button -->
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class = "address summary-region-items">
-                    <div class = "summary-region-items-header-group">
-                        <p class = "summary-region-items-header address-header-text">Delivery Address</p>
-                        {% if not request.user.is_authenticated %}
-                            <a class = "edit-address">Add Temporary Address</a>
-                        {% else %}
-                            <a href = "{% url 'address' %}" class = "edit-address">Manage Addresses</a>
-                        {% endif %}
-                        <a href = "{% url 'contact' %}" class = "map">Map</a>
-                    </div>
-                    <p class = "address-subheader summary-region-items-subheader">Yishun Branch</p>
-                    <div class = "address-inner">
-                        <div class = "delivery-choice">
-                            {% if 1 == 1 and request.user.is_authenticated %} <!-- Edit to length of address list -->
-                                {% for i in "12" %} <!-- loop amount of delivery addresses-->
-                                    <!-- When you link with backend and edit the for loop, make sure the integeres auto increment for the ids, values and such below -->
-                                    <div class = "delivery-method-type">
-                                        <input type = "radio" id = "delivery-address-1" name = "delivery-address" value = "address-choice-1" class = "radio-options" checked="checked">
-                                        <label for = "delivery-address-1" class = "labels">
-                                            <div class = "label-text label-text-1">
-                                                <p class = "label-actual-text label-actual-text-1">{{ "Person_Name 1" }}</p>
-                                                <p class = "label-actual-text label-actual-text-2">{{ "Person_Address 1" }}</p>
-                                            </div>
-                                        </label>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <p class = "no-addresses">No saved addresses found</p>
-                            {% endif %}
-                        </div>
-                        <div class = "collection-choice">
-                            <div class = "delivery-method-type">
-                                <input type = "radio" id = "address-1" name = "collection" value = "yishun" class = "radio-options" checked="checked">
-                                <label for = "address-1" class = "labels">
-                                    <div class = "label-text label-text-1">
-                                        <p class = "label-actual-text label-actual-text-1">Yishun Branch</p>
-                                        <p class = "label-actual-text label-actual-text-2">Blk 618 Yishun Ring Road, #01-3236, S760618</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class = "delivery-method-type">
-                                <input type = "radio" id = "address-2" name = "collection" value = "changi" class = "radio-options">
-                                <label for = "address-2" class = "labels">
-                                    <div class = "label-text label-text-2">
-                                        <p class = "label-actual-text label-actual-text-1">Changi Branch</p>
-                                        <p class = "label-actual-text label-actual-text-2">284 Changi Road, S419763</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class = "delivery-method-type">
-                                <input type = "radio" id = "address-3" name = "collection" value = "clementi" class = "radio-options">
-                                <label for = "address-3" class = "labels">
-                                    <div class = "label-text label-text-3">
-                                        <p class = "label-actual-text label-actual-text-1">Clementi Branch</p>
-                                        <p class = "label-actual-text label-actual-text-2">Blk 328 Clementi Avenue 2, #01-198, S120328</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class = "delivery-method-type">
-                                <input type = "radio" id = "address-4" name = "collection" value = "tampines" class = "radio-options" disabled>
-                                <label for = "address-4" class = "labels">
-                                    <div class = "label-text label-text-4">
-                                        <p class = "label-actual-text label-actual-text-1">Tampines Branch</p>
-                                        <p class = "label-actual-text label-actual-text-2">Blk 929 Tampines Street 91, #01-447, S520929</p>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class = "back-continue">
-                            <div class = "back">
-                                <div class = "back-text back-collection"> <!-- div for flexbox -->
-                                    Back
-                                </div>
-                            </div> <!-- Purposely not a button -->
-                            <div class = "continue continue-collection">
-                                <div class = "continue-text"> <!-- div for flexbox -->
-                                    Continue
-                                </div>
-                            </div> <!-- Purposely not a button -->
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class = "payment summary-region-items">
-                    <div class = "summary-region-items-header-group">
-                        <p class = "summary-region-items-header">Payment Method</p>
-                        {% if not request.user.is_authenticated %}
-                            <a class = "edit-card add-card">Add Temporary Card</a>
-                        {% else %}
-                            <a href = "{% url 'payment' %}" class = "edit-card">Edit Your Cards</a>
-                        {% endif %}
-                    </div>
-                    <p class = "payment-subheader summary-region-items-subheader">Cash on Delivery</p>
-                    <div class = "payment-inner">
-                        <div class = "payment-choice">
-                            {% if 1 == 1 and request.user.is_authenticated %} <!-- Edit to length of payment list -->
-                                {% for i in "1" %} <!-- loop amount of delivery addresses-->
-                                    <!-- When you link with backend and edit the for loop, make sure the integeres auto increment for the ids, values and such below -->
-                                    <div class = "payment-method-type">
-                                        <input type = "radio" id = "payment-1" name = "payment-address" value = "payment-choice-1" class = "radio-options">
-                                        <label for = "payment-1" class = "labels">
-                                            <div class = "label-text label-text-1">
-                                                <p class = "label-actual-text label-actual-text-1">{{ "Payment_Type" }}</p>
-                                                <p class = "label-actual-text label-actual-text-2">{{ "Payment_Description" }}</p>
-                                            </div>
-                                        </label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <div class = "payment-method-type">
-                                <input type = "radio" id = "payment--1" name = "payment-address" value = "payment-choice--1" class = "radio-options" checked="checked">
-                                <label for = "payment--1" class = "labels">
-                                    <div class = "label-text label-text--1">
-                                        <p class = "label-actual-text label-actual-text-1">Cash on Delivery</p>
-                                        <p class = "label-actual-text label-actual-text-2">Select this option for PayNow, PayLah, etc.</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class = "payment-method-type payment-method-type-same-address">
-                                <input type = "checkbox" id = "payment-address-same" name = "payment-address-same" value = "payment-address-same" class = "payment-address-same" checked="checked">
-                                <label for = "payment-address-same" class = "labels payment-address-same-label">
-                                    <div class = "label-text label-text-1">
-                                        <p class = "label-actual-text label-actual-text-1 payment-address-same-text">Billing Address same as Delivery Address</p>
-                                        <p class = "label-actual-text label-actual-text-2 payment-address-preview-address"></p>
-                                    </div>
-                                </label>
-                                <div class = "edit-payment-address">Add</div>
-                            </div>
-                        </div>
-                        <div class = "back-continue">
-                            <div class = "back">
-                                <div class = "back-text back-payment"> <!-- div for flexbox -->
-                                    Back
-                                </div>
-                            </div> <!-- Purposely not a button -->
-                            <div class = "continue checkout">
-                                <div class = "continue-text"> <!-- div for flexbox -->
-                                    Checkout
-                                </div>
-                            </div> <!-- Purposely not a button -->
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+        
     </div>
     <script src="{% static 'scripts/frontpage.js' %}"></script>
 {% endblock content %}
