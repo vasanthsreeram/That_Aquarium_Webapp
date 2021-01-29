@@ -7,11 +7,27 @@ for (var i = 0; i < updatebtns.length; i++) {
         var action = this.dataset.action
         console.log(user)
 
-        if (user === 'AnonymousUser') {
-            addCookieItem(productID,action)
-        } else {
-            updateUserOrder(productID, action)
+        if (action.length == 1){
+            if (action == "w"){
+                updateUserOrder(productID, "removec")
+                updateUserOrder(productID, "addw")
+            }
+            else{
+                if (action == "c"){
+                    updateUserOrder(productID, "removew")
+                    updateUserOrder(productID, "addc")
+                }
+            }
         }
+        else{
+            if (user === 'AnonymousUser') {
+                addCookieItem(productID, action)
+            }
+            else {
+                updateUserOrder(productID, action)
+            }
+        }
+
     })
 }
 

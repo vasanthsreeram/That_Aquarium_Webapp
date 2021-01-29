@@ -63,12 +63,12 @@
         <div class = "address-header-underline"></div>
     </h6>
     <div class = "addresses-list">
-        {% for i in "12" %}
+        {% for address in addresses %}
             <div class = "address-item">
                 <div class = "details">
                     <div class = "details-specific details-specific-1">
                         <p class = "details-text details-name"><b>Full Name:</b></p>
-                        <p class = "details-text details-name-value">{{ "John Tan" }}</p>
+                        <p class = "details-text details-name-value">{{ address.fullname }}</p>
                     </div>
                     <div class = "details-specific details-specific-2">
                         <p class = "details-text details-address"><b>Address:</b></p>

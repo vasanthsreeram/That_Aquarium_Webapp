@@ -110,7 +110,8 @@ def membership(request):
 
 def address(request):
     cartItem = cartItemData(request)
-    context = {"cartItems": cartItem}
+    addresses = addressData(request)
+    context = {"cartItems": cartItem,"addresses":addresses}
     return render(request,'home_page/address.html',context)
 
 def payment(request):
@@ -128,7 +129,7 @@ def loginpage(request):
     if request.user.is_authenticated:
         return redirect('front_page')
     if request.method == 'POST':
-        username = request.POST.get("username")
+        username = request.POST.get("username"  )
         password = request.POST.get("password")
 
         user = authenticate(request,username= username,password= password)
