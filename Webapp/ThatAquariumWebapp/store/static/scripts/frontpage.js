@@ -5,17 +5,27 @@ for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
+        var qty = Number(this.dataset.qty)
         console.log(user)
+        console.log("qty :" , qty.toString())
+        if (action.length == 1) {
+            if (action == "w") {
 
-        if (action.length == 1){
-            if (action == "w"){
-                updateUserOrder(productID, "removec")
-                updateUserOrder(productID, "addw")
-            }
-            else{
-                if (action == "c"){
-                    updateUserOrder(productID, "removew")
-                    updateUserOrder(productID, "addc")
+                updateUserOrder(productID, "deletec")
+                for (var i = 0; i < qty; i++) {
+                    setTimeout(function () {
+                        updateUserOrder(productID, "addw")
+                    }, (i + i + 1) * 400);
+                }
+
+            } else {
+                if (action == "c") {
+                    updateUserOrder(productID, "deletew")
+                    for (var i = 0; i < qty; i++) {
+                        setTimeout(function () {
+                            updateUserOrder(productID, "addc")
+                        }, (i + i + 1) * 400);
+                    }
                 }
             }
         }

@@ -87,7 +87,7 @@
         </a>
         <a href = "{% url 'wishlist' %}" class = "wishlist navbar-text-item-normal navbar-text-item-normal-orange">
             Wishlist
-            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+            <div class = "hover-underline hover-underline-orange"></div>
         </a>
     </div>
 
@@ -104,7 +104,7 @@
                         <div class = "item-right-side-elements">
                             <div class = "cart-buttons">
                                 {% if request.user.is_authenticated %}
-                                    <button class = "save-later update-cart" data-action="w" data-product={{ item.product.id }}>Move to Wishlist</button>
+                                    <button class = "save-later update-cart" data-product={{ item.product.id }} data-action="w" data-qty = {{ item.quantity }}>Move to Wishlist</button>
                                 {% endif %}
                                 <button class = "btn update-cart remove-from-cart" data-action="deletec" data-product={{ item.product.id }}>
                                     <img src = "{% static 'images/Checkout/remove_circle_outline-24px.png' %}" class = "remove-image"> <!-- png until i can find a way to make it svg -->
