@@ -24,8 +24,8 @@
                     <div class = "cart-item">
                         <img src='{{ item.product.imageURL }}' class = "item-images">
                         <div class = "item-text">
-                            <p class = "item-name">Item Name</p>
-                            <p class = "item-description">Item Description</p>
+                            <p class = "item-name">{{ item.product.product_name }}</p>
+                            <p class = "item-description">{{ item.product.description }}</p>
                         </div>
                         <div class = "item-right-side-elements">
                             <div class = "cart-buttons">
