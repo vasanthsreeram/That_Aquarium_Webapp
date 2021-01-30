@@ -103,9 +103,9 @@ def search(request):
             ["Cleaning", 
                 ["Battery Cleaner Device", "Cleaning Set", "Dropper/Siphon", "Hand Pump/Gravel Cleaner" "Hose Brush", "Magnet Cleaner", "Others-Cleaning", "Tank Scraper", "Tank Brush"]
             ]
-            ] 
-            # list of list with first element as category item, second as a counter because django cannot do range and third as subcategories with each list having the second element as counter
-            # the counter is added in the following for loop
+        ] 
+        # list of list with first element as category item, second as a counter because django cannot do range and third as subcategories with each list having the second element as counter
+        # the counter is added in the following for loop
         for x, i in enumerate(categories):
             i.append(x + 1)
             if len(i[1]) != 0:

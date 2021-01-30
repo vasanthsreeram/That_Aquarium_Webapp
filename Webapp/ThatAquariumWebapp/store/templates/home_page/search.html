@@ -12,13 +12,13 @@
             <div>
                 <div class = "specific-categories specific-categories-0">
                     <div class = "specific-main-categories">
+                        <input type = "checkbox" id = "categories-filter-0" name = "categories-filter" class = "categories-filter categories-filter-0" checked="checked">
                         <label for = "categories-filter-0" class = "categories-filter-label">
                             <div class = "label-text label-text-0">
                                 <p class = "label-actual-text label-actual-text-1">All Categories</p>
                                 <p class = "label-actual-text label-actual-text-2"></p>
                             </div>
                         </label>
-                        <input type = "checkbox" id = "categories-filter-0" name = "categories-filter" class = "categories-filter categories-filter-0" checked="checked">
                     </div>
                 </div>
                 <div class = "all-categories-box">
@@ -26,23 +26,23 @@
                         {% if category.1|length != 0 %}
                             <div class = "specific-categories">
                                 <div class = "specific-main-categories">
-                                    <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "expandable">
+                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
                                     <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
                                         <div class = "label-text label-text-{{ category.2 }}">
                                             <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
                                         </div>
                                     </label>
-                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class = "expandable"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
                                 </div>
                                 {% for subcategory in category.1 %}
                                     <div class="specific-sub-categories-for-hiding">
                                         <div class = "specific-sub-categories">
+                                            <input type = "checkbox" id = "categories-filter-{{category.2}}-{{subcategory.1}}" name = "categories-filter" class = "categories-filter sub-categories-filter categories-filter-{{category.2}}-{{subcategory.1}}" checked="checked">
                                             <label for = "categories-filter-{{category.2}}-{{subcategory.1}}" class = "categories-filter-label">
                                                 <div class = "label-text label-text-{{ category.2 }}">
                                                     <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
                                                 </div>
                                             </label>
-                                            <input type = "checkbox" id = "categories-filter-{{category.2}}-{{subcategory.2}}" name = "categories-filter" class = "categories-filter sub-categories-filter categories-filter-{{category.2}}-{{subcategory.2}}" checked="checked">
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -50,17 +50,18 @@
                         {% else %}
                             <div class = "specific-categories">
                                 <div class = "specific-main-categories">
+                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
                                     <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
                                         <div class = "label-text label-text-{{ category.2 }}">
                                             <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
                                         </div>
                                     </label>
-                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
                                 </div>
                             </div>
                         {% endif %}
                     {% endfor %}
                 </div>
+                <div class = "apply-changes">Apply</div>
             </div>
         </form>
     </div>
