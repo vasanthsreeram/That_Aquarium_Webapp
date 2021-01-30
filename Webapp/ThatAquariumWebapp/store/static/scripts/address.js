@@ -76,6 +76,7 @@ $(document).ready(function() {
         var phone = $("#phone-number").val();
         var action = "edit"
         var addr_id = $(".save-address").attr("data-id");
+
         updateAddress(name,addr1,addr2,post,phone,addr_id,action)
     });
 
