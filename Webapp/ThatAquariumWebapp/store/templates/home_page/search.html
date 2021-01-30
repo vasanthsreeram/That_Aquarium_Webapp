@@ -6,74 +6,83 @@
     <link href = "{% static 'css/search.css' %}" rel = "stylesheet" type = "text/css">
     <script src = "{% static 'scripts/search.js' %}"></script>
 
-    <div class = "categories-options">
-        <form>
-            <p class = "categories-header">Search Filter</p>
-            <div>
-                <div class = "specific-categories specific-categories-0">
-                    <div class = "specific-main-categories">
-                        <input type = "checkbox" id = "categories-filter-0" name = "categories-filter" class = "categories-filter categories-filter-0" checked="checked">
-                        <label for = "categories-filter-0" class = "categories-filter-label">
-                            <div class = "label-text label-text-0">
-                                <p class = "label-actual-text label-actual-text-1">All Categories</p>
-                                <p class = "label-actual-text label-actual-text-2"></p>
-                            </div>
-                        </label>
+    <div class = "search-content">
+        <div class = "categories-options">
+            <form class = "filter-form">
+                <p class = "categories-header">Search Filter</p>
+                <div>
+                    <div class = "specific-categories specific-categories-0">
+                        <div class = "specific-main-categories">
+                            <input type = "checkbox" id = "categories-filter-0" name = "categories-filter" class = "categories-filter categories-filter-0" checked="checked">
+                            <label for = "categories-filter-0" class = "categories-filter-label">
+                                <div class = "label-text label-text-0">
+                                    <p class = "label-actual-text label-actual-text-1">All Categories</p>
+                                    <p class = "label-actual-text label-actual-text-2"></p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div class = "all-categories-box">
-                    {% for category in categories %}
-                        {% if category.1|length != 0 %}
-                            <div class = "specific-categories">
-                                <div class = "specific-main-categories">
-                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
-                                    <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
-                                        <div class = "label-text label-text-{{ category.2 }}">
-                                            <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
-                                        </div>
-                                    </label>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class = "expandable"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
-                                </div>
-                                {% for subcategory in category.1 %}
-                                    <div class="specific-sub-categories-for-hiding">
-                                        <div class = "specific-sub-categories">
-                                            <input type = "checkbox" id = "categories-filter-{{category.2}}-{{subcategory.1}}" name = "categories-filter" class = "categories-filter sub-categories-filter categories-filter-{{category.2}}-{{subcategory.1}}" checked="checked">
-                                            <label for = "categories-filter-{{category.2}}-{{subcategory.1}}" class = "categories-filter-label">
-                                                <div class = "label-text label-text-{{ category.2 }}">
-                                                    <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
-                                                </div>
-                                            </label>
-                                        </div>
+                    <div class = "all-categories-box">
+                        {% for category in categories %}
+                            {% if category.1|length != 0 %}
+                                <div class = "specific-categories">
+                                    <div class = "specific-main-categories">
+                                        <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-main-filter categories-filter-{{category.2}}" checked="checked">
+                                        <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
+                                            <div class = "label-text label-text-{{ category.2 }}">
+                                                <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
+                                            </div>
+                                        </label>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" class = "expandable"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"/></svg>
                                     </div>
-                                {% endfor %}
-                            </div>
-                        {% else %}
-                            <div class = "specific-categories">
-                                <div class = "specific-main-categories">
-                                    <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
-                                    <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
-                                        <div class = "label-text label-text-{{ category.2 }}">
-                                            <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
+                                    {% for subcategory in category.1 %}
+                                        <div class="specific-sub-categories-for-hiding">
+                                            <div class = "specific-sub-categories">
+                                                <input type = "checkbox" id = "categories-filter-{{category.2}}-{{subcategory.1}}" name = "categories-filter" class = "categories-filter sub-categories-filter categories-filter-{{category.2}}-{{subcategory.1}}" checked="checked">
+                                                <label for = "categories-filter-{{category.2}}-{{subcategory.1}}" class = "categories-filter-label">
+                                                    <div class = "label-text label-text-{{ category.2 }}">
+                                                        <p class = "label-actual-text label-actual-text-1">{{ subcategory.0 }}</p>
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </div>
-                                    </label>
+                                    {% endfor %}
                                 </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% else %}
+                                <div class = "specific-categories">
+                                    <div class = "specific-main-categories">
+                                        <input type = "checkbox" id = "categories-filter-{{ category.2 }}" name = "categories-filter" class = "categories-filter categories-filter-{{category.2}}" checked="checked">
+                                        <label for = "categories-filter-{{ category.2 }}" class = "categories-filter-label">
+                                            <div class = "label-text label-text-{{ category.2 }}">
+                                                <p class = "label-actual-text label-actual-text-1">{{ category.0 }}</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class = "apply-changes">Apply</div>
                 </div>
-                <div class = "apply-changes">Apply</div>
-            </div>
-        </form>
-    </div>
-
-    {% if results|length == 0 %}
-        {% for result in results %}
-            {% if result == "No Search Results Found" %}
-
+            </form>
+        </div>
+        <div class = "search-results">
+            
+            {% if results.0 == "No Search Results Found" %}
+                <p class = "no-search-result">No Search Results Found</p>
+            {% else %}
+                {% for result in results %}
+                    <div class = "item">
+                        <img src='{{ item.product.imageURL }}' class = "item-images">
+                        <div class = "item-text">
+                            <p class = "item-name">{{ "Product Name" }}</p>
+                            <p class = "item-price">S${{ "5.00" }}</p>
+                            <p class = "item-description">{{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sem rutrum est pretium tincidunt sollicitudin sit amet elit. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed mi non risus pharetra egestas. In vel lacus imperdiet, vestibulum eros vel, ornare nisl. Mauris scelerisque eros nec augue accumsan, non accumsan odio lobortis. Donec tempus, nunc ut pellentesque feugiat, nisi risus placerat quam, vel posuere justo velit a diam. Pellentesque est turpis, rutrum eu turpis vitae, eleifend fermentum tellus. Nam ac elit at eros consequat tempor. Sed id orci non lorem porttitor lacinia. Nulla ac egestas turpis. Pellentesque in tincidunt sapien, nec aliquam est." }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             {% endif %}
-        {% endfor %}
-    {% endif %}
-
-    {{ results }}
+        </div>
+    </div>
 
 {% endblock content %}

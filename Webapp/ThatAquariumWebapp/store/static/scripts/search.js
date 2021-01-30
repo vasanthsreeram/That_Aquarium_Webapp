@@ -31,75 +31,116 @@ $(document).ready(function() {
     });
 
     $(".categories-filter").click(function() {
-        if ($(this).parent().attr("class") == "specific-main-categories") {
-            if ($(this).parent().parent().attr("class").includes("specific-categories-0")) { // All categories click
-                if ($(this).prop('checked') == false) {
-                    $(".categories-filter").prop('checked', false);
-                    $(".specific-main-categories, .specific-sub-categories-for-hiding").css({
-                        color: "black",
-                    });
-                    $(".expandable").css({
-                        fill: "black"
-                    });
-                } else {
-                    $(".categories-filter").prop('checked', true);
-                    $(".specific-main-categories, .specific-sub-categories-for-hiding").css({
-                        color: "#ff854f",
-                        fontWeight: "500"
-                    });
-                    $(".expandable").css({
-                        fill: "#ff854f"
-                    });
-                };
-            } else { // Categories with subcategories click
-                if ($(this).prop('checked') == false) {
-                    $(this).parent().siblings(".specific-sub-categories-for-hiding").children().children("input").prop('checked', false);
-                    $(this).parent().css({
-                        color: "black",
-                    });
-                    $(this).parent().siblings(".specific-sub-categories-for-hiding").css({
-                        color: "black",
-                    });
-                    $(this).siblings("svg").css({
-                        fill: "black"
-                    });
-                    $(".categories-filter-0").prop('checked', false);
-                    $(".specific-categories-0").children(".specific-main-categories").css({
-                        color: "black",
-                    });
-                } else {
-                    $(this).parent().siblings(".specific-sub-categories-for-hiding").children().children("input").prop('checked', true);
-                    $(this).parent().css({
-                        color: "#ff854f",
-                        fontWeight: "500"
-                    });
-                    $(this).parent().siblings(".specific-sub-categories-for-hiding").css({
-                        color: "#ff854f",
-                        fontWeight: "500"
-                    });
-                    $(this).siblings("svg").css({
-                        fill: "#ff854f"
-                    });
-                };
+
+        function makeItBlack(thisObjects) {
+            for (let index = 0; index < thisObjects.length; index++) {
+                thisObjects[index].css({
+                    color: "black",
+                    fill: "black"
+                });
             };
-        } else { // Categories with NO subcategories click
-            if ($(this).prop('checked') == false) {
-                $(this).parent().parent().css({
-                    color: "black",
-                });
-                $(".categories-filter-0").prop('checked', false);
-                $(".specific-categories-0").children(".specific-main-categories").css({
-                    color: "black",
-                });
-                $(this).parent().parent().siblings(".specific-main-categories").css({
-                    color: "black",
-                }).children("input").prop('checked', false);
-            } else {
-                $(this).parent().parent().css({
+        };
+
+        function makeItOrange(thisObjects) {
+            for (let index = 0; index < thisObjects.length; index++) {
+                thisObjects[index].css({
                     color: "#ff854f",
-                    fontWeight: "500"
+                    fill: "#ff854f"
                 });
             };
+        };
+
+        function checkNonExpandableSiblings(thisObject) {
+            toCheck = thisObject.parent().parent().siblings(".specific-sub-categories-for-hiding");
+            var output = true;
+            toCheck.each(function() {
+                if ($(this).children().children("input").prop('checked') == false) {
+                    output = false;
+                    return false;
+                };
+            });
+            return output;
+        };
+
+        function checkExpandableSiblings(thisObject) {
+            toCheck = thisObject.parent().parent().siblings(".specific-categories");
+            var output = true;
+            toCheck.each(function() {
+                if ($(this).children(".specific-main-categories").children("input").prop('checked') == false) {
+                    output = false;
+                    return false;
+                };
+            });
+            return output;
+        };
+
+        if ($(this).parent().attr("class") == "specific-main-categories") {
+
+            if ($(this).parent().parent().attr("class").includes("specific-categories-0")) { // All categories click
+
+                if ($(this).prop('checked') == false) {
+
+                    $(".categories-filter").prop('checked', false);
+                    makeItBlack([$(".specific-main-categories, .specific-sub-categories-for-hiding"), $(".expandable")]);
+
+                } else {
+
+                    $(".categories-filter").prop('checked', true);
+                    makeItOrange([$(".specific-main-categories, .specific-sub-categories-for-hiding"), $(".expandable")]);
+
+                };
+
+            } else { // Categories with subcategories click
+
+                if ($(this).prop('checked') == false) {
+                    
+                    $(this).parent().siblings(".specific-sub-categories-for-hiding").children().children("input").prop('checked', false);
+                    $(".categories-filter-0").prop('checked', false);
+                    makeItBlack([$(this).parent(), $(this).parent().siblings(".specific-sub-categories-for-hiding"),  $(this).siblings("svg"), $(".specific-categories-0").children(".specific-main-categories")]);
+
+                } else {
+
+                    $(this).parent().siblings(".specific-sub-categories-for-hiding").children().children("input").prop('checked', true);
+                    makeItOrange([$(this).parent(), $(this).parent().siblings(".specific-sub-categories-for-hiding"), $(this).siblings("svg")]);
+                    if (checkExpandableSiblings($(this)) == true) {
+                        $(".categories-filter").prop('checked', true);
+                        makeItOrange([$(".specific-main-categories, .specific-sub-categories-for-hiding"), $(".expandable")]);
+                    };
+
+                };
+
+            };
+
+        } else { // Categories with NO subcategories click
+
+            if ($(this).prop('checked') == false) {
+
+                makeItBlack([$(this).parent().parent(), $(".specific-categories-0").children(".specific-main-categories"), $(this).parent().parent().siblings(".specific-main-categories")]);
+                $(".categories-filter-0").prop('checked', false);
+                $(this).parent().parent().siblings(".specific-main-categories").children("input").prop('checked', false);
+
+            } else {
+
+                makeItOrange([$(this).parent().parent()]);
+
+                if (checkNonExpandableSiblings($(this)) == true) {
+
+                    if (checkExpandableSiblings($(this).parent()) == true) {
+
+                        $(".categories-filter").prop('checked', true);
+                        makeItOrange([$(".specific-main-categories, .specific-sub-categories-for-hiding"), $(".expandable")]);
+
+                    } else {
+
+                        $(this).parent().parent().siblings(".specific-sub-categories-for-hiding").children().children("input").prop('checked', true);
+                        $(this).parent().parent().siblings(".specific-main-categories").children("input").prop('checked', true);
+                        makeItOrange([$(this).parent().parent().siblings(), $(this).parent().parent().siblings().children("svg")]);
+                        
+                    };
+                };
+
+            };
+
         };
     });
 
