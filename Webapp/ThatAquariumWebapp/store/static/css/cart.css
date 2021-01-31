@@ -611,6 +611,11 @@ body {
     margin-top: 40px;
 }
 
+.nothing-in-cart {
+    margin-top: 35px;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
 
     .subheader {
@@ -693,7 +698,7 @@ body {
         flex-direction: column;
     }
 
-    .summary-region, .cart-item {
+    .summary-region, .cart-item, .cart-region {
         width: 85vw;
     }
 

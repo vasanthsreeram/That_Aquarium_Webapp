@@ -56,11 +56,10 @@ function addCookieItem(productID, action) {
         }
     }
     if (action == "remove") {
-        cart[productID]['quantity'] -= 1
-        $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
-        // if (cart[productID]['quantity'] <= 0) {
-        //     delete cart[productID]
-        // }
+        if (cart[productID]['quantity'] > 1) {
+            cart[productID]['quantity'] -= 1
+            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
+        };
     }
     if (action == "delete") {
         delete cart[productID];
@@ -85,6 +84,6 @@ function updateUserOrder(productID,action) {
             return response.json()
         })
         .then((data) => {
-            window.location.reload()
+            // window.location.reload() // to be removed cause no need refresh upon change in qty
         })
 }

@@ -4,15 +4,18 @@ repeat the code for things like nav bar and stuff
 
 */
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .navbar-background {
-    background: linear-gradient(#ff7054, #ff9b58) !important;
+    /* background: linear-gradient(#ff7054, #ff9b58) !important; */
+    background: linear-gradient(#ff8663, #ff964f) !important;
+    /* background-color: #ff8800; */
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
-    font-weight: 600;
+    font-weight: 500;
     transition: 0.2s ease;
     margin: 0vw 40px 0vw 0vw;
     border: none;
@@ -20,6 +23,9 @@ body {
     outline: none;
     cursor: pointer;
     text-align: center;
+    /* text-transform: uppercase; */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9375rem;
 }
 
 .hover-underline-current {
@@ -33,7 +39,7 @@ body {
 }
 
 .navbar-text-item-normal {
-    color: black !important;
+    color: #222222 !important;
 }
 
 .navbar-text-item-normal:hover {
@@ -156,7 +162,7 @@ body {
     background-color: rgba(255, 255, 255, 0.0);
     transition: 0.3s ease;
     position: absolute;
-    margin-left: calc(100vw - 230px);
+    margin-left: calc(100vw - 240px);
     z-index: 3;
 }
 
@@ -286,6 +292,7 @@ body {
 
 .account-text {
     width: 110px;
+    font-weight: 400;
 }
 
 .cart-items-counter {
@@ -303,6 +310,11 @@ body {
     flex-direction: column;
     z-index: 15;
     position: absolute;
+    font-size: 0.75rem;
+}
+
+.logo-a {
+    transform: scale(0.85);
 }
 
 @media (max-width: 552px) {
@@ -314,8 +326,6 @@ body {
 
     .logo-a {
         margin-left: calc(-47px + 50vw - 93.75px)!important;
-        /* margin-top: -60px!important; */
-        transform: scale(1)!important;
     }
 
     .account-back {
