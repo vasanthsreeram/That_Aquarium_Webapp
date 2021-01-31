@@ -126,18 +126,22 @@ body {
 
 @keyframes cart-image-hover {
     0% {filter: invert(1);}
-    75% {filter: drop-shadow(0px 1px 1px white) invert(1);}
-    100% {filter: drop-shadow(0px 1px 2px white) invert(1);}
+    75% {filter: drop-shadow(0px 1px 0px white) invert(1);}
+    100% {filter: drop-shadow(0px 1px 1px white) invert(1);}
 }
 
 @keyframes cart-image-hover-unhover {
-    0% {filter: drop-shadow(0px 1px 2px white) invert(1);}
-    75% {filter: drop-shadow(0px 1px 1px white) invert(1);}
+    0% {filter: drop-shadow(0px 1px 1px white) invert(1);}
+    75% {filter: drop-shadow(0px 1px 0px white) invert(1);}
     100% {filter: invert(1);}
 }
 
-.cart-image:hover {
+.cart:hover > .cart-image {
     animation: cart-image-hover 0.1s forwards;
+}
+
+.cart:hover > .cart-items-counter {
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.4);
 }
 
 .nav-images {
@@ -304,13 +308,15 @@ body {
     border-radius: 50%;
     margin-top: 0px;
     margin-left: 56px;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4); */
+    border: 1px solid rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     flex-direction: column;
     z-index: 15;
     position: absolute;
     font-size: 0.75rem;
+    transition: 0.1s ease;
 }
 
 .logo-a {

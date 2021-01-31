@@ -460,11 +460,6 @@ body {
     padding-right: 30px;
 }
 
-.remove-image {
-    width: 16px;
-    margin-top: -2px;
-}
-
 .item-right-side-elements {
     margin-left: auto;
     width: 250px;
@@ -485,7 +480,7 @@ body {
 }
 
 .save-later {
-    color: rgb(100, 100, 100);
+    color: rgb(130, 130, 130);
     margin-left: auto;
     width: 125px;
 } 
@@ -496,17 +491,21 @@ body {
     border: 1px solid red;
     border-radius: 5px;
     margin-right: 25px;
-    margin-left: auto;
-}
-
-.remove-from-cart:hover {
-    border: 1px solid red;
     background-color: red;
+    margin-left: auto;
+    border: 1px solid red;
     color: white;
 }
 
-.remove-from-cart:hover > .remove-image {
-    filter: grayscale(1) invert(1);
+.remove-from-cart:hover {
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.remove-image {
+    width: 16px;
+    margin-top: -2px;
+    margin-right: 4px;
 }
 
 .save-later:hover {
