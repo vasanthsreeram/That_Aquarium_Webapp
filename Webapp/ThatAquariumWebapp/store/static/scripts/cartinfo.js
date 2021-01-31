@@ -30,6 +30,7 @@ for (var i = 0; i < updatebtns.length; i++) {
             }
         }
         else{
+            action = action.slice(0,action.length -1 )
             if (user === 'AnonymousUser') {
                 addCookieItem(productID, action)
             }
@@ -43,10 +44,10 @@ for (var i = 0; i < updatebtns.length; i++) {
 
 function addCookieItem(productID, action) {
 
-    if (action == 'add') {
-        if (cart[productID] == undefined) {
+    if (action === 'add') {
+        if (cart[productID] === undefined) {
             cart[productID] = {'quantity': 1}
-            if ($(".cart-items-counter").html() == "0") {
+            if ($(".cart-items-counter").html() === "0") {
                 $(".cart-items-counter").show(0);
             };
             $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
@@ -55,11 +56,11 @@ function addCookieItem(productID, action) {
             $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
         }
     }
-    if (action == "remove") {
+    if (action === "remove") {
+        $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
         if (cart[productID]['quantity'] > 1) {
-            cart[productID]['quantity'] -= 1
-            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
-        };
+            cart[productID]['quantity'] -=1
+        }
     }
     if (action == "delete") {
         delete cart[productID];
