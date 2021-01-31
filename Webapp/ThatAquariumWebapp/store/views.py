@@ -29,9 +29,12 @@ def home(request):
     return render(request,'home_page/front_page.html',context)
 
 def cart(request):
-    items,CartTotal =cartData(request)
+    items, CartTotal = cartData(request)
     cartItem = cartItemData(request)
-    addresses = addressData(request)
+    addresses = None
+    if request.user.is_authenticated:
+        addresses = addressData(request)
+
     context = {'cartItems':cartItem,"items":items,"CartTotal":CartTotal,"addresses":addresses}
     return render(request,'home_page/cart.html',context)
 
