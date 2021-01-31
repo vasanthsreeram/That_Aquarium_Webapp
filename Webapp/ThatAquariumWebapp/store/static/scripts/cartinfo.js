@@ -5,7 +5,8 @@ for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
-        var qty = Number(this.dataset.qty)
+        // var qty = Number(this.dataset.qty) // next line might be more accurate
+        var qty = parseInt($(this).parent().siblings(".item-right-side-bottom-elements").children(".quantities").children(".item-quantity").html());
         console.log(user)
         console.log("qty :" , qty.toString())
 
@@ -16,6 +17,9 @@ for (var i = 0; i < updatebtns.length; i++) {
                 for (var i = 0; i < qty; i++) {
                     setTimeout(function () {
                         updateUserOrder(productID, "addw")
+                        if (parseInt($(".cart-items-counter").html()) > 1) {
+                            deductCartValue();
+                        }
                     }, (i + i + 1) * 40);
                 }
 
@@ -26,6 +30,7 @@ for (var i = 0; i < updatebtns.length; i++) {
                     for (var i = 0; i < qty; i++) {
                         setTimeout(function () {
                             updateUserOrder(productID, "addc")
+                            addCartValue();
                         }, (i + i + 1) * 40);
                     }
                 }
@@ -33,11 +38,16 @@ for (var i = 0; i < updatebtns.length; i++) {
         }
         else{
             if (user === 'AnonymousUser') {
-                action = action.slice(0,action.length -1 )
-                addCookieItem(productID, action)
+                action = action.slice(0, action.length -1);
+                addCookieItem(productID, action);
             }
             else {
                 updateUserOrder(productID, action)
+                if (action == "addc") {
+                    addCartValue();
+                } else if (action == "removec") {
+                    deductCartValue();
+                };
             }
         }
     })
@@ -48,18 +58,14 @@ function addCookieItem(productID, action) {
     if (action === 'add') {
         if (cart[productID] === undefined) {
             cart[productID] = {'quantity': 1}
-            if ($(".cart-items-counter").html() === "0") {
-                $(".cart-items-counter").show(0);
-            };
-            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
         } else {
             cart[productID]['quantity'] += 1
-            $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
         }
+        addCartValue();
     }
     if (action === "remove") {
-        $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
         if (cart[productID]['quantity'] > 1) {
+            deductCartValue();
             cart[productID]['quantity'] -=1
         }
     }
@@ -89,3 +95,25 @@ function updateUserOrder(productID,action) {
             // window.location.reload() // to be removed cause no need refresh upon change in qty
         })
 }
+
+function addCartValue() {
+    if ($(".cart-items-counter").html() === "0") {
+        $(".cart-items-counter").show(0);
+    };
+    $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) + 1);
+};
+
+function deductCartValue() {
+    $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
+};
+
+$(document).ready(function() {
+    $(".remove-from-cart").click(function() {
+        qty = parseInt($(this).parent().siblings(".item-right-side-bottom-elements").children(".quantities").children(".item-quantity").html());
+        for (var i = 0; i < qty; i++) {
+            setTimeout(function () {
+                deductCartValue();
+            }, (i + i + 1) * 40);
+        }
+    });
+});

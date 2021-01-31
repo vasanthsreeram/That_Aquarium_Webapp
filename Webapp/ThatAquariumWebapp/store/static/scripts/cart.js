@@ -443,7 +443,7 @@ $(document).ready(function() {
     });
 
     $(".remove-from-cart, .save-later").click(function() {
-        $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - parseInt($(this).parent().siblings(".item-right-side-bottom-elements").children(".quantities").children(".item-quantity").html()));
+        // $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - parseInt($(this).parent().siblings(".item-right-side-bottom-elements").children(".quantities").children(".item-quantity").html()));
         $(".order-summary-inner-text-row-1-right").html("S$" + String(parseFloat(parseFloat($(".order-summary-inner-text-row-1-right").html().split("S$")[1]) - parseFloat($(this).parent().siblings(".item-right-side-bottom-elements").children(".item-total").html().split("S$")[1])).toFixed(2)));
         $(this).parent().parent().parent().remove();
         if ($(".cart-items-counter").html() == "0") {
