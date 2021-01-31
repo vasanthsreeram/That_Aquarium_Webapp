@@ -1,9 +1,6 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
-from django.conf import settings
-
-from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home,name='front_page'),
@@ -27,8 +24,18 @@ urlpatterns = [
     path('register/', views.registerpage, name="register"),
     path('logout/', views.logoutUser, name="logout"),
     path('privacy-policy/', views.privacy, name='privacy_policy'),
-    path('forget-password/', views.forget, name='forget_password'),
     path('product/', views.product, name='product_view'),
     path('update_item/',views.updateItem,name='update_item'),
-    path('update_address/',views.updateAddress,name='update_address')
+    path('update_address/',views.updateAddress,name='update_address'),
+
+
+    path('reset_password/',auth_views.PasswordResetView.as_view(
+        template_name='home_page/forget_password.html'
+    ),name='reset_password'),
+    path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name="password_reset_confirm"),
+    path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name='reset_password_complete'),
+
+
+
 ]

@@ -12,7 +12,7 @@
                 <img src = "{% static 'images/Shared/email.svg' %}" class = "login-icons">
                 <input name = "password" type="password" placeholder="Password" class = "password">
                 <img src = "{% static 'images/Shared/lock-24px.svg' %}" class = "login-icons">
-                <a class = "forget-password" href = "{% url 'forget_password' %}"><p class = "forget-password"><i><u>Forgot your password?</u></i></p></a>
+                <a class = "forget-password" href = "{% url 'reset_password' %}"><p class = "forget-password"><i><u>Forgot your password?</u></i></p></a>
                 {% for message in messages %}
                     <p class = "error-message">{{ message }}</p>
                 {% endfor %}

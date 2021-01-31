@@ -193,19 +193,20 @@ def registerpage(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            # saved_user = form.save()
-            # group = Group.objects.get(name='Member')
-            # saved_user.groups.add(group)
-            # pending_user = User.objects.get(username=form.data["username"])
+            saved_user = form.save()
+            group = Group.objects.get(name='Member')
+            saved_user.groups.add(group)
+            pending_user = User.objects.get(username=form.data["username"])
 
-            # pending_user.is_active = False
-            # pending_user.save()
-            template = render_to_string('home_page/EmailActivation.html',{"name":"vasanth"})
+            pending_user.is_active = False
+            pending_user.email = form.data["usernmae"]
+            pending_user.save()
+            template = render_to_string('home_page/EmailActivation.html',{"name":form.data["first_name"]})
             email = EmailMessage(
                 "subject test",
                 template,
                 "vasanthsreeramcode@gmail.com",
-                ["s.vasanthrojin@gmail.com"]
+                [form.data['username']]
 
             )
             email.send(fail_silently=False)
@@ -219,10 +220,6 @@ def privacy(request):
     cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request, 'home_page/privacy_policy.html',context)
-
-def forget(request):
-    cartItem = cartItemData(request)
-    return render(request, 'home_page/forget_password.html')
 
 def updateAddress(request):
     data = json.loads(request.body)
