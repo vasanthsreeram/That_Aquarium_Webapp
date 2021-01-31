@@ -167,6 +167,8 @@ def loginpage(request):
         if user is not None:
             login(request,user)
             return redirect("front_page")
+        elif User.objects.get(username=username).is_active == False:
+            messages.info(request,"Activate your account using the link sent to your email")
         else:
             messages.info(request,"Invalid Email or Password")
     context = {}
@@ -187,13 +189,18 @@ def registerpage(request):
 
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
-        #for the email validation there is a built feature in every browser
         if form.is_valid():
             saved_user = form.save()
             group = Group.objects.get(name='Member')
             saved_user.groups.add(group)
+            pending_user = User.objects.get(username=form.data["username"])
 
-            messages.success(request,"Successfully created your account. Please confirm your email and login again.")
+            pending_user.is_active = False
+            pending_user.save()
+
+
+
+            messages.success(request,"Successfully created your account. Please activate your email and login again.")
             return redirect('login')
     context = {'form': form}
     return render(request,'home_page/register.html',context)
