@@ -16,8 +16,9 @@ for (var i = 0; i < updatebtns.length; i++) {
                 for (var i = 0; i < qty; i++) {
                     setTimeout(function () {
                         updateUserOrder(productID, "addw")
-                    }, (i + i + 1) * 400);
+                    }, (i + i + 1) * 40);
                 }
+
 
             } else {
                 if (action == "c") {
@@ -25,7 +26,7 @@ for (var i = 0; i < updatebtns.length; i++) {
                     for (var i = 0; i < qty; i++) {
                         setTimeout(function () {
                             updateUserOrder(productID, "addc")
-                        }, (i + i + 1) * 400);
+                        }, (i + i + 1) * 40);
                     }
                 }
             }
