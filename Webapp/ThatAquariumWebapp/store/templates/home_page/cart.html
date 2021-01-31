@@ -129,8 +129,8 @@
             {% endif %}
         </div>
         <div class = "summary-region" id = "summary-region">
-            <form id = "cart-form">
-
+            <form id = "cart-form" method="POST" action="">
+                {% csrf_token %}
 
                 <div class = "order-summary summary-region-items">
                     <p class = "summary-region-items-header">Order Summary</p>
@@ -349,5 +349,5 @@
             </form>
         </div>
     </div>
-    <script src="{% static 'scripts/frontpage.js' %}"></script>
+    <script src="{% static 'scripts/cartinfo.js' %}"></script>
 {% endblock content %}

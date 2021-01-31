@@ -85,6 +85,6 @@ function updateUserOrder(productID,action) {
             return response.json()
         })
         .then((data) => {
-            // window.location.reload()
+            window.location.reload()
         })
 }
