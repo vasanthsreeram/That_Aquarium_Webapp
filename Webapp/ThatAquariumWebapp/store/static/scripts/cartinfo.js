@@ -1,5 +1,6 @@
 //I am gonna add a js for the add to cart function you can modify it if it suits you btr just make sure everything works in the end
 var updatebtns = document.getElementsByClassName('update-cart')
+var loopAnimationTime = 350; // time in ms
 
 for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
@@ -16,7 +17,7 @@ for (var i = 0; i < updatebtns.length; i++) {
                 for (var i = 0; i < qty; i++) {
                     setTimeout(function () {
                         deductCartValue();
-                    }, (i + i + 1) * 40);
+                    }, (i + i + 1) * loopAnimationTime/qty);
                 }   
             } else {
                 if (action == "c") {
@@ -25,7 +26,7 @@ for (var i = 0; i < updatebtns.length; i++) {
                     for (var i = 0; i < qty; i++) {
                         setTimeout(function () {
                             addCartValue();
-                        }, (i + i + 1) * 40);
+                        }, (i + i + 1) * loopAnimationTime/qty);
                     }
                 }
             }

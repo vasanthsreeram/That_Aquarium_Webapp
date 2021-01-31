@@ -1,3 +1,5 @@
+var filterHidden = false;
+
 $(document).ready(function() {
 
     $(".expandable").click(function() {
@@ -143,5 +145,32 @@ $(document).ready(function() {
 
         };
     });
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    $(".search-bar-search-page").val(getUrlVars()["result"]);
+
+    $(".categories-header").click(function() {
+        if (window.innerWidth <= 1250) {
+            if (filterHidden) {
+                $(".filter-inner").stop().show(200);
+                filterHidden = false;
+            } else {
+                $(".filter-inner").stop().hide(200);
+                filterHidden = true;
+            };
+        };
+    });
+
+    if (window.innerWidth <= 1250) {
+        $(".filter-inner").stop().hide(0);
+        filterHidden = true;
+    };
 
 });
