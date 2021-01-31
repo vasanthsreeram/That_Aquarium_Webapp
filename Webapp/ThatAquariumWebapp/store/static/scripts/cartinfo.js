@@ -5,31 +5,25 @@ for (var i = 0; i < updatebtns.length; i++) {
     updatebtns[i].addEventListener('click', function () {
         var productID = this.dataset.product
         var action = this.dataset.action
-        // var qty = Number(this.dataset.qty) // next line might be more accurate
         var qty = parseInt($(this).parent().siblings(".item-right-side-bottom-elements").children(".quantities").children(".item-quantity").html());
         console.log(user)
         console.log("qty :" , qty.toString())
 
         if (action.length == 1) {
             if (action == "w") {
-
                 updateUserOrder(productID, "deletec")
+                updateUserOrdermanytimes(productID, "addwm",qty)
                 for (var i = 0; i < qty; i++) {
                     setTimeout(function () {
-                        updateUserOrder(productID, "addw")
-                        if (parseInt($(".cart-items-counter").html()) > 1) {
-                            deductCartValue();
-                        }
+                        deductCartValue();
                     }, (i + i + 1) * 40);
-                }
-
-
+                }   
             } else {
                 if (action == "c") {
                     updateUserOrder(productID, "deletew")
+                    updateUserOrdermanytimes(productID, "addcm",qty)
                     for (var i = 0; i < qty; i++) {
                         setTimeout(function () {
-                            updateUserOrder(productID, "addc")
                             addCartValue();
                         }, (i + i + 1) * 40);
                     }
@@ -94,7 +88,7 @@ function updateUserOrder(productID,action) {
         .then((data) => {
             // window.location.reload() // to be removed cause no need refresh upon change in qty
         })
-}
+};
 
 function addCartValue() {
     if ($(".cart-items-counter").html() === "0") {
@@ -105,7 +99,33 @@ function addCartValue() {
 
 function deductCartValue() {
     $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
+    if ($(".cart-items-counter").html() === "0") {
+        $(".cart-items-counter").hide(0);
+    };
 };
+
+function updateUserOrdermanytimes(productID,action,qty) {
+    console.log("productID",productID)
+    console.log("action", action)
+    console.log("qty",qty)
+    var url = '/update_item/'
+    fetch(url, { //this is a way to send data as a json to another link using an api
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type':'application/json',
+            
+        },
+        body: JSON.stringify({'productID': productID, 'action': action,"qty":qty}),
+    })
+    .then((response) => {
+        return response.json()
+        })
+        .then((data) => {
+            // window.location.reload() // to be removed cause no need refresh upon change in qty
+        })
+};
+    
 
 $(document).ready(function() {
     $(".remove-from-cart").click(function() {
