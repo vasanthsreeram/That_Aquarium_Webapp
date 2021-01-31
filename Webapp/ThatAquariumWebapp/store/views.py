@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .forms import CreateUserForm
+from django.conf import settings
+from django.template.loader import render_to_string
 from .utils import *
 
 
@@ -191,24 +193,22 @@ def registerpage(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            saved_user = form.save()
-            group = Group.objects.get(name='Member')
-            saved_user.groups.add(group)
-            pending_user = User.objects.get(username=form.data["username"])
+            # saved_user = form.save()
+            # group = Group.objects.get(name='Member')
+            # saved_user.groups.add(group)
+            # pending_user = User.objects.get(username=form.data["username"])
 
-            pending_user.is_active = False
-            pending_user.save()
-
-            Email_subject = "Activate your account"
-            Email_body = ""
-
+            # pending_user.is_active = False
+            # pending_user.save()
+            template = render_to_string('home_page/EmailActivation.html',{"name":"vasanth"})
             email = EmailMessage(
-                Email_subject,
-                Email_body,
+                "subject test",
+                template,
                 "vasanthsreeramcode@gmail.com",
-                [form.data["username"]]
+                ["s.vasanthrojin@gmail.com"]
 
             )
+            email.send(fail_silently=False)
 
             messages.success(request,"Successfully created your account. Please activate your email and login again.")
             return redirect('login')
