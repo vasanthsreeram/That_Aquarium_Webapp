@@ -110,7 +110,7 @@ body {
 }
 
 .search-bar:hover, .search-bar:focus {
-    box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.4);
 }
 
 .cart-image {
@@ -256,12 +256,13 @@ body {
     padding-top: 0px;
     color: black;
     margin-left: 500px;
+    transition: 0.15s ease;
 }
 
 .account-options-text:hover, .account-top:hover {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(250, 250, 250, 1.0);
     text-decoration: none;
-    color: #ff854f;
+    color: #ff7700;
 }
 
 .account-options-text-last {
@@ -273,7 +274,7 @@ body {
 .search-and-cart {
     display: flex;
     flex-direction: row;
-    margin-right: 200px;
+    margin-right: 215px;
 }
 
 .back-shadow {
@@ -296,7 +297,7 @@ body {
 
 .account-text {
     width: 110px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .cart-items-counter {
@@ -313,7 +314,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    z-index: 15;
+    z-index: 1;
     position: absolute;
     font-size: 0.75rem;
     transition: 0.1s ease;
@@ -394,7 +395,7 @@ body {
 
 }
 
-@media (min-width: 992px) and (max-width: 1120px) {
+@media (min-width: 992px) and (max-width: 1150px) {
 
     #new-arrivals {
         display: none;
@@ -412,7 +413,7 @@ body {
 
 @media (max-width: 1380px) {
 
-    .search-bar {
+    .search-bar-header {
         display: none
     }
 
@@ -430,20 +431,12 @@ body {
     }
 
     .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
-        margin: 0vw 0px 0vw 0vw;
-    }
-
-}
-
-@media (max-width: 1475px) {
-
-    .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
         margin: 0vw 10px 0vw 0vw;
     }
 
 }
 
-@media (min-width: 1475px) and (max-width: 1625px) {
+@media (min-width: 1380px) and (max-width: 1625px) {
 
     .navbar-text-item-normal, .navbar-text-item-current, .navbar-text-item-normal:focus, .navbar-text-item-current:focus {
         margin: 0vw 20px 0vw 0vw;

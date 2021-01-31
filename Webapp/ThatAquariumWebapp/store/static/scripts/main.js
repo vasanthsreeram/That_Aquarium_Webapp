@@ -45,11 +45,11 @@ console.log("cart:", cart)
 
 // everything else
 
-function searchRedirect() {
+function searchRedirect(searchVal) {
     if (window.location.hostname == "127.0.0.1") {
-        window.location.href = "http://127.0.0.1:8000/search/?=" + $(".search-bar").val() // for development only
+        window.location.href = "http://127.0.0.1:8000/search/?result=" + searchVal // for development only
     } else {
-        window.location.href = "https://" + window.location.hostname + "/search/?=" + $(".search-bar").val()
+        window.location.href = "https://" + window.location.hostname + "/search/?result=" + searchVal
     };
 };
 
@@ -72,12 +72,12 @@ $(document).ready(function() {
 
     $(".search-bar").keyup(function(e) {
         if (e.keyCode == 13) {
-            searchRedirect();
+            searchRedirect($(this).val());
         };
     });
 
     $(".submit-button").click(function() {
-        searchRedirect();
+        searchRedirect($(this).siblings("input").val());
     });
     
     currentPage = window.location.pathname;

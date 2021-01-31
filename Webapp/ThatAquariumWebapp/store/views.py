@@ -94,7 +94,7 @@ def hot_deals(request):
 
 def search(request):
     try:
-        query = request.get_full_path().split("/search/?=")[1]
+        query = request.get_full_path().split("/search/?result=")[1]
     except:
         return render(request,'home_page/search.html', {"results": []})
     else:
