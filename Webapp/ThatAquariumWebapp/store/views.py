@@ -208,7 +208,7 @@ def registerpage(request):
             pending_user.save()
 
 
-            uidb64 = force_bytes(urlsafe_base64_encode(pending_user.pk))
+            uidb64 = urlsafe_base64_encode(force_bytes(pending_user.pk))
 
             domain = get_current_site(request).domain
             link = reverse('activate',kwargs={"uidb64":uidb64,"token":TokenGenerator.make_token(pending_user)})
