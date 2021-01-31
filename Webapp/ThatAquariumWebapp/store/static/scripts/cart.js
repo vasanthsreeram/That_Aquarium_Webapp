@@ -461,6 +461,32 @@ $(document).ready(function() {
         $("html, body").animate({scrollTop: $(".summary-region").offset().top}, 400);
     });
 
+    $(".checkout").click(function() {
+        deliveryOption = [$('input[name="delivery"]:checked').val(), $('input[name="delivery"]:checked').attr("id")];
+        if (deliveryOption[1] == "delivery-1") {
+            addressOption = [$('input[name="delivery-address"]:checked').val(), $('input[name="delivery-address"]:checked').siblings().children().children(".label-actual-text-1").html(), $('input[name="delivery-address"]:checked').siblings().children().children(".label-actual-text-2").html()];
+        } else if (deliveryOption[1] == "delivery-2") {
+            addressOption = [$('input[name="collection"]:checked').val(), $('input[name="collection"]:checked').siblings().children().children(".label-actual-text-1").html(), $('input[name="collection"]:checked').siblings().children().children(".label-actual-text-2").html()];
+        };
+        paymentOption = $('input[name="payment-address"]:checked').val();
+        if (paymentOption.endsWith("--1") == true) {
+            paymentOption = [paymentOption, "Cash On Delivery"];
+        } else if (paymentOption.endsWith("-1") == true) {
+            paymentOption = [paymentOption, $('.card-number').val(), $('.expiry-date').val(), $('.cvv').val()];
+        };
+        if ($(".payment-address-same").prop('checked') == true) {
+            billingAddress = [true, ...addressOption];
+        } else {
+            billingAddress = [false, $(".billing-full-name").val(), $(".billing-phone-number").val(), $(".billing-address-line-1").val(), $(".billing-address-line-2").val(), $(".billing-post-code").val()];
+        };
+        console.log(deliveryOption, addressOption, paymentOption, billingAddress); // Your 4 vars to use (Click checkout to see how it looks like as guest (Logged in works as well except for payment method as card))
+        // I will update payment ui for logged in users after they decide whether they want to keep the user cards or not
+        // Insert checkout backend here (Also, pls validate in backend all values to double check that they were not modified and are legit)
+        
+        // End of Insert
+        // window.location.reload(); // might change to redirect to orders
+    });
+
     window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
         if (currentScrollPos > $(".summary-region").offset().top - window.innerHeight * 0.75) {
@@ -471,7 +497,6 @@ $(document).ready(function() {
     }
 
     backCollection();
-    // $(".edit-payment-address, .add-card-overlay, .add-address-overlay, .add-billing-overlay, .add-stuff-overlay").hide(0); // Already in css but here for reference
     // if value of items is zero, delivery methods, addresses and payment won't be clickable
     //$(".order-summary-inner-text-row-1-right").html("S$50.00") // For testing for custom values (Does not affect final payment value)
     if (checkEmptyCart() == false) {
