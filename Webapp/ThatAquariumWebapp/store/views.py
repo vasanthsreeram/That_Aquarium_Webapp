@@ -6,9 +6,12 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from .forms import CreateUserForm
-from django.conf import settings
 from django.template.loader import render_to_string
 from .utils import *
+from django.utils.encoding import force_bytes,force_text,DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
 
 
 
@@ -200,11 +203,26 @@ def registerpage(request):
             group = Group.objects.get(name='Member')
             saved_user.groups.add(group)
             pending_user = User.objects.get(username=form.data["username"])
-
             pending_user.is_active = False
-            pending_user.email = form.data["usernmae"]
+            pending_user.email = form.data["username"]
             pending_user.save()
-            template = render_to_string('home_page/EmailActivation.html',{"name":form.data["first_name"]})
+
+
+            uidb64 = force_bytes(urlsafe_base64_encode(pending_user.pk))
+
+            domain = get_current_site(request).domain
+            link = reverse('activate',kwargs={"uidb64":uidb64,"token":TokenGenerator.make_token(pending_user)})
+
+            activate_url = "http://"+domain+link
+
+            email_variables = {
+                "name": form.data["first_name"],
+                "link": activate_url,
+
+            }
+
+
+            template = render_to_string('home_page/EmailActivation.html', email_variables)
             email = EmailMessage(
                 "subject test",
                 template,
@@ -218,6 +236,9 @@ def registerpage(request):
             return redirect('login')
     context = {'form': form}
     return render(request,'home_page/register.html',context)
+
+def verificationview(request,uidb64,token):
+    return redirect('login')
 
 def privacy(request):
     cartItem = cartItemData(request)
