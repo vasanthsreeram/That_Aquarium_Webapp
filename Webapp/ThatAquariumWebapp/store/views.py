@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.core.mail import EmailMessage
 from django.http import HttpResponse,JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -198,7 +199,16 @@ def registerpage(request):
             pending_user.is_active = False
             pending_user.save()
 
+            Email_subject = "Activate your account"
+            Email_body = ""
 
+            email = EmailMessage(
+                Email_subject,
+                Email_body,
+                "vasanthsreeramcode@gmail.com",
+                [form.data["username"]]
+
+            )
 
             messages.success(request,"Successfully created your account. Please activate your email and login again.")
             return redirect('login')
