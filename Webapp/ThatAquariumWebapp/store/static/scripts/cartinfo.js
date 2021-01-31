@@ -30,9 +30,7 @@ for (var i = 0; i < updatebtns.length; i++) {
             }
         }
         else{
-            console.log(action)
             action = action.slice(0,action.length -1 )
-            console.log(action)
             if (user === 'AnonymousUser') {
                 addCookieItem(productID, action)
             }
@@ -59,11 +57,10 @@ function addCookieItem(productID, action) {
         }
     }
     if (action === "remove") {
-        cart[productID]['quantity'] -= 1
         $(".cart-items-counter").html(parseInt($(".cart-items-counter").html()) - 1);
-        // if (cart[productID]['quantity'] <= 0) {
-        //     delete cart[productID]
-        // }
+        if (cart[productID]['quantity'] > 1) {
+            cart[productID]['quantity'] -=1
+        }
     }
     if (action == "delete") {
         delete cart[productID];
