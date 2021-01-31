@@ -13,21 +13,14 @@ for (var i = 0; i < updatebtns.length; i++) {
             if (action == "w") {
 
                 updateUserOrder(productID, "deletec")
-                for (var i = 0; i < qty; i++) {
-                    setTimeout(function () {
-                        updateUserOrder(productID, "addw")
-                    }, (i + i + 1) * 40);
+                updateUserOrdermanytimes(productID, "addwm",qty)
                 }
 
 
-            } else {
+             else {
                 if (action == "c") {
                     updateUserOrder(productID, "deletew")
-                    for (var i = 0; i < qty; i++) {
-                        setTimeout(function () {
-                            updateUserOrder(productID, "addc")
-                        }, (i + i + 1) * 40);
-                    }
+                    updateUserOrdermanytimes(productID, "addcm",qty)
                 }
             }
         }
@@ -81,6 +74,28 @@ function updateUserOrder(productID,action) {
 
         },
         body: JSON.stringify({'productID': productID, 'action': action}),
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            // window.location.reload() // to be removed cause no need refresh upon change in qty
+        })
+}
+
+function updateUserOrdermanytimes(productID,action,qty) {
+    console.log("productID",productID)
+    console.log("action", action)
+    console.log("qty",qty)
+    var url = '/update_item/'
+    fetch(url, { //this is a way to send data as a json to another link using an api
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type':'application/json',
+
+        },
+        body: JSON.stringify({'productID': productID, 'action': action,"qty":qty}),
     })
         .then((response) => {
             return response.json()

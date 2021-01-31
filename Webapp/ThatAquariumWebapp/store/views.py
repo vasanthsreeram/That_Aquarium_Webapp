@@ -277,8 +277,6 @@ def updateItem(request):
     action = data['action']
     loc = action[-1]
     action = action[0:-1]
-    print("action: ",action)
-
 
     #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
     if loc=="c":
@@ -317,6 +315,22 @@ def updateItem(request):
 
         if orderItem.quantity <= 0:
             orderItem.delete()
+    elif loc == "m":
+        customer = request.user
+        product = Product.objects.get(id=productID)
+        qty = int(data["qty"])
+        loc = action[-1]
+        if loc=="c":
+            order, created = Order.objects.get_or_create(customer=customer)
+            orderItem, created = Orderitem.objects.get_or_create(order=order, product=product)
+            orderItem.quantity+=qty
+            orderItem.save()
+        elif loc=="w":
+            order, created = Wishlist.objects.get_or_create(customer=customer)
+            orderItem, created = WishlistItem.objects.get_or_create(order=order, product=product)
+            orderItem.quantity+=qty
+            orderItem.save()
+
 
     return JsonResponse('Item was added',safe=False)
 
