@@ -277,6 +277,9 @@ def updateItem(request):
     action = data['action']
     loc = action[-1]
     action = action[0:-1]
+    print("action: ",action)
+
+
     #print(f'this is the product ID {productID} and this is the action that should be carried out {action}')
     if loc=="c":
         customer= request.user

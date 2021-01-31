@@ -136,4 +136,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'vasanthsreeramcode@gmail.com'
 EMAIL_HOST_PASSWORD = 'hfYV2dZTRg8avrG'
 
+
+import mimetypes
+mimetypes.add_type("https://fonts.googleapis.com/css2?family=Raleway:100,200,300,400,500,600,700,800,900", ".css", True)
+
 ALLOWED_HOSTS = ['*']

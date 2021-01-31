@@ -8,6 +8,7 @@ for (var i = 0; i < updatebtns.length; i++) {
         var qty = Number(this.dataset.qty)
         console.log(user)
         console.log("qty :" , qty.toString())
+
         if (action.length == 1) {
             if (action == "w") {
 
@@ -30,15 +31,14 @@ for (var i = 0; i < updatebtns.length; i++) {
             }
         }
         else{
-            action = action.slice(0,action.length -1 )
             if (user === 'AnonymousUser') {
+                action = action.slice(0,action.length -1 )
                 addCookieItem(productID, action)
             }
             else {
                 updateUserOrder(productID, action)
             }
         }
-
     })
 }
 
