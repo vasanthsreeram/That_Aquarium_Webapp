@@ -1,7 +1,19 @@
+from django.shortcuts import redirect
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.contrib.auth.models import Group
+from .forms import CreateUserForm
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
 import json
 from .models import *
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from six import text_type
+
+
 
 class AppTokenGenerator(PasswordResetTokenGenerator):
     def _make_hash_value(self, user, timestamp):
@@ -80,3 +92,41 @@ def addressData(request):
         print(address)
 
     return address
+
+
+def registeruser(request):
+    form = CreateUserForm(request.POST)
+    if form.is_valid():
+        saved_user = form.save()
+        group = Group.objects.get(name='Member')
+        saved_user.groups.add(group)
+        pending_user = User.objects.get(username=form.data["username"])
+        pending_user.is_active = False
+        pending_user.email = form.data["username"]
+        pending_user.save()
+
+
+        uidb64 = urlsafe_base64_encode(force_bytes(pending_user.pk))
+
+        domain = get_current_site(request).domain
+        link = reverse('activate',kwargs={"uidb64":uidb64,"token":TokenGenerator.make_token(pending_user)})
+
+        activate_url = "http://"+domain+link
+
+        email_variables = {
+            "name": form.data["first_name"],
+            "link": activate_url,
+
+        }
+        template = render_to_string('home_page/EmailActivation.html', email_variables)
+        email = EmailMessage(
+            "subject test",
+            template,
+            "vasanthsreeramcode@gmail.com",
+            [form.data['username']]
+
+        )
+        email.send(fail_silently=False)
+
+        messages.success(request,"Successfully created your account. Please activate your email and login again.")
+        return redirect('login')

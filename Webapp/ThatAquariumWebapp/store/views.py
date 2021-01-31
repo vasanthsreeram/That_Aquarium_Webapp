@@ -194,46 +194,11 @@ def registerpage(request):
     if request.user.is_authenticated:# this basically checks if the user is logged in
         #you can put a message if you want
         return redirect('front_page')
-    form = CreateUserForm()
 
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            saved_user = form.save()
-            group = Group.objects.get(name='Member')
-            saved_user.groups.add(group)
-            pending_user = User.objects.get(username=form.data["username"])
-            pending_user.is_active = False
-            pending_user.email = form.data["username"]
-            pending_user.save()
+        return registeruser(request)
+    form = CreateUserForm()
 
-
-            uidb64 = urlsafe_base64_encode(force_bytes(pending_user.pk))
-
-            domain = get_current_site(request).domain
-            link = reverse('activate',kwargs={"uidb64":uidb64,"token":TokenGenerator.make_token(pending_user)})
-
-            activate_url = "http://"+domain+link
-
-            email_variables = {
-                "name": form.data["first_name"],
-                "link": activate_url,
-
-            }
-
-
-            template = render_to_string('home_page/EmailActivation.html', email_variables)
-            email = EmailMessage(
-                "subject test",
-                template,
-                "vasanthsreeramcode@gmail.com",
-                [form.data['username']]
-
-            )
-            email.send(fail_silently=False)
-
-            messages.success(request,"Successfully created your account. Please activate your email and login again.")
-            return redirect('login')
     context = {'form': form}
     return render(request,'home_page/register.html',context)
 
