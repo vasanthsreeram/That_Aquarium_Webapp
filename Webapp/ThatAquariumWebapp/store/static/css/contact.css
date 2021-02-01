@@ -1,0 +1,194 @@
+/* Elements */
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+/* End of elements */
+
+/* Subheader */
+
+.about-us, .contact-us, .about-us:focus, .contact-us:focus, .about-us:hover, .contact-us:hover {
+    text-decoration: none;
+}
+
+.subheader {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 35px;
+}
+
+/* End of subheader */
+
+/* Map */
+
+#osm-map {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index: 1;
+}
+
+.map {
+    border-radius: 20px;
+    width: 60%;
+    height: 550px;
+}
+
+/* End of Map */
+
+/* Other contents */
+
+.line-breaker {
+    height: 1px;
+    width: 100%;
+    background-color: rgb(230, 230, 230);
+}
+
+.contact-us-main-content {
+    margin-top: 35px;
+    box-shadow: 2px 2px 12px 3px rgba(0, 0, 0, 0.4);
+    width: 75vw;
+    border-radius: 20px;
+}
+
+.pins-right {
+    height: 48px;
+}
+
+.branches {
+    width: 40%;
+    border-left: 1px solid grey;
+    height: 550px;
+    overflow-y: scroll;
+}
+
+.branch-specific {
+    border-top: 1px solid rgb(180, 180, 180);
+    width: 100%;
+    box-shadow: 2px 2px 12px 3px rgba(0, 0, 0, 0.0);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.branch-specific:hover {
+    box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.4);
+    transform: translate(0px, -2px);
+}
+
+.branch-specific:hover + .branch-specific {
+    border-color: transparent;
+}
+
+.branch-specific-1 {
+    border-top: none;
+}
+
+.branch-specific-last:hover {
+    transform: translate(0px, 0px);
+}
+
+.pins-right {
+    margin: auto 25px auto 25px;
+}
+
+.location-texts {
+    margin: 0px;
+}
+
+.branch-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.operating-hours {
+    margin-bottom: 20px;
+}
+
+.socials {
+    margin-bottom: 50px;
+}
+
+.social-images {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.socials-hyperlink, .socials-hyperlink:hover, .socials-hyperlink:link, .socials-hyperlink:active {
+    margin-top: 50px;
+    text-decoration: none;
+    margin-right: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.1s ease;
+}
+
+.socials-hyperlink:hover {
+    background-color: rgb(245, 245, 245);
+    transform: translate(0px, -2px);
+    /* box-shadow: 1px 1px 12px 6px rgba(0, 0, 0, 0.2); */
+}
+
+.social-text {
+    color: #ff854f;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+/* End of other contents */
+
+/* Media */
+
+@media (max-width: 1150px) {
+
+    .contact-us-main-content {
+        flex-direction: column;
+    }
+
+    .map, .branches {
+        width: 100%;
+    }
+
+    #osm-map {
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .branches {
+        overflow-y: visible;
+        height: auto;
+        border-left-color: transparent;
+    }
+
+    .branch-specific-last {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+}
+
+@media (min-width: 1151px) and (max-width: 1380px) {
+
+    .contact-us-main-content {
+        width: 85vw;
+    }
+
+}
+
+/* End of Media */

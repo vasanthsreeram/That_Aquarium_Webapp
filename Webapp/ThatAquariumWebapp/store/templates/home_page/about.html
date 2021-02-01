@@ -2,5 +2,27 @@
 {% load static %}
 
 {% block content %}
-    <h1>About Us page here</h1>
+
+    <link rel="stylesheet" href="{% static 'css/about.css' %}" type = "text/css">
+    <div class = "subheader mx-auto">
+        <a href = "{% url 'about' %}" class = "about-us navbar-text-item-current navbar-text-item-current-orange">
+            About Us
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+        <a href = "{% url 'contact' %}" class = "contact-us navbar-text-item-normal navbar-text-item-normal-orange">
+            Contact Us
+            <div class = "hover-underline hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+
+    <div class = "about-us-content mx-auto">
+        <p class="about-us-content-text">
+            That Aquarium was started more than 10 years ago, during the Flowerhorn craze in Singapore. Our flagship store was officially opened in Yishun, on 31st July 2002. From carrying just a few hundred products initially, it now has a wide variety of up to more than ten thousand products available for sale. 
+            <br><br>
+            On 18th February 2017, That Aquarium @ Changi officially opened its doors. Like the Yishun outlet, the location was selected with convenience in mind, and it is situated just a 8mins’ walk away from Eunos Mrt Station. That Aquarium Changi is twice as huge as the Yishun outlet, thus allowing the display of more livestocks.  
+            <br><br>
+            Our third store outlet at Clementi was finally opened on 23th February 2019, after an extensive two month renovation. Much thought was put into the location as well, which was why we decided to open it at the popular Blk 328 Clementi stretch, which is well-known by many as the place to go for aquarium products. Our goal was to provide customers there with a different experience, allowing them to enjoy quality products and service without the expensive price tag.
+        </p>
+    </div>
+
 {% endblock content %}

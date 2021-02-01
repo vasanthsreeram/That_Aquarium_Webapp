@@ -1,0 +1,56 @@
+/* Subheader */
+
+.about-us, .contact-us, .about-us:focus, .contact-us:focus, .about-us:hover, .contact-us:hover {
+    text-decoration: none;
+}
+
+.subheader {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 35px;
+}
+
+/* End of subheader */
+
+/* Content */
+
+.about-us-content {
+    margin-top: 35px;
+    width: 75vw;
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    transition: 0.1s ease;
+}
+
+.about-us-content:hover {
+    box-shadow: 2px 2px 12px 3px rgba(0, 0, 0, 0.4);
+}
+
+.about-us-content-text {
+    padding: 50px;
+}
+
+/* End of content */
+
+/* Media */
+
+@media (max-width: 550px) {
+
+    .subheader {
+        width: 200px;
+    }
+    
+    .about-us-content {
+        width: 85vw;
+    }
+    
+    .about-us-content-text {
+        padding: 30px;
+    }
+
+}
+
+/* ENd of Media */
