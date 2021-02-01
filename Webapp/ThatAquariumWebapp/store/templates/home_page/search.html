@@ -79,11 +79,21 @@
                 <p class = "no-search-result">No Search Results Found</p>
             {% else %}
                 {% for result in results %}
-                    <div class = "item">
+                    <!-- Please update the variabels for product image, name, price and description once the backend is done -->
+                    <div class = "item"> <!-- Make this redirect to product page when ready -->
                         <img src='{{ item.product.imageURL }}' class = "item-images">
                         <div class = "item-text">
                             <p class = "item-name">{{ "Product Name" }}</p>
-                            <p class = "item-price">S${{ "5.00" }}</p>
+                            {% if 1 == 1 %} <!-- Change to check condition for discounted price -->
+                                <p class = "item-price item-price-not-discounted">S${{ "5.00" }}</p>
+                            {% elif 1 == 1 %} <!-- Change to Out of Stock check -->
+                                <p class = "item-price out-of-stock">Out of Stock</p>
+                            {% else %}
+                                <div class = "flex-r">
+                                    <p class = "item-price">S${{ "5.00" }}</p>
+                                    <p class = "item-original-price"><del>S${{ "10.00" }}</del></p>
+                                </div>
+                            {% endif %}
                             <p class = "item-description">{{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu sem rutrum est pretium tincidunt sollicitudin sit amet elit. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed mi non risus pharetra egestas. In vel lacus imperdiet, vestibulum eros vel, ornare nisl. Mauris scelerisque eros nec augue accumsan, non accumsan odio lobortis. Donec tempus, nunc ut pellentesque feugiat, nisi risus placerat quam, vel posuere justo velit a diam. Pellentesque est turpis, rutrum eu turpis vitae, eleifend fermentum tellus. Nam ac elit at eros consequat tempor. Sed id orci non lorem porttitor lacinia. Nulla ac egestas turpis. Pellentesque in tincidunt sapien, nec aliquam est." }}</p>
                         </div>
                     </div>

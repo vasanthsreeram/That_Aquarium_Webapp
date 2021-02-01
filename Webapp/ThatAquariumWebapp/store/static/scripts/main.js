@@ -90,7 +90,7 @@ $(document).ready(function() {
         "/terms-and-conditions/": ".hover-underline-5",
         "/privacy-policy/": ".hover-underline-5",
         "/FAQ/": ".hover-underline-6",
-        "/about/": ".hover-underline-7",
+        "/about-us/": ".hover-underline-7",
         "/search/": ".hover-underline-8",
         "/cart/": ".hover-underline-9",
     };

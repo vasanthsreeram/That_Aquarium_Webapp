@@ -1,11 +1,20 @@
 /*
-main css is like general format for all pages this is used so that you don't have to
-repeat the code for things like nav bar and stuff
+
+Main.css is like general format for all pages this is used so that you don't have to
+repeat the code for things like nav bar and stuff.
+It is also for the navbar header solely
 
 */
+
+/* Tags */
+
 body {
     font-family: 'Poppins', sans-serif;
 }
+
+/* End Tags */
+
+/* Navbar Elements */
 
 .navbar-background {
     /* background: linear-gradient(#ff7054, #ff9b58) !important; */
@@ -324,6 +333,28 @@ body {
     transform: scale(0.85);
 }
 
+/* End of navbar elements */
+
+/* Start of Shared classes */
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-centre {
+    justify-content: center;
+}
+
+/* End of Shared Classes */
+
+/* General Media */
+
 @media (max-width: 552px) {
 
     .navbar-collapsed-button {
@@ -447,3 +478,5 @@ body {
     }
 
 }
+
+/* End of General Media */

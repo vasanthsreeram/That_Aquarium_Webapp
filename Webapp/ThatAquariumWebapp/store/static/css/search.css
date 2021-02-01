@@ -242,6 +242,14 @@
     margin: 5px 0px 5px 0px;
 }
 
+.item-price-not-discounted{
+    color: black!important;
+}
+
+.out-of-stock {
+    color: red!important;
+}
+
 .item-description {
     font-size: 0.875rem;
     margin-bottom: 0px;

@@ -2,5 +2,409 @@
 {% load static %}
 
 {% block content %}
-    <h1>FAQ here</h1>
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}" type = "text/css">
+    <script src="{% static 'scripts/faq.js' %}"></script>
+
+    <div class="flex-r flex-centre">
+        <a class = "faq-header navbar-text-item-current navbar-text-item-current-orange" href = "{% url 'FAQ' %}">
+            Frequently Asked Questions
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+
+    <div class = "faq-background mx-auto">
+        <p class = "faq-sub-header-content padding-normal padding-auto">
+            As an Essential Service provider, That Aquarium continues to operate and serve you during this time. We will do so responsibly and with your well-being in mind.
+            <br><br>
+            However, due to shortage of manpower, shipping may take slightly longer than usual. We seek your understanding in this matter and appreciate your support in these trying times. We hold this community close to our hearts and we send hopes of health and safety to you and your loved ones.
+            <br><br>
+            We’re here to answer any questions you may have and to help in any way we can. Please get in touch <a href = "{% url 'contact' %}">here</a>
+            <br><br>
+            We’re happy that we can continue to serve you. Thank you for supporting a local business in these times.
+        </p>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Top Questions</p>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: I want to shop on your online store. Is it safe to receive packages from That Aquarium?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                As we keep a close watch on the global impact of COVID-19, we are committed to continue doing our part to safeguard customers who wish to shop on our online store: www.thataquarium.com
+                <br>
+                We want to assure you that we are doing everything we can with our delivery partners to follow recent government advisories on hygiene protocols during the preparation and delivery of your orders.
+                <br><br>
+                The following precautionary measures have been implemented:
+                <br><br>
+                1. Packing - our staffs follow measures in accordance with WHO and local health authority protocols i.e. temperature taking, washing of hands, social distancing measures and Travel History Declarations.
+                <br><br>
+                2. Delivery - our delivery partners are monitoring the health of their drivers closely and have instituted the following precautionary measures:
+                <br>
+                <ul class = "faq-content-answers-list padding-super-extended padding-bottom-short">
+                    <li>
+                        Daily temperature to be checked of all drivers
+                    </li>
+                    <br>
+                    <li>
+                        Drivers to carry personal protective equipment i.e. sanitiser, gloves and masks
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: What is That Aquarium doing to safeguard the well-being of shoppers in stores?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Your health and safety is our #1 priority.
+                <br><br>
+                We have allocated alcohol-based hand rubs as well as hand soaps to all our outlets for your usage.
+                <br><br>
+                We ask that you keep a 1-metre separation from others when shopping in stores and while queuing for the cashier. We have marked out clear lines on our floors as a guide and ask for your cooperation in this matter.
+                <br><br>
+                Customers entering our stores would also be required to have their temperatures taken and hands sanitised. To protect you and other customers, we request that anyone with a temperature of more than 37.4°C refrain from entering the store.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How do I check the status of my order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                To be determined
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How do I place an order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Shopping with us is easy! Simply follow the steps:
+                <br><br>
+                1.	Visit www.thataquarium.com and browse our catalogue.
+                <br>
+                2.	Add items to your cart by clicking “Add to cart“.
+                <br>
+                3.	To review or edit your item quantities, click on the “Cart” icon located at the upper right corner of the page.
+                <br>
+                When you’re ready to place your order:
+                <br>
+                4.	Click on “Checkout” and your order summary will appear for review.
+                <br>
+                5.	If you have an applicable “Promo Code”, key it in and click “Apply”. Changes will take effect once you have successfully entered the code.
+                <br>
+                6.	Fill in your preferred Shipping Method, Shipping Address, and Payment Option then click on “Place Order” to proceed with the payment.
+                <br><br>
+                You will receive a confirmation email shortly after you have successfully placed your order.
+                <br><br>
+                You can also drop by any That Aquarium outlets and our staff will be happy to help.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can you notify me when an “Out of Stock” product is back in store?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We love our products and know how frustrating it can get when a product is out of stock. Please click the “Notify Me” button located on the product page. You will receive an automated notification via email once the item is back in stock on thataquarium.com.
+            </p>
+        </div>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Orders</p>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can I amend or cancel my order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We will attempt to accommodate order changes prior to shipping confirmation but do note that changes to orders may result in shipping delays or mix-ups in the preparation of your order. We highly suggest that you review your bag before checking out.
+                <br><br>
+                Once shipping is confirmed, we would not be able to make any changes, additions, cancellations or amendments to the order. 
+                <br><br>
+                To amend your order, contact us <a href = "{% url 'contact' %}">here</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How do I place an order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Shopping with us is easy! Simply follow the steps:
+                <br><br>
+                1.	Visit www.thataquarium.com and browse our catalogue.
+                <br>
+                2.	Add items to your cart by clicking “Add to cart“.
+                <br>
+                3.	To review or edit your item quantities, click on the “Cart” icon located at the upper right corner of the page.
+                <br>
+                When you’re ready to place your order:
+                <br>
+                4.	Click on “Checkout” and your order summary will appear for review.
+                <br>
+                5.	If you have an applicable “Promo Code”, key it in and click “Apply”. Changes will take effect once you have successfully entered the code.
+                <br>
+                6.	Fill in your preferred Shipping Method, Shipping Address, and Payment Option then click on “Place Order” to proceed with the payment.
+                <br><br>
+                You will receive a confirmation email shortly after you have successfully placed your order.
+                <br><br>
+                You can also drop by any That Aquarium outlets and our staff will be happy to help.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How do I check the status of my order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                To be determined
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How do I know my order went through?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Orders are confirmed once payment has been completed. You should receive an order confirmation email within 24 hours. You may also view your order status online via “My Account” on the top right, and then <a href = "{% url 'orders' %}"">“Orders”</a>.
+                <br><br>
+                Guest orders will not be visible under My Account, you may contact Customer Service to assist you.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Where is my order confirmation number?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                After you have successfully placed your order online, you will receive an email that contains information regarding the details of your order. You can visit your <a href = "{% url 'orders' %}">orders</a> page if you are a member as well to check your order number.
+                Order confirmation numbers start with (To be determined).
+                If you have not received your order confirmation, please check the entered email address or contact Customer Service <a href = "{% url 'contact' %}">here</a>.
+
+                Thank you for shopping with us!
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: What do I do when the items in my bag are Out of Stock?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                In the event that item is unavailable, please click “Remove” under the specific item. This will not affect the rest of the items in your bag. We suggest clicking “Notify Me” located on the specific product page so that we can notify you when the item is back in stock.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Do you process orders during Public Holidays?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                That Aquarium would remain open every day of the year, with the exception of Chinese New Year. 
+                <br><br>
+                Last orders would be sent out a day before Chinese New Year and new orders thereafter would only be processed and shipped out on Day 4 of Chinese New Year.        
+            </p>
+        </div>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Delivery and Shipping</p>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: How long does my order take to be shipped and what are the charges like?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                All orders would be delivered within 7 working days upon order confirmation.
+                <br><br>
+                We offer free delivery within mainland Singapore on all orders above $80. 
+                <br><br>
+                For orders under $80, please refer to the delivery price chart here (To be determined).
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: What are your delivery timings like?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We work with our courier partners to deliver your orders from 9am-5pm daily. Orders are processed and delivered within 7 working days upon order confirmation.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can I collect my order in store?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Yes, we offer self-collection services at all That Aquarium outlets. You will be notified within 3 business days via email/phone when your parcel is ready for collection.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can I amend my billing/shipping address after I have placed an order?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We will try to accommodate any change of delivery address 24 hours prior to delivery confirmation. However, we will not be able to do so once your parcel has been handed to our courier partner.
+                <br><br>
+                Please look at our Terms of Delivery here (To be determined).
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: What happens if I am not available to receive the order at my doorstep?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Please be assured that you will be notified prior to any delivery attempts. Due to security purposes, all orders must be delivered and received by hand. We do not recommend parcels to be placed at an unsecured location. That Aquarium will not be liable for misplaced or lost parcels should you instruct our courier partner to leave your parcel at an unsecured location. If you are unable to receive the parcel on the day of delivery, you may inform us <a href = "{% url 'contact' %}">here</a> to reschedule the delivery at least 24 hours prior to original delivery time.Uncollected parcels will be returned to our headquarters and may be chargeable for any additional redelivery attempts. Please contact us at +65 XXXXXXXX (To be determined) for assistance.
+                <br><br>
+                Please look at our Terms of Delivery here (To be determined).
+            </p>
+        </div>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Payments, Promotions and Gift Vouchers</p>
+    </div>
+    
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: I made a payment but have not received any confirmation.
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Most payments are processed immediately. Check with your bank or card provider to see if the payment has been deducted from your account. If the order status does not update within 24hrs, please contact us <a href = "{% url 'contact' %}">here</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: What kind of payment methods can I use on thataquarium.com?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                To be determined
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Why is my promo code not approved?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Please check the terms and conditions of the voucher regarding redemption eligibility (expiry date, exclusions etc) and see if it's applicable to the items in cart.
+                <br><br>
+                Please note that promo codes cannot be used concurrently with other discounts/promotions.
+            </p>
+        </div>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Others</p>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can I request/suggest a brand or product?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                Sure! We would love to hear from you about products you find interesting and would love for us to bring in. Feel free to send us your requested brand by contacting us <a href = "{% url 'contact' %}">here</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Can you notify me when an “Out of Stock” product is back in store?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We love our products and know how frustrating it can get when a product is out of stock. Please click the “Notify Me” button located on the product page. You will receive an automated notification via email once the item is back in stock.
+            </p>
+        </div>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class = "faq-question-content padding-normal padding-top-short padding-auto-short">
+            Q: Where are your store locations?
+        </p>
+        <div class = "hideable-content hidden padding-auto-tiny">
+            <p class = "faq-content-answers padding-extended">
+                We are located in various locations around Singapore. Click <a href = "{% url 'contact' %}">here</a> to find out!
+            </p>
+        </div>
+    </div>
+
+    <div class="padding-normal question-section mx-auto">
+        <p class="question-section-text">Return Policy</p>
+    </div>
+
+    <div class = "faq-background faq-background-clickable mx-auto">
+        <p class="padding-normal padding-top-short">
+            We aim to ensure that all products delivered to you arrive in perfect condition. However, should your parcel appear damaged at the time of delivery, please refuse the delivery and notify us here immediately.
+            <br><br>
+            If you are returning a product because we have sent the wrong item or the item is faulty/damaged, replacement is available within 14 days of delivery of the product, and delivery fee of the replacement product would be waived. In the event the product returned is not damaged, we may at our discretion decide not to replace, repair or refund you for the product and/or require you to pay all reasonable delivery and servicing costs.
+            <br><br>
+            Please note the following exceptions to our return and exchange policy:
+        </p>
+        <ul class="padding-extended">
+            <li>Sale items are final and cannot be exchanged or returned.</li>
+            <li>Returned items must be in original packaging, with no visible signs of wear or use ie. Labels and seals intact. In the event that any labels and seals are removed or tampered with, we reserve the right to reject the return of the item.</li>
+            <li>Items purchased as part of a set or multi-item pack must be returned as a whole set. In the event the returned product is not a complete set, we reserve the right to reject the return of the item.</li>
+            <li>This return policy does not apply to items which have been stated as non-exchangeable or non-returnable.</li>
+            <li>For online orders, shipping costs associated with the return of the product will not be covered by us.</li>
+            <li>Due to the nature of customized products, sale of customised items are final and not eligible for return and exchange . As such, That Aquarium Pte Ltd is unable to accept returned products that were customized except in situations where the return is due to unforeseen damage such as water leakage. Hence, kindly check products thoroughly upon delivery, before signing the receipt of delivery.</li>
+        </ul>
+        <p class="padding-normal padding-bottom-short">
+            <br><br>
+            Met all the requirements? You can contact us <a href = "{% url 'contact' %}">here</a>. Include in your message "Returns/Exchanges" as your issue and provide your order number and the item you wish to return.
+            <br><br>
+            Return/Exchanges are approved on case-by-case basis. Kindly reach out to us here within 7 days of receipt and keep the merchandise in its original purchase condition. This includes packaging and any seals or labels the product might have come with.
+        </p>
+    </div>
+
 {% endblock content %}

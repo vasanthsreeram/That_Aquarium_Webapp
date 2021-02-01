@@ -1,0 +1,130 @@
+/* Shared Page Element Css */
+
+.padding-normal {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.padding-extended {
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.padding-super-extended {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.padding-top {
+    padding-top: 50px;
+}
+
+.padding-bottom {
+    padding-bottom: 50px;
+}
+
+.padding-auto {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.padding-top-short {
+    padding-top: 35px;
+}
+
+.padding-bottom-short {
+    padding-bottom: 35px;
+}
+
+.padding-auto-short {
+    padding-top: 35px!important;
+    padding-bottom: 35px!important;
+}
+
+.padding-auto-tiny {
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
+}
+
+/* End of shared css */
+
+/* Page Element CSS */
+
+.faq-header, .faq-header:hover {
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+.faq-background {
+    width: 75vw;
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    margin-top: 25px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: 0.1s ease;
+}
+
+.faq-sub-header-content {
+    font-weight: 600;
+}
+
+.faq-question-content {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.faq-background:hover {
+    box-shadow: 2px 2px 12px 3px rgba(0, 0, 0, 0.4);
+}
+
+.hideable-content {
+    display: none;
+}
+
+.return-policy {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #ff854f;
+}
+
+.question-section {
+    width: 75vw;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding-top: 60px;
+    padding-bottom: 10px;
+    color: #ff854f;
+}
+
+.question-section-text {
+    margin: 0px;
+}
+
+/* End of Page Element CSS */
+
+/* Media */
+
+@media (max-width: 500px) {
+
+    .faq-background, .question-section {
+        width: 85vw;
+    }
+
+    .padding-normal {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .padding-extended {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    .padding-super-extended {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+}
+
+/* End of Media */
