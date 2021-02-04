@@ -13,6 +13,15 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 
+def get_product(request, products, cartItem):
+    id = int(request.POST.get("view")[0])
+    display_product = None
+    for product in products:
+        if product.id == id:
+            display_product = product
+            break
+    context = {"product":display_product,"cartItems": cartItem}
+    return render(request,'home_page/product.html',context)
 
 
 def home(request):
@@ -20,14 +29,7 @@ def home(request):
     items,CartTotal =cartData(request)
     cartItem = cartItemData(request)
     if request.method =="POST":
-        id = int(request.POST.get("view")[0])
-        display_product = None
-        for product in products:
-            if product.id == id:
-                display_product = product
-                break
-        context = {"product":display_product,"cartItems": cartItem}
-        return render(request,'home_page/product.html',context)
+        return get_product(request, products, cartItem)
     context = {"items": items,"products": products,"cartItems": cartItem, "carousel": [["Christmas Carousel Test.png", 0], ["Christmas Carousel Test.png", 1], ["Christmas Carousel Test.png", 2]]}
     return render(request,'home_page/front_page.html', context)
 
@@ -91,8 +93,11 @@ def featured(request):
     return render(request,'home_page/featured.html',context)
 
 def hot_deals(request):
+    products = Product.objects.filter(display_type="H")
     cartItem = cartItemData(request)
-    context = {"cartItems": cartItem}
+    context = {"cartItems": cartItem, "products": products}
+    if request.method =="POST":
+        return get_product(request, Product.objects.filter(display_type="H"), cartItem)
     return render(request,'home_page/hot.html',context)
 
 def search(request):

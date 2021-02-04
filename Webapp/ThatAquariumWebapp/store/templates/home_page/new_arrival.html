@@ -2,26 +2,43 @@
 {% load static %}
 {% block content %}
 
-<div class="row" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="{% static 'css/hot-featured-new-shared.css' %}" type = "text/css">
+<script src="{% static 'scripts/hot-featured-new-shared.js' %}"></script>
+
+<div class = "subheader mx-auto flex-r flex-centre">
+    <a class = "subheader-text navbar-text-item-current navbar-text-item-current-orange" href = "{% url 'new' %}">
+        New Arrivals
+        <div class = "hover-underline hover-underline-orange"></div>
+    </a>
+</div>
+
+<div class = "all-items-background flex-r flex-centre" id = "page-top">
     {% for product in products %}
-    <div class="col-lg-4">
-        <img class="thumbnail" height="360" width="500" src="{{ product.image.url }}">
-        <div class="box-element product">
-            <h6><strong>{{ product.product_name }}</strong></h6>
-            <h6>quantity :{{ product.quantity }}</h6>
-            <hr>
-
-            <button  data-product={{ product.id }} data-action="add" class="btn update-cart">Add to Cart</button>
-            <form action="" method="POST">
-                {% csrf_token %}
-                <button name="view" value="{{ product.id }}" >View</button>
-            </form>
-
-            <h4 style="display: inline-block; float: right"><strong>${{ product.price|floatformat:2 }}</strong></h4>
-
+        <div class="items-background flex-c">
+            <div class = "thumbnail-background">
+                <button name="view" value="{{ product.id }}" class = "redirect-button">
+                    <img class="thumbnail" src="{{ product.image.url }}"> <!-- Make this image correct -->
+                </button>
+                <button class="btn btn-outline-secondary add-btn update-cart" data-product={{ product.id }} data-action="add">Add to Cart</button>
+            </div>
+            <p class="item-name">{{ product.product_name }}</p>
+            {% if 1 != 1 %} <!-- Change to check condition for discounted price -->
+                <p class = "product-price item-price-not-discounted">S${{ product.price|floatformat:2 }}</p> <!-- Make this normal price -->
+            {% elif 1 != 1 %} <!-- Change to Out of Stock check -->
+                <p class = "product-price out-of-stock">Out of Stock</p>
+            {% else %}
+                <div class = "flex-r">
+                    <p class = "product-price">S${{ "5.00" }}</p> <!-- Make this Discounted price -->
+                    <p class = "product-original-price"><del>S${{ product.price|floatformat:2 }}</del></p> <!-- Make this normal price -->
+                </div>
+            {% endif %}
         </div>
-    </div>
     {% endfor %}
-    <script src="{% static 'scripts/cartinfo.js' %}"></script>
-    </div>
+</div>
+
+<p class = "flex-r flex-centre thats-all">That's all our newest items for now, check back later for more!</p>
+<button onclick = "goToTop()" class = "mx-auto flex-c back-to-top"><u><i>Back to Top</i></u></button>
+
+<script src="{% static 'scripts/cartinfo.js' %}"></script>
+
 {% endblock content %}

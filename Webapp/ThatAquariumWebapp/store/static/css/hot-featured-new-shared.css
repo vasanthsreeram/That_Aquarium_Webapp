@@ -1,0 +1,124 @@
+/* Content */
+
+.subheader-text, .subheader-text:hover, .subheader-text:focus {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 35px;
+    margin-bottom: 0px;
+    color: #eda55e;
+    text-decoration: none;
+    margin-right: 0px;
+}
+
+.all-items-background {
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.items-background {
+    width: 300px;
+    margin: 25px;
+}
+
+.redirect-button, .redirect-button:hover, .redirect-button:active, .redirect-button:focus {
+    outline: none;
+    width: 100%;
+    height: calc(100% - 40px);
+    border: 0px;
+    padding: 0;
+}
+
+.thumbnail-background {
+    width: 100%;
+    height: 240px;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    background-color: #eda55e;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.6);
+    transform: translate(0px, -1px);
+    filter: brightness(0.75);
+}
+
+.add-btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    color: white;
+    border-color: #eda55e;
+    background-color: #eda55e;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.add-btn:hover {
+    background-color: #eda55e;
+    border-color: #eda55e;
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.4);
+    transform: translate(0px, -1px);
+}
+
+.item-name, .product-price {
+    margin: 10px 20px 0px 20px;
+}
+
+.item-name {
+    font-weight: 600;
+}
+
+.product-price {
+    color: #ff854f;
+    font-weight: 500;
+    margin-right: 5px;
+    font-size: 1.125rem;
+    margin-top: 0px;
+}
+
+.item-price-not-discounted, .product-original-price {
+    color: black;
+}
+
+.product-original-price {
+    font-size: 0.875rem;
+}
+
+.out-of-stock {
+    color: red;
+}
+
+.back-to-top, .back-to-top:focus {
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s ease;
+    width: fit-content;
+    outline: none;
+    border: none;
+    font-size: 0.75rem;
+}
+
+.back-to-top:hover {
+    color: #eda55e;
+}
+
+.thats-all {
+    margin-bottom: 0px;
+    font-size: 0.75rem;
+}
+
+/* End Content */
