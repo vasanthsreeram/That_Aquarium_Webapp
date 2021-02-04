@@ -50,6 +50,10 @@
 
 /* Page Element CSS */
 
+.faq-note-background {
+    margin-top: 35px!important;
+}
+
 .faq-header, .faq-header:hover {
     margin-top: 35px;
     text-decoration: none;

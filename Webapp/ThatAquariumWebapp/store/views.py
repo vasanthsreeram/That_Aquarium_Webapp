@@ -28,8 +28,8 @@ def home(request):
                 break
         context = {"product":display_product,"cartItems": cartItem}
         return render(request,'home_page/product.html',context)
-    context = {"items": items,"products": products,"cartItems": cartItem}
-    return render(request,'home_page/front_page.html',context)
+    context = {"items": items,"products": products,"cartItems": cartItem, "carousel": [["Christmas Carousel Test.png", 0], ["Christmas Carousel Test.png", 1], ["Christmas Carousel Test.png", 2]]}
+    return render(request,'home_page/front_page.html', context)
 
 def cart(request):
     items, CartTotal = cartData(request)

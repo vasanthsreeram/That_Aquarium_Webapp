@@ -2,27 +2,70 @@
 {% load static %}
 {% block content %}
 
-<div class="row" xmlns="http://www.w3.org/1999/html">
-    {% for product in products %}
-    <div class="col-lg-4">
-        <img class="thumbnail" height="360" width="500" src="{{ product.image.url }}">
-        <div class="box-element product">
-            <h6><strong>{{ product.product_name }}</strong></h6>
-            <h6>quantity :{{ product.quantity }}</h6>
-            <hr>
+<script src="{% static 'scripts/front_page.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/front_page.css' %}" type = "text/css">
 
-            <button  data-product={{ product.id }} data-action="addc" class="btn update-cart">Add to Cart</button>
-            <button  data-product={{ product.id }} data-action="addw" class="btn update-cart">Add to Wishlist</button>
+<div class="carousel-custom">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        
+        <div class = "carousell-buttons flex-r flex-centre">
+            <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "back">
+            <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "next">
+        </div>
+        
+        <div class="carousel-inner flex-r">
+            {% for item in carousel %}
+            <div class="item item-{{item.1}}">
+                <img class = "item-image" id = "item-image-{{item.1}}" src="{% static 'images/Home Page/' %}{{item.0}}">
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+    <ol class="carousel-indicators">
+        {% for item in carousel %}
+            <li data-target="#myCarousel" data-slide-to="{{ item.1 }}" class="indicators indicator-{{item.1}}"></li>
+        {% endfor %}
+    </ol>
+
+</div>
+
+<p class = "recommended-text">Recommended For You</p>
+
+<div class="recommended-background flex-c mx-auto">
+    <div class = "recommended-item-background flex-r">
+        {% for product in products %}
             <form action="" method="POST">
                 {% csrf_token %}
-                <button name="view" value="{{ product.id }}" >View</button>
+                <div class="featuerd-item" value="{{ product.id }}">
+                    <button name="view" value="{{ product.id }}" class = "redirect-button">
+                        <img class="thumbnail" src="{{ product.image.url }}">
+                        <div class="box-element product">
+                            <p class = "product-name">{{ product.product_name }}</p>
+                            <!-- The following can be removed but is kept for reference if needed -->
+                            {#<p>quantity :{{ product.quantity }}</p>#}
+                            {#<button  data-product={{ product.id }} data-action="addc" class="btn update-cart">Add to Cart</button>#}
+                            {#<button  data-product={{ product.id }} data-action="addw" class="btn update-cart">Add to Wishlist</button>#}
+                            <!-- End of removable content -->
+                            {% if 1 == 1 %} <!-- Change to check condition for discounted price -->
+                                <p class = "product-price item-price-not-discounted">S${{ product.price|floatformat:2 }}</p>
+                            {% elif 1 == 1 %} <!-- Change to Out of Stock check -->
+                                <p class = "product-price out-of-stock">Out of Stock</p>
+                            {% else %}
+                                <div class = "flex-r">
+                                    <p class = "product-price">S${{ product.price|floatformat:2 }}</p>
+                                    <p class = "product-original-price"><del>S${{ product.price|floatformat:2 }}</del></p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </button>
+                </div>
             </form>
+        {% endfor %}
+    </div>
+</div>
 
-            <h4 style="display: inline-block; float: right"><strong>${{ product.price|floatformat:2 }}</strong></h4>
-            
-        </div>
-    </div>
-    {% endfor %}
-    <script src="{% static 'scripts/cartinfo.js' %}"></script>
-    </div>
+<script src="{% static 'scripts/cartinfo.js' %}"></script>
 {% endblock content %}

@@ -84,9 +84,9 @@
                         <img src='{{ item.product.imageURL }}' class = "item-images">
                         <div class = "item-text">
                             <p class = "item-name">{{ "Product Name" }}</p>
-                            {% if 1 == 1 %} <!-- Change to check condition for discounted price -->
+                            {% if 1 != 1 %} <!-- Change to check condition for discounted price -->
                                 <p class = "item-price item-price-not-discounted">S${{ "5.00" }}</p>
-                            {% elif 1 == 1 %} <!-- Change to Out of Stock check -->
+                            {% elif 1 != 1 %} <!-- Change to Out of Stock check -->
                                 <p class = "item-price out-of-stock">Out of Stock</p>
                             {% else %}
                                 <div class = "flex-r">
