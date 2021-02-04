@@ -14,7 +14,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 
 def get_product(request, products, cartItem):
-    id = int(request.POST.get("view")[0])
+    id = int(request.POST.get("view")[0])   
     display_product = None
     for product in products:
         if product.id == id:
@@ -35,6 +35,7 @@ def home(request):
 
 def cart(request):
     items, CartTotal = cartData(request)
+    print(items)
     cartItem = cartItemData(request)
     addresses = None
     if request.user.is_authenticated:
@@ -74,8 +75,7 @@ def new_arrival(request):
     cartItem = cartItemData(request)
     products = Product.objects.filter(display_type="N")
     items,CartTotal =cartData(request)
-
-    if request.method =="POST":
+    if request.method =="POST" and request.POST.get("view") != None:
         id = int(request.POST.get("view")[0])
         display_product = None
         for product in products:
@@ -89,15 +89,18 @@ def new_arrival(request):
 
 def featured(request):
     cartItem = cartItemData(request)
-    context = {"cartItems": cartItem}
+    products = Product.objects.filter(display_type="H")
+    context = {"cartItems": cartItem, "products": products}
+    if request.method =="POST" and request.POST.get("view") != None:
+        return get_product(request, products, cartItem)
     return render(request,'home_page/featured.html',context)
 
 def hot_deals(request):
     products = Product.objects.filter(display_type="H")
     cartItem = cartItemData(request)
     context = {"cartItems": cartItem, "products": products}
-    if request.method =="POST":
-        return get_product(request, Product.objects.filter(display_type="H"), cartItem)
+    if request.method =="POST" and request.POST.get("view") != None:
+        return get_product(request, products, cartItem)
     return render(request,'home_page/hot.html',context)
 
 def search(request):

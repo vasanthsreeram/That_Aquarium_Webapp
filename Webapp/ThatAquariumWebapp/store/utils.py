@@ -35,9 +35,10 @@ def CookieCart(request):
             item = {
                 'product': {
                     'id': product_obj.id,
-                    'name': product_obj.product_name,
+                    'product_name': product_obj.product_name,
                     'price': product_obj.price,
-                    'imageURL': product_obj.imageURL
+                    'imageURL': product_obj.imageURL,
+                    'description': product_obj.description
                 },
                 'quantity': cart[productid]['quantity'],
                 'get_total': total,

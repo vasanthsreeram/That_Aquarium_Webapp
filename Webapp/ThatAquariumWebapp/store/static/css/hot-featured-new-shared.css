@@ -73,6 +73,11 @@
     transform: translate(0px, -1px);
 }
 
+.add-btn:focus {
+    background-color: #eda55e!important;
+    filter: opacity(1.5);
+}
+
 .item-name, .product-price {
     margin: 10px 20px 0px 20px;
 }
@@ -110,6 +115,7 @@
     outline: none;
     border: none;
     font-size: 0.75rem;
+    background-color: transparent;
 }
 
 .back-to-top:hover {
