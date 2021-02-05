@@ -134,7 +134,6 @@
                     <a class = "account-options-text" href="{% url 'address'%}">Addresses</a>
                     <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
                     <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
-                    <!-- Change the condition to check whether user has login or not once done -->
                     {% if not request.user.is_authenticated %}
                         <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>
                     {% else %}

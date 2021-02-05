@@ -2,14 +2,146 @@
 {% load static %}
 
 {% block content %}
-    <h1>Name: {{ product.product_name }}</h1>
+
+    <link rel="stylesheet" href="{% static 'css/product.css' %}" type = "text/css">
+    <link href = "{% static 'css/cart.css' %}" rel = "stylesheet" type = "text/css">
+    <script src="{% static 'scripts/product.js' %}"></script>
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <div class = "review-overlay-bg">
+
+            <div class="review-overlay">
+                <form>
+                    <p class = "overlay-header">Your Review</p>
+                    <div class = "overlay-input-row-1 overlay-input-row">
+                        <!-- Add value of textarea to be user's review if it exists -->
+                        <textarea type = "text" placeholder="Type your review here..." class = "overlay-inputs review" name = "review" id = "review"></textarea>
+                    </div>
+                    <div class = "personal-review-stars flex-r flex-centre">
+                        {% for i in "1234" %} <!-- Edit this to loop through number of stars given -->
+                            <img src = "{% static 'images/Item Listing/star_rate-24px.png' %}" class = "review-stars review-stars-filled review-stars-overlay">
+                        {% endfor %}
+                        {% for i in "1" %}
+                            <img src = "{% static 'images/Item Listing/star_border-24px.png' %}" class = "review-stars review-stars-empty review-stars-overlay">
+                        {% endfor %}
+                    </div>
+                    <div class = "overlay-buttons">
+                        <div class = "overlay-back cancel-review">Cancel</div> <!-- Purposely not a button so it's easier to deal with -->
+                        <div class = "overlay-save save-review">Save</div> <!-- Purposely not a button so it's easier to deal with -->
+                    </div>
+                </form>
+            </div>
+    
+            <div class="review-overlay-clickable"></div>
+    
+        </div>
+
+        <div class = "item-background mx-auto flex-c">
+
+            <div class = "item-top-background flex-r">
+
+                <img src="{{ product.image.url }}" class = "item-image">
+    
+                <div class = "item-info">
+    
+                    <p class = "item-name">{{ product.product_name }}</p>
+    
+                    <div class = "reviews flex-r">
+                        <div>
+                            {% for i in "1234" %}
+                                <img src = "{% static 'images/Item Listing/star_rate-24px.png' %}" class = "review-stars review-stars-filled">
+                            {% endfor %}
+                            {% for i in "1" %}
+                                <img src = "{% static 'images/Item Listing/star_border-24px.png' %}" class = "review-stars review-stars-empty">
+                            {% endfor %}
+                        </div>
+                        <p class = "review-count">{{ "5" }} Reviews</p> 
+                    </div>
+    
+                    <div class = "price-and-wishlist flex-r">
+                        {% if 1 != 1 %} <!-- Change to check condition for discounted price -->
+                            <p class = "product-price item-price-not-discounted">S${{ product.price }}</p>
+                        {% elif 1 != 1 %} <!-- Change to Out of Stock check -->
+                            <p class = "product-price out-of-stock">Out of Stock</p>
+                        {% else %}
+                            <div class = "flex-r">
+                                <p class = "product-price">S${{ "5.00" }}</p> <!-- Make this Discounted price -->
+                                <p class = "product-original-price"><del>S${{ product.price }}</del></p>
+                            </div>
+                        {% endif %}
+                        <div class = "flex-r">
+                            {% if request.user.is_authenticated %}
+                                {% if 1 != "in wishlist" %} <!-- Edit this to check if in wishlist -->
+                                    <img src = "{% static 'images/Item Listing/favorite-24px.png' %}" class = "wishlist-icon">
+                                    <p class = "wishlist-text">In Wishlist</p>
+                                {% else %}
+                                    <img src = "{% static 'images/Item Listing/favorite_border-24px.png' %}" class = "wishlist-icon">
+                                    <p class = "wishlist-text">Add to Wishlist</p>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+    
+                    <p class = "item-description">{{ product.description }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus velit lectus, et posuere risus bibendum vitae. In sem leo, viverra non arcu vitae, tincidunt porttitor elit</p>
+    
+                </div>
+
+            </div>
+
+
+            {% if 1 == 1 %} <!-- Change to Out of Stock check -->
+                <button class = "add-notify add-to-cart update-cart" data-product={{ product.id }} data-action="addc">Add to Cart</button>
+            {% else %}
+                <button class = "add-notify notify-me" disabled>Notify Me</button>
+            {% endif %}
+            
+        </div>
+
+        <div class = "flex-r reviews-text-area">
+            <p class = "reviews-text">Reviews</p>
+            {% if "itembought" != 1 %} <!-- Edit this to check if they already bought the item -->
+                {% if "review-exists" != 1 %} <!-- Edit this to check if review exists -->
+                    <div class = "review-button flex-c flex-centre">Post Review</div>
+                {% else %}
+                    <div class = "review-button flex-c flex-centre">Edit Review</div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class = "reviews-background mx-auto">
+            {% if "reviews"|length != 0 %} <!-- Edit this to check length of reviews -->
+                {% for i in "reviews" %} <!-- Make sure first review is the user's review if it exists. Edit this to the actual var too -->
+                    <div class = "flex-c individual-review-background">
+                        <p class = "individual-review-name">{{ "User's Name" }}</p>
+                        <div class="flex-r">
+                            {% for i in "1234" %}
+                                <img src = "{% static 'images/Item Listing/star_rate-24px.png' %}" class = "review-stars review-stars-filled">
+                            {% endfor %}
+                            {% for i in "1" %}
+                                <img src = "{% static 'images/Item Listing/star_border-24px.png' %}" class = "review-stars review-stars-empty">
+                            {% endfor %}
+                        </div>
+                        <p class = "individual-review-date">{{ "31st December 2020" }}</p>
+                        <p class = "individual-review-description">{{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus velit lectus, et posuere risus bibendum vitae. In sem leo, viverra non arcu vitae, tincidunt porttitor elit. Ut rhoncus tellus quis lacus lacinia, ac commodo felis imperdiet." }}</p>
+                    </div>
+                {% endfor %}
+                <div class = "load-more mx-auto">Load More</div>
+            {% else %}
+                <p class = "no-reviews mx-auto">No reviews available</p>
+            {% endif %}
+        </div>
+
+    </form>
+    
+    <!--     
     <h1>{{ product.product_type }}</h1>
-    <img src="{{ product.image.url }}">
     <h1>{{ product.product_class }}</h1>
     <h1>{{ product.product_category }}</h1>
-    <h1>price: {{ product.price }}</h1>
-    <h1>qty: {{ product.quantity }}</h1>
-    <h1>decription: {{ product.description }}</h1>
+    <h1>qty: {{ product.quantity }}</h1> 
+    -->
     
-    
+    <script src="{% static 'scripts/cartinfo.js' %}"></script>
 {% endblock content %}

@@ -1,0 +1,336 @@
+/* Item */
+
+.item-background {
+    width: 75vw;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    margin-top: 35px;
+    height: auto;
+    transition: 0.2s ease;
+}
+
+.item-background:hover, .reviews-background:hover {
+    box-shadow: 2px 2px 12px 4px rgba(0, 0, 0, 0.3);
+}
+
+.item-image {
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
+    margin: 40px;
+    transition: 0.2s ease;
+}
+
+.item-image:hover {
+    transform: translate(0px, -2px);
+}
+
+.item-info {
+    margin-top: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.item-name {
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.review-stars {
+    height: 24px;
+    width: 24px;
+    margin-right: -5px;
+}
+
+.review-count {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.product-price {
+    color: #ff854f;
+    font-weight: 500;
+    margin-right: 5px;
+    font-size: 1.125rem;
+    margin-top: 0px;
+}
+
+.item-price-not-discounted, .product-original-price {
+    color: black;
+}
+
+.product-original-price {
+    font-size: 0.875rem;
+}
+
+.out-of-stock {
+    color: red;
+}
+
+.wishlist-icon {
+    height: 24px;
+    width: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.wishlist-icon:hover {
+    transform: scale(1.1);
+}
+
+.wishlist-text {
+    margin-left: 5px;
+}
+
+.item-description {
+    margin-top: -10px;
+    color: rgb(100, 100, 100);
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+
+.add-notify, .add-notify:hover, .add-notify:focus, .add-notify:active {
+    width: calc(100% - 80px);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    padding: 10px;
+    margin: 40px;
+    margin-top: 0px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+}
+
+.add-to-cart {
+    background-color: #ff854f;
+    color: white;
+}
+
+/* apparently box shadow removes the white */
+.add-to-cart:hover {
+    color: white;
+}
+
+.notify-me {
+    background-color: rgb(255, 222, 34);
+}
+
+/* End of item */
+
+/* Reviews */
+
+.reviews-text-area {
+    margin: 30px 0px 30px 15vw;
+}
+
+.reviews-text {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 5px;
+}
+
+.review-button, .review-button:focus, .review-button:active, .review-button:hover {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff854f;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.0);
+    padding: 0px 35px 0px 35px;
+    font-size: 0.875rem;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.add-notify:hover, .review-button:hover {
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.2);
+    transform: translate(0px, -2px);
+}
+
+.reviews-background {
+    width: 75vw;
+    box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    height: auto;
+    transition: 0.2s ease;
+    padding: 40px;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+.no-reviews {
+    margin: 0px;
+    text-align: center;
+}
+
+.individual-review-background {
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 20px;
+}
+
+.individual-review-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.individual-review-date {
+    color: rgb(100, 100, 100);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.individual-review-description{
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0px;
+}
+
+.load-more {
+    height: 35px;
+    width: fit-content;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 7px;
+    font-size: 0.875rem;
+}
+
+.load-more:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+/* End of reviews */
+
+/* Overlay */
+
+.review-overlay-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: -100px;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.review-overlay-clickable {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+}
+
+.review-overlay {
+    width: 70vw;
+    height: 700px;
+    background-color: white;
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    margin-top: calc(50vh + 100px);
+    margin-left: 50vw;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+    position: fixed;
+}
+
+.review {
+    height: 60%;
+    resize: none;
+}
+
+.overlay-header {
+    margin-top: 30px!important;
+    margin-bottom: 15px!important;
+}
+
+.overlay-buttons {
+    margin-top: 15px!important;
+    width: 85%!important;
+}
+
+.overlay-input-row {
+    width: 85%!important;
+}
+
+.review-stars-overlay {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* End of Overlay */
+
+/* Media */
+
+@media (max-width: 991px) {
+
+    .item-top-background, .price-and-wishlist, .reviews {
+        flex-direction: column;
+    }
+
+    .item-info {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .item-image {
+        margin: 30px;
+        width: calc(100% - 60px);
+        height: auto;
+        margin-bottom: 0px;
+    }
+
+    .item-background, .reviews-background {
+        width: 85vw;
+    }
+
+    .review-count, .wishlist-icon {
+        margin-left: 0px;
+    }
+
+    .price-and-wishlist {
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        margin-bottom: 0px;
+    }
+
+    .reviews-background {
+        padding: 30px;
+        padding-top: 20px;
+    }
+
+}
+
+@media (max-width: 1250px) {
+    
+    .review-overlay {
+        width: 85vw;
+        height: 750px;
+    }
+
+}
+
+/* End of media */

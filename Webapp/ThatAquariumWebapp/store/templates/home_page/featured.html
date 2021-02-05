@@ -19,19 +19,19 @@
             <div class="items-background flex-c">
                 <div class = "thumbnail-background">
                     <button name="view" value="{{ product.id }}" class = "redirect-button">
-                        <img class="thumbnail" src="{{ product.image.url }}"> <!-- Make this image correct -->
+                        <img class="thumbnail" src="{{ product.image.url }}">
                     </button>
                     <button class="btn btn-outline-secondary add-btn update-cart" data-product={{ product.id }} data-action="addc">Add to Cart</button>
                 </div>
                 <p class="item-name">{{ product.product_name }}</p>
                 {% if 1 != 1 %} <!-- Change to check condition for discounted price -->
-                    <p class = "product-price item-price-not-discounted">S${{ product.price|floatformat:2 }}</p> <!-- Make this normal price -->
+                    <p class = "product-price item-price-not-discounted">S${{ product.price|floatformat:2 }}</p>
                 {% elif 1 != 1 %} <!-- Change to Out of Stock check -->
                     <p class = "product-price out-of-stock">Out of Stock</p>
                 {% else %}
                     <div class = "flex-r">
                         <p class = "product-price">S${{ "5.00" }}</p> <!-- Make this Discounted price -->
-                        <p class = "product-original-price"><del>S${{ product.price|floatformat:2 }}</del></p> <!-- Make this normal price -->
+                        <p class = "product-original-price"><del>S${{ product.price|floatformat:2 }}</del></p>
                     </div>
                 {% endif %}
             </div>
