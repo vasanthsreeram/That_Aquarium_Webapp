@@ -230,6 +230,7 @@
     margin-top: -100px;
     z-index: 10;
     overflow: hidden;
+    display: none;
 }
 
 .review-overlay-clickable {

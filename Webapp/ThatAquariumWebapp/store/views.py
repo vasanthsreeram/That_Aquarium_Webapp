@@ -138,6 +138,8 @@ def search(request):
             results = ["No Search Results Found"]
         return render(request,'home_page/search.html', {"results": results, "categories": categories}) #results is a list of results to return
 
+
+@login_required(login_url="login")
 def orders(request):
     cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
@@ -153,10 +155,10 @@ def membership(request):
 
 
 
-def payment(request):
-    cartItem = cartItemData(request)
-    context = {"cartItems": cartItem}
-    return render(request,'home_page/payment.html',context)
+# def payment(request):
+#     cartItem = cartItemData(request)
+#     context = {"cartItems": cartItem}
+#     return render(request,'home_page/payment.html',context)
 
 @login_required(login_url="login")
 def settings(request):

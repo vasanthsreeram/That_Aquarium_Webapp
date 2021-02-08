@@ -111,20 +111,20 @@
             </div>
             <div class = "account-back">
                 <div class = "account-top">
-                    <div>
-                        <a href="{% url 'account' %}" class = "account">
+                    <a href="{% url 'account' %}" class = "account account-top">
+                        <div>
                             <img src="{% static 'images/Home Page/account_circle-24px.svg' %}" class = "nav-images right-of-search-bar account-image">
-                        </a>
-                    </div>
-                    <div class = "account-text">
-                        {% if not request.user.is_authenticated %}
+                        </div>
+                        <div class = "account-text">
+                            {% if not request.user.is_authenticated %}
                             <p class = "account-line-1 account-line"><i>Hi, Guest!</i></p>
                             <p class = "account-line-2 account-line"><u><i>Login/Signup</i></u></p>
-                        {% else %}
+                            {% else %}
                             <p class = "account-line-1 account-line"><i>Hi, {{ request.user.first_name }}!</i></p>
                             <p class = "account-line-2 account-line"><u><i>Your Account</i></u></p>
-                        {% endif %}
-                    </div>
+                            {% endif %}
+                        </div>
+                    </a>
                     <img src = "{% static 'images/Shared/expand_more-24px.svg' %}" class = "dropdown">
                 </div>
                 <div class = "account-options">
@@ -132,7 +132,7 @@
                     <a class = "account-options-text" href="{% url 'wishlist'%}">Wishlist</a>
                     <a class = "account-options-text" href="{% url 'membership'%}">Membership</a>
                     <a class = "account-options-text" href="{% url 'address'%}">Addresses</a>
-                    <a class = "account-options-text" href="{% url 'payment'%}">Payment Methods</a>
+                    <!-- <a class = "account-options-text" href="{#{% url 'payment'%}#}">Payment Methods</a> --> <!-- Disabled till futher notice -->
                     <a class = "account-options-text" href="{% url 'settings'%}">Settings</a>
                     {% if not request.user.is_authenticated %}
                         <a class = "account-options-text account-options-text-last" href="{% url 'login'%}">Sign In</a>

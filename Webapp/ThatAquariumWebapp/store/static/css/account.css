@@ -1,0 +1,96 @@
+/* Page Specific */
+
+.account-header, .account-header:hover, .account-header:active, .account-header:focus {
+    text-decoration: none;
+    margin-top: 35px;
+    margin-right: 0px;
+}
+
+.account-background {
+    flex-wrap: wrap;
+    width: 80vw;
+}
+
+.account-urls, .account-urls:hover, .account-urls:focus, .account-urls:active {
+    text-decoration: none;
+}
+
+.account-urls {
+    width: 100%;
+}
+
+.account-item {
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    transition: 0.2s ease;
+    border-radius: 10px;
+    margin-top: 35px;
+}
+
+.account-item:hover {
+    box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.3);
+    transform: translate(0, -2px);
+}
+
+.account-item:hover > div > p {
+    transition: 0.3s ease;
+    color: #ff854f;
+}
+
+.account-icons {
+    width: 48px;
+    height: 48px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.account-texts {
+    color: #ff854f;
+}
+
+.account-text-header {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    width: 300px;
+    color: black;
+}
+
+.account-text-caption {
+    font-weight: 400;
+    font-size: 0.8125rem;
+    margin: 0px;
+    margin-right: 20px;
+    width: 300px;
+    font-style: italic;
+    color: grey;
+}
+
+/* End of Page Specific */
+
+/* Media */
+
+@media (max-width: 550px) {
+
+    .account-text-header, .account-text-caption {
+        width: auto;
+    }
+
+}
+
+@media (min-width: 1250px) {
+
+    .account-urls {
+        width: 45%;
+    }
+
+    .account-background {
+        flex-direction: row!important;
+    }
+
+}
+
+/* End of Media */

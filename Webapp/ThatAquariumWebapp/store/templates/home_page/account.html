@@ -2,5 +2,78 @@
 {% load static %}
 
 {% block content %}
-    <h1>account</h1>
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" type = "text/css">
+    <!-- <script src="{% static 'scripts/account.js' %}"></script> -->
+
+    <div class="flex-r flex-centre">
+        <a class = "account-header navbar-text-item-current navbar-text-item-current-orange" href = "{% url 'account' %}">
+            Your Account
+            <div class = "hover-underline hover-underline-orange"></div>
+        </a>
+    </div>
+
+    <div class = "account-background flex-c flex-centre mx-auto">
+
+        <a href = "{% url 'orders' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Order.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Orders</p>
+                    <p class = "account-text-caption">View your past orders here</p>
+                </div>
+            </div>
+        </a>
+
+        <a href = "{% url 'wishlist' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Wishlist.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Wishlist</p>
+                    <p class = "account-text-caption">View your favourite/saved items here</p>
+                </div>
+            </div>
+        </a>
+
+        <a href = "{% url 'membership' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Membership.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Membership</p>
+                    <p class = "account-text-caption">Manage your membership status</p>
+                </div>
+            </div>
+        </a>
+
+        <a href = "{% url 'address' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Addresses.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Address Book</p>
+                    <p class = "account-text-caption">Edit your delivery addresses</p>
+                </div>
+            </div>
+        </a>
+
+        <a href = "{% url 'account' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Payment.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Payment Methods</p>
+                    <p class = "account-text-caption">Edit your cards here</p>
+                </div>
+            </div>
+        </a>
+
+        <a href = "{% url 'settings' %}" class = "account-urls mx-auto">
+            <div class = "account-item flex-r flex-centre">
+                <img src = "{% static 'images/Account Overview/Settings.png' %}" class = "account-icons my-auto">
+                <div class = "account-texts">
+                    <p class = "account-text-header">Settings</p>
+                    <p class = "account-text-caption">Customise to your heart's content</p>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
 {% endblock content %}
