@@ -36,22 +36,40 @@
             <p class = "settings-category-header">Notifications - Status Updates (At least one)</p>
     
             <div class = "notifications-background settings-category-background flex-c">
-                <div class = "input-with-label settings-item settings-first br-bot-0 flex-r">
-                    <input class = "custom-check-field email-check my-auto" type="checkbox" id = "email">
+                <div class = "input-with-label settings-item settings-first br-bot-0 flex-r flex-bet">
                     <label for = "email" class = "labels my-auto">Email</label>
+                    <div class = "checkbox-encaser my-auto">
+                        {% if 1 != 1 %} <!-- Change condition when conntected to backend -->
+                            <input class = "custom-check-field email-check" type="checkbox" id = "email" readonly>
+                        {% else %}
+                            <input class = "custom-check-field email-check" type="checkbox" id = "email" checked readonly>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class = "input-with-label settings-item flex-r settings-last br-top-0">
-                    <input class = "custom-check-field sms my-auto" type="checkbox" id = "sms">
+                <div class = "input-with-label settings-item flex-r flex-bet settings-last br-top-0">
                     <label for = "sms" class = "labels my-auto">SMS</label>
+                    <div class = "checkbox-encaser my-auto">
+                        {% if 1 != 1 %} <!-- Change condition when conntected to backend -->
+                            <input class = "custom-check-field sms" type="checkbox" id = "sms" readonly>
+                        {% else %}
+                            <input class = "custom-check-field sms" type="checkbox" id = "sms" checked readonly>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
 
             <p class = "settings-category-header">Privacy</p>
     
             <div class = "privacy-background settings-category-background flex-c">
-                <div class = "input-with-label settings-item flex-r settings-first br-bot-0">
-                    <input class = "custom-check-field hide-review my-auto" type="checkbox" id = "hide-review">
+                <div class = "input-with-label settings-item flex-r flex-bet settings-first br-bot-0">
                     <label for = "hide-review" class = "labels my-auto">Hide your name in your Reviews</label>
+                    <div class = "checkbox-encaser my-auto">
+                        {% if 1 == 1 %} <!-- Change condition when conntected to backend -->
+                            <input class = "custom-check-field hide-review" type="checkbox" id = "hide-review" readonly>
+                        {% else %}
+                            <input class = "custom-check-field hide-review" type="checkbox" id = "hide-review" checked readonly>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class = "flex-r flex-bet settings-item settings-last br-top-0 button-option">
                     <p class = "reset-account-text my-auto">Request for your account to be deleted</p>

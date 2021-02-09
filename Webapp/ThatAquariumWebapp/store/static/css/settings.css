@@ -21,6 +21,16 @@
 
 /* Page elements */
 
+.error-text-input {
+    transition: 0.2s ease;
+    border-color: red!important;
+}
+
+.error-text {
+    transition: 0.2s ease;
+    color: red!important;
+}
+
 .auto-save {
     font-size: 0.75rem;
     margin-top: 20px;
@@ -50,10 +60,9 @@
 }
 
 .settings-item {
-    border-top: 1px solid rgb(200, 200, 200); 
-    padding: 25px;
+    /* border-top: 1px solid rgb(200, 200, 200);  */
+    padding: 20px 25px 20px 25px;
     transition: 0.2s ease;
-    /* padding-bottom: 0px; */
 }
 
 .settings-item:hover {
@@ -78,15 +87,14 @@
 }
 
 .custom-text-field {
-    /* border-radius: 20px; */
     transition: 0.2s ease !important;
     outline: none;
     border: none;
     border-bottom: 1px solid rgb(170, 170, 170);
     width: calc(100% - 20px);
     height: 55px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 10px;
     background-color: transparent;
 }
@@ -130,9 +138,39 @@
     height: fit-content;
 }
 
+.checkbox-encaser {
+    width: 24px;
+    min-width: 24px;
+    height: 10px;
+    border-radius: 6px;
+    background-color: rgba(100, 100, 100, 0.75);
+    transition: 0.2s ease;
+    margin-right: 35px;
+    margin-left: 20px;
+}
+
 .custom-check-field {
-    margin-left: 10px;
+    position: absolute;
+    margin-top: -5px;
+    margin-left: -8px;
     cursor: pointer;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease;
+}
+
+.custom-check-field:checked {
+    margin-left: 12px;
+    background-color: #ff854f;
+}
+
+.custom-check-field, .custom-check-field:focus, .custom-check-field:hover, .custom-check-field:active {
+    text-decoration: none;
+    outline: none;
 }
 
 .input-with-label {

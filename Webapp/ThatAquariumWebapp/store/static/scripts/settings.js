@@ -9,24 +9,20 @@ $(document).ready(function() {
 
         if (checkNotificationValid() == false) {
             valid = false;
-            $(".notifications-background").css({
-                borderColor: "red"
-            });
+            $(".notifications-background").children().children().addClass("error-text");
         };
 
         if (checkEmailValid() == false) {
             console.log("email-invalid")
             valid = false;
-            $(".email").css({
-                backgroundColor: "rgba(255, 0, 0, 0.25)"
-            });
+            $(".email").addClass("error-text-input");
+            $(".email").siblings().addClass("error-text");
         };
 
         if (checkNameValid() == false) {
             valid = false;
-            $(".full-name").css({
-                backgroundColor: "rgba(255, 0, 0, 0.25)"
-            });
+            $(".full-name").addClass("error-text-input");
+            $(".full-name").siblings().addClass("error-text");
         };
 
         if (valid == true) {
@@ -58,12 +54,9 @@ $(document).ready(function() {
     };
 
     function clearBorder() {
-        $(".settings-category-background").css({
-            borderColor: "rgba(255, 0, 0, 0)"
-        });
-        $(".email, .full-name").css({
-            backgroundColor: "rgba(255, 0, 0, 0)"
-        });
+        $(".settings-category-background").children().children().removeClass("error-text");
+        $(".email, .full-name").removeClass("error-text-input");
+        $(".email, .full-name").siblings().removeClass("error-text");
     };
 
     $(document).click(function() {
@@ -81,18 +74,43 @@ $(document).ready(function() {
     });
 
     $(".input-with-label").click(function() {
-        if ($(this).children().prop('checked') == true) {
-            $(this).children().prop('checked', false);
+        if ($(this).children("div").children("input").prop('checked') == true) {
+            $(this).children("div").children("input").prop('checked', false);
+            $(this).children("div").css({
+                backgroundColor: "rgba(100, 100, 100, 0.75)"
+            });
             $(this).removeClass("input-with-label-checked");
         } else {
-            $(this).children().prop('checked', true);
+            $(this).children("div").children("input").prop('checked', true);
+            $(this).children("div").css({
+                backgroundColor: "rgba(163, 63, 20, 0.75)"
+            });
             $(this).addClass("input-with-label-checked");
         };
     });
 
-    $(".input-with-label").children().each(function() {
+    $(".custom-check-field").click(function() { // Somehow the above function doesn't work for .custom-check-field so this is needed
+        if ($(this).prop('checked') == true) {
+            $(this).prop('checked', false);
+            $(this).parent().css({
+                backgroundColor: "rgba(100, 100, 100, 0.75)"
+            });
+            $(this).parent().parent().removeClass("input-with-label-checked");
+        } else {
+            $(this).prop('checked', true);
+            $(this).parent().css({
+                backgroundColor: "rgba(163, 63, 20, 0.75)"
+            });
+            $(this).parent().parent().addClass("input-with-label-checked");
+        };
+    });
+
+    $(".input-with-label").children("div").children().each(function() {
         if ($(this).prop("checked") == true) {
-            $(this).parent().addClass("input-with-label-checked");
+            $(this).parent().parent().addClass("input-with-label-checked");
+            $(this).parent().css({
+                backgroundColor: "rgba(163, 63, 20, 0.75)"
+            });
         };
     });
 
