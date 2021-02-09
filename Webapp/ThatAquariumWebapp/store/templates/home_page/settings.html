@@ -2,5 +2,67 @@
 {% load static %}
 
 {% block content %}
-    <h1>Terms and conditions will be coded here</h1>
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}" type = "text/css">
+    <script src="{% static 'scripts/settings.js' %}"></script>
+    
+    <h6 class = "settings-header">
+        Settings
+        <div class = "settings-header-underline"></div>
+    </h6>
+
+    <p class="text-c auto-save">Settings are saved automatically if there are no errors</p>
+
+    <form>
+
+        <div class = "settings-background mx-auto">
+    
+            <p class = "settings-category-header">Account</p>
+    
+            <div class = "accounts-background settings-category-background flex-c">
+                <div class = "input-with-placeholder settings-item settings-first br-bot-0">
+                    <input class = "custom-text-field email" value = "{{ 'Email' }}">
+                    <div class = "custom-placeholder">Email</div>
+                </div>
+                <div class = "input-with-placeholder settings-item">
+                    <input class = "custom-text-field full-name" value = "{{ 'Full Name' }}">
+                    <div class = "custom-placeholder">Full Name</div>
+                </div>
+                <div class = "flex-r flex-bet settings-item settings-last br-top-0">
+                    <p class = "reset-password-text my-auto">Change your Password</p>
+                    <a href = "{% url 'reset_password' %}" class = "reset-password settings-item no-deco flex-r flex-centre">Reset Password</a>
+                </div>
+            </div>
+
+            <p class = "settings-category-header">Notifications - Status Updates (At least one)</p>
+    
+            <div class = "notifications-background settings-category-background flex-c">
+                <div class = "input-with-label settings-item settings-first br-bot-0 flex-r">
+                    <input class = "custom-check-field email-check my-auto" type="checkbox" id = "email">
+                    <label for = "email" class = "labels my-auto">Email</label>
+                </div>
+                <div class = "input-with-label settings-item flex-r settings-last br-top-0">
+                    <input class = "custom-check-field sms my-auto" type="checkbox" id = "sms">
+                    <label for = "sms" class = "labels my-auto">SMS</label>
+                </div>
+            </div>
+
+            <p class = "settings-category-header">Privacy</p>
+    
+            <div class = "privacy-background settings-category-background flex-c">
+                <div class = "input-with-label settings-item flex-r settings-first br-bot-0">
+                    <input class = "custom-check-field hide-review my-auto" type="checkbox" id = "hide-review">
+                    <label for = "hide-review" class = "labels my-auto">Hide your name in your Reviews</label>
+                </div>
+                <div class = "flex-r flex-bet settings-item settings-last br-top-0">
+                    <p class = "reset-account-text my-auto">Request for your account to be deleted</p>
+                    <a href = "{# url 'reset_password' #}" class = "reset-account settings-item no-deco flex-r flex-centre">Request Account Deletion</a>
+                </div>
+            </div>
+
+            <div class = "bottom-margin"></div>
+    
+        </div>
+        
+    </form>
+
 {% endblock content %}

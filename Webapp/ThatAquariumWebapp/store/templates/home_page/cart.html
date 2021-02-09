@@ -292,7 +292,7 @@
                         {% if not request.user.is_authenticated %}
                             <a class = "edit-card add-card">Add Temporary Card</a>
                         {% else %}
-                            <a href = "{% url 'payment' %}" class = "edit-card">Edit Your Cards</a>
+                            <a href = "{% url 'cart' %}" class = "edit-card">Edit Your Cards</a> <!-- Change this if we are storing payment -->
                         {% endif %}
                     </div>
                     <p class = "payment-subheader summary-region-items-subheader">Cash on Delivery</p>

@@ -352,6 +352,56 @@ body {
     justify-content: center;
 }
 
+.flex-aro {
+    justify-content: space-around;
+}
+
+.flex-bet {
+    justify-content: space-between;
+}
+
+.flex-eve {
+    justify-content: space-evenly;
+}
+
+.no-deco, .no-deco:hover, .no-deco:active, .no-deco:focus {
+    text-decoration: none;
+}
+
+.text-l {
+    text-align: left;
+}
+
+.text-c {
+    text-align: center;
+}
+
+.text-r {
+    text-align: right;
+}
+
+.bottom-margin {
+    margin-bottom: 100px;
+}
+
+.br-10 {
+    border-radius: 10px;
+}
+
+.br-20 {
+    border-radius: 20px;
+}
+
+.br-top-0 {
+    border-top-left-radius: 0px!important;
+    border-top-right-radius: 0px!important;
+}
+
+.br-bot-0 {
+    border-bottom-left-radius: 0px!important;
+    border-bottom-right-radius: 0px!important;
+}
+
 /* End of Shared Classes */
 
 /* General Media */

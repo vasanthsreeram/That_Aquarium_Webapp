@@ -1,0 +1,162 @@
+/* Header */
+
+.settings-header {
+    color: #ff854f;
+    text-align: center;
+    width: fit-content;
+    margin: 35px auto 0px auto;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.settings-header-underline {
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #ff854f;
+    display: inline-block;
+}
+
+/* End of header */
+
+/* Page elements */
+
+.auto-save {
+    font-size: 0.75rem;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.settings-background {
+    width: 80vw;
+}
+
+.settings-category-background {
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: 0.2s ease;
+}
+
+.settings-category-background:hover {
+    box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.4);
+}
+
+.settings-category-header {
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-top: 40px;
+}
+
+.settings-item {
+    border-top: 1px solid rgb(200, 200, 200); 
+    padding: 25px;
+    transition: 0.2s ease;
+    /* padding-bottom: 0px; */
+}
+
+.settings-item:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+.settings-first {
+    border-top: 0px;
+    border-radius: 10px;
+}
+
+.settings-last {
+    border-radius: 10px;
+}
+
+.custom-placeholder {
+    position: absolute;
+    font-size: 0.75rem;
+    margin-top: -55px;
+    margin-left: 15px;
+    transition: 0.2s ease;
+}
+
+.custom-text-field {
+    /* border-radius: 20px; */
+    transition: 0.2s ease !important;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(170, 170, 170);
+    width: calc(100% - 20px);
+    height: 55px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background-color: transparent;
+}
+
+.custom-text-field:hover {
+    border-color: black;
+}
+
+.custom-text-field:focus, .custom-placeholder:active {
+    border-color: #ff854f;
+}
+
+.custom-text-field:focus ~ div, .custom-placeholder:active ~ div {
+    color: #ff854f;
+}
+
+.reset-password, .reset-account {
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+    height: fit-content;
+    transition: 0.2s ease;
+    padding: 12.5px 25px 12.5px 25px;
+    margin: 0px 25px 0px 0px;
+    font-size: 0.875rem;
+    text-align: center;
+    width: fit-content;
+    border-top: 0px;
+}
+
+.reset-password:hover, .reset-account:hover {
+    color: white;
+    text-align: none;
+    transform: translate(0px, -2px);
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.35);
+    background-color: red;
+}
+
+.reset-password-text, .reset-account-text {
+    margin-left: 15px;
+    height: fit-content;
+}
+
+.custom-check-field {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.input-with-label {
+    color: rgb(150, 150, 150);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.input-with-label:hover {
+    color: black;
+}
+
+.input-with-label-checked {
+    color: black!important;
+}
+
+.labels {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sms {
+    margin-bottom: 30px;
+}
+
+
+/* End of page elements */
