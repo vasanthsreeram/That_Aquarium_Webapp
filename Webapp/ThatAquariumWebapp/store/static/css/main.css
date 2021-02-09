@@ -433,6 +433,10 @@ body {
         margin-top: 75px!important;
     }
 
+    .navbar-collapsed-button {
+        margin-bottom: 15px;
+    }
+
 }
 
 @media (min-width: 553px) and (max-width: 991px) {
