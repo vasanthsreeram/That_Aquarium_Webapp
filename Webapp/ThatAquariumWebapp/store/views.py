@@ -238,6 +238,10 @@ def privacy(request):
     context = {"cartItems": cartItem}
     return render(request, 'home_page/privacy_policy.html',context)
 
+def password_reset():
+    pass
+
+
 def updateAddress(request):
     data = json.loads(request.body)
 
