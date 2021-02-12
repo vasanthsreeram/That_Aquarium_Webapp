@@ -106,6 +106,16 @@ def hot_deals(request):
 def search(request):
     try:
         query = request.get_full_path().split("/search/?result=")[1]
+        result = Product.objects.filter(product_name__contains=query)
+        if result.exists():
+            results = []
+            for item in result:
+                print("things",item)
+                results.append(item)
+            return render(request, 'home_page/search.html', {"results": results})
+        else:
+            print("nothing found")
+
     except:
         return render(request,'home_page/search.html', {"results": []})
     else:
@@ -132,7 +142,7 @@ def search(request):
             if len(i[1]) != 0:
                 for y, j in enumerate(i[1]):
                     categories[x][1][y] = [j, y + 1]
-                    print(j)
+                    # print(j)
 
         if len(results) == 0:
             results = ["No Search Results Found"]
@@ -237,10 +247,6 @@ def privacy(request):
     cartItem = cartItemData(request)
     context = {"cartItems": cartItem}
     return render(request, 'home_page/privacy_policy.html',context)
-
-def password_reset():
-    pass
-
 
 def updateAddress(request):
     data = json.loads(request.body)
