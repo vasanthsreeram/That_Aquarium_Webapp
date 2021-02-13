@@ -30,7 +30,7 @@
                     <p class = "product-price out-of-stock">Out of Stock</p>
                 {% else %}
                     <div class = "flex-r">
-                        <p class = "product-price">S${{ "5.00" }}</p> <!-- Make this Discounted price -->
+                        <p class = "product-price">S${{ product.d_price }}</p> <!-- Make this Discounted price -->
                         <p class = "product-original-price"><del>S${{ product.price|floatformat:2 }}</del></p> <!-- Make this normal price -->
                     </div>
                 {% endif %}

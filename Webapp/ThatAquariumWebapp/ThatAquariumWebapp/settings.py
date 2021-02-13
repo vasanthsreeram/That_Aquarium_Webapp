@@ -138,6 +138,6 @@ EMAIL_HOST_PASSWORD = 'hfYV2dZTRg8avrG'
 
 
 import mimetypes
-mimetypes.add_type("https://fonts.googleapis.com/css2?family=Raleway:100,200,300,400,500,600,700,800,900", ".css", True)
+mimetypes.add_type("text/css", ".css", True)
 
 ALLOWED_HOSTS = ['*']
