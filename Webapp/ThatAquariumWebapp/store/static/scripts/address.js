@@ -94,6 +94,7 @@ $(document).ready(function() {
 });
 
 function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
+    console.log("id",addr_id)
     var url = '/update_address/'
     if (action == "add") {
         fetch(url, { //this is a way to send data as a json to another link using an api
@@ -108,7 +109,8 @@ function updateAddress(name, addr1, addr2, post, phone, addr_id, action) {
                 "address1": addr1,
                 "address2": addr2,
                 "postcode": post,
-                "action": action
+                "action": action,
+                "id": addr_id
             }),
         }).then((response) => {
             return response.json()

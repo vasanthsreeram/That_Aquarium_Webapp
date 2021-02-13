@@ -266,9 +266,10 @@ def updateAddress(request):
     adddress_ids = []
     for address_inset in Address.objects.filter(customer=customer):
         adddress_ids.append(address_inset.id)
-    id = int(data["id"])
-    print("client id:",id)
-    print(adddress_ids)
+    id = None
+    if data["id"]!=None:
+        id = int(data["id"])
+
     if action == "add":
         name = data["name"]
         phone = data["phone"]
