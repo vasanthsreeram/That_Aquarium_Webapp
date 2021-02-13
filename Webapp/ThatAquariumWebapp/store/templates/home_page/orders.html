@@ -2,5 +2,71 @@
 {% load static %}
 
 {% block content %}
-    <h1>Terms and conditions will be coded here</h1>
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}" type = "text/css">
+    <script src="{% static 'scripts/orders.js' %}"></script>
+
+    <h6 class = "orders-header">
+        Orders
+        <div class = "orders-header-underline"></div>
+    </h6>
+
+    <div class = "items-region mx-auto flex-c">
+        {% if orders|length == 0 %} <!-- Edit this once connected to backend -->
+            {% for order in "orders" %} <!-- Edit this once connected to backend -->
+                <div class = "order-item flex-r flex-bet">
+                    <div class = "left-side-items">
+                        <p class = "order-id">Order ID #{{ "1" }} - {{ "1st January 2021" }}</p>
+                        <p class = "order-status">{{ "Order Placed - Preparing for Collection" }}</p>
+                        <p class = "order-address">{{ "Collect from: Blk 618 Yishun Ring Road, #01-3236 Singapore 760618 (Yishun Branch)" }}</p>
+                        {% for item in "order" %}
+                            <div class = "item flex-r">
+                                <img src='{% static "images/Testing/nemo.jpg" %}' class = "item-images">
+                                <div class = "item-info flex-c">
+                                    <div class = "item-text">
+                                        <p class = "item-name">{{ "item.product.product_name" }}</p>
+                                        <p class = "item-description">{{ "item.product.description Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada orci at sem posuere dignissim. Nam convallis risus felis, gravida maximus est venenatis nec." }}</p>
+                                    </div>
+                                    <div class = "item-right-side-elements">
+                                        <div class = "item-right-side-bottom-elements">
+                                            <div class = "quantities flex-r">
+                                                <p class = "quantity-text">Quantity:</p>
+                                                <p class = "item-quantity">{{ "1" }}</p>
+                                            </div>
+                                            <div class = "divider"></div>
+                                            <p class = "item-total">S${{ "89.90" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class = "right-side-items">
+                        <p class = "payment-type">{{ "Cash on Delivery" }}</p>
+                        <div class = "flex-r flex-bet order-total">
+                            <p>Order Total:</p>
+                            <p>S${{ "179.80" }}</p>
+                        </div>
+                        <div class = "flex-r flex-bet order-details">
+                            <p>Items:</p>
+                            <p>S${{ "199.80" }}</p>
+                        </div>
+                        <div class = "flex-r flex-bet order-details">
+                            <p>Discounts:</p>
+                            <p>S${{ "-10.00" }}</p>
+                        </div>
+                        <div class = "flex-r flex-bet order-details">
+                            <p>Coupon Code:</p>
+                            <p>S${{ "-10.00" }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class = "nothing-in-orders">
+                No past orders found :( 
+                <br> 
+                Browse our shop and give some love to the fishes!
+            </p>
+        {% endif %}
+    </div>
 {% endblock content %}
