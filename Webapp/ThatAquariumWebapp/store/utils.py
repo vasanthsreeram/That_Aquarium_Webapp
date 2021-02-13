@@ -99,8 +99,8 @@ def registeruser(request):
     form = CreateUserForm(request.POST)
     if form.is_valid():
         saved_user = form.save()
-        group = Group.objects.get(name='Member')
-        saved_user.groups.add(group)
+        # group = Group.objects.get(name='Member')
+        # saved_user.groups.add(group)
         pending_user = User.objects.get(username=form.data["username"])
         pending_user.is_active = False
         pending_user.email = form.data["username"]
