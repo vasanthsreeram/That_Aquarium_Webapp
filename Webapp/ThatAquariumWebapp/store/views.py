@@ -104,15 +104,19 @@ def hot_deals(request):
     return render(request,'home_page/hot.html',context)
 
 def search(request):
+
     try:
+        is_member = request.user.groups.filter(name="Member").exists()
         query = request.get_full_path().split("/search/?result=")[1]
+        print(query)
         result = Product.objects.filter(product_name__contains=query)
         if result.exists():
             results = []
+
             for item in result:
                 print("things",item)
                 results.append(item)
-            return render(request, 'home_page/search.html', {"results": results})
+            return render(request, 'home_page/search.html', {"results": results,"membership":is_member})
         else:
             print("nothing found")
 
@@ -160,7 +164,12 @@ def orders(request):
 @login_required(login_url="login")
 def membership(request):
     cartItem = cartItemData(request)
-    context = {"cartItems": cartItem}
+
+    member = request.user.groups.get()
+    print(member)
+
+    context = {"cartItems": cartItem,"member":member}
+
     return render(request,'home_page/membership.html',context)
 
 

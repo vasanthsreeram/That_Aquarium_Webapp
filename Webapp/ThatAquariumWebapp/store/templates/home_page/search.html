@@ -84,13 +84,14 @@
                         <img src='{{ result.imageURL }}' class = "item-images">
                         <div class = "item-text">
                             <p class = "item-name">{{ result.product_name }}</p>
-                            {% if 1 != 1 %} <!-- Change to check condition for discounted price -->
+
+                            {% if  membership == False or result.d_price == -1 %} <!-- Change to check condition for discounted price -->
                                 <p class = "item-price item-price-not-discounted">S${{ result.price }}</p>
-                            {% elif 1 != 1 %} <!-- Change to Out of Stock check -->
+                            {% elif result.quantity == 0 %} <!-- Change to Out of Stock check -->
                                 <p class = "item-price out-of-stock">Out of Stock</p>
                             {% else %}
                                 <div class = "flex-r">
-                                    <p class = "item-price">S${{ result.price }}</p>
+                                    <p class = "item-price">S${{ result.d_price }}</p>
                                     <p class = "item-original-price"><del>S${{ result.price }}</del></p>
                                 </div>
                             {% endif %}
