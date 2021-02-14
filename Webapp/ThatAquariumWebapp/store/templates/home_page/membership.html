@@ -2,5 +2,56 @@
 {% load static %}
 
 {% block content %}
-    <h1>Your membership status is {{ member }}</h1>
+    <link rel = "stylesheet" href = "{% static 'css/membership.css' %}" type = "text/css">
+
+    <h6 class = "membership-header">
+        Membership
+        <div class = "membership-header-underline"></div>
+    </h6>
+
+    {% if member == "Member" %}
+        <div class = "coins mx-auto">
+            <p class = "coins-text text-c">{{ "0" }} Coin(s) available</p>
+        </div>
+
+        <div class = "member-status member-active flex-r flex-centre mx-auto">
+            <img src = "{% static 'images/Membership/check-24px.svg' %}" class = "member-image my-auto">
+            <p class = "my-auto">Your Membership is Active</p>
+        </div>
+    {% else %}
+        <div class = "how-to-be-member mx-auto">
+            <p class = "how-to-text text-c">Purchase any of our items and get FREE lifetime membership!</p>
+        </div>
+
+        <div class = "member-status flex-r flex-centre mx-auto">
+            <img src = "{% static 'images/Membership/cross-24px.svg' %}" class = "member-image my-auto">
+            <p class = "my-auto">Your Membership is Inactive</p>
+        </div>
+    {% endif %}
+
+    <div class = "divider"></div>
+    <p class = "mx-auto member-perks">Membership Benefits</p>
+
+    <div class = "member-benefits flex-r mx-auto">
+        <div class = "member-specific-benefits member-specific-benefits-1">
+            <p class = "member-specific-benefits-text member-specific-benefits-text-1 text-c">SPECIAL DISCOUNTS</p>
+            <ul>
+                <li>Receive occasional discounts</li>
+                <li>Member pricing on certain items</li>
+            </ul>
+        </div>
+        <div class = "member-specific-benefits member-specific-benefits-2">
+            <p class = "member-specific-benefits-text member-specific-benefits-text-2 text-c">REDEEMBALE COINS</p>
+            <ul>
+                <li>Receive cashback in coins for every purchase!</li>
+                <li>Redeemable vouchers</li>
+            </ul>
+        </div>
+        <div class = "member-specific-benefits member-specific-benefits-3">
+            <p class = "member-specific-benefits-text member-specific-benefits-text-3 text-c">FUTURE MEMBER PERKS</p>
+            <ul>
+                <li>More perks on the way!</li>
+            </ul>
+        </div>
+    </div>
 {% endblock content %}

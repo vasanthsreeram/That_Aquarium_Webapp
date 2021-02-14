@@ -168,7 +168,7 @@ def membership(request):
     member = request.user.groups.get()
     print(member)
 
-    context = {"cartItems": cartItem,"member":member}
+    context = {"cartItems": cartItem,"member":str(member)}
 
     return render(request,'home_page/membership.html',context)
 
